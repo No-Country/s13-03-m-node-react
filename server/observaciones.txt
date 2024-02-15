@@ -1,0 +1,43 @@
+Formato de respuestas:
+
+codigos de estados:
+  0: En caso de éxito
+  1: En caso de algún error
+
+{
+  data: {
+    //incluir la respuesta de la base de datos en caso sea necesario enviar
+  },
+  status: un código de estado,
+  message: "Un mensaje en caso sea necesario comunicar al front, podrías ser: edición éxtiosa, email ya existe, etc",
+}
+
+ejemplos de uso:
+
+res.status(200).json(
+  {
+    data:{
+      comments: [
+
+      ]
+    },
+    status: 0,
+    message: "",
+  }
+)
+
+res.status(404).json(
+  {
+    data:{},
+    status: 1,
+    message: "No se encuentra el comentario con el id solicitado",
+  }
+)
+
+res.status(400).json(
+  {
+    data:{},
+    status: 1,
+    message: "El email no tiene formato válido",
+  }
+)
