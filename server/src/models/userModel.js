@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
-const userScheme = new mongoose.Schema({
-	names: {
+const UserScheme = new mongoose.Schema({
+	names: { //names or name??
 		type: String,
 		required: true,
 		trim: true,
@@ -23,6 +23,7 @@ const userScheme = new mongoose.Schema({
 		type: String,
 		required: true,
 		trim: true,
+		//unique: true,
 		validate: {
 			validator: function (value) {
 				return /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(value);
@@ -48,8 +49,15 @@ const userScheme = new mongoose.Schema({
 		default: 'user',
 		trim: true,
 	},
+},
+{
+	timestamps: true,
+	versionKey: false,
 });
 
-const UserModel = mongoose.model('User', userScheme);
+const UserModel = mongoose.model('users', UserScheme);
 
 export default UserModel;
+
+//acuerdate de que UserScheme es una clase instanciada por mongosee, por ende va con UpperCamelCase
+// mongoose.model('user', UserScheme) 'users va a ser el nombre del documento (tabla) a crear y se usa snake_case en plural';
