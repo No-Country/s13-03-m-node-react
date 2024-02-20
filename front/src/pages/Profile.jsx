@@ -1,7 +1,7 @@
 
 const Profile = () => {
   return (
-    <div>Profile</div>
+    <div className="text-3xl h-screen flex justify-center items-center">Profile</div>
   )
 }
 
