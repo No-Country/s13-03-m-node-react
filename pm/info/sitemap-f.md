@@ -1,0 +1,172 @@
+<pre>
+Home
+│
+├────────Notificaciones
+│           │
+│           ├────────Generales
+│           │
+│           └────────Mi grado
+│
+│
+├────────Actividad escolar
+│           │
+│           ├────────Mis actividades
+│           │             │
+│           │             ├────────Datos de la salida
+│           │             │
+│           │             └────────Autorización
+│           │
+│           ├────────Avisos urgentes
+│           │            * Cambio de horario
+│           │            * Horario de llegada
+│           │            * Suspensión
+│           │
+│           └────────Fotos
+│        
+│
+├────────Calendario
+│           │
+│           ├────────Calendario institucional
+│           │            * Eventos de la institución
+│           │            * Asuetos
+│           │            * Paro docente
+│           │
+│           └────────Mi calendario
+│                        * Horarios de clase
+│                        * Cambios de horario
+├────────Chat
+│           │
+│           ├────────Secretaría
+│           │            * E-mail
+│           │            * Teléfono
+│           │
+│           └────────Docentes
+│
+│
+├────────Asistencias
+│           │
+│           ├────────Asistencia 
+│           │             │
+│           │             └────────Historial
+│           │
+│           ├────────Ausencia
+│           │             │
+│           │             ├────────Historial
+│           │             │
+│           │             └────────Justificaciones
+│           │   
+│           ├────────Retiros
+│           │             │
+│           │             ├────────Aviso de retiros
+│           │             │
+│           │             └────────Historial
+│           │
+│           └────────Métricas
+│
+│
+├────────Calificaciones
+│           │
+│           └────────Materias
+│                         │
+│                         ├────────Materia 1
+│                         │             * Observación (Opcional para el docente)
+│                         │
+│                         ├────────Materia 2
+│                         │             * Observación (Opcional para el docente)
+│                         │
+│                         ├────────Materia 3
+│                         │             * Observación (Opcional para el docente)
+│                         │
+│                         ├────────Materia 4
+│                         │             * Observación (Opcional para el docente)
+│                         │
+│                         └────────Materia 5
+│                                       * Observación (Opcional para el docente)
+│
+│
+├────────Ayuda
+│           │
+│           ├────────FAQ
+│           │
+│           └────────Contacto
+│                        * Teléfono
+│                        * E-mail
+│
+│
+└────────Perfil
+            │
+            ├────────Datos del niño/a
+            │            * Nombre y apellido
+            │            * Identificación
+            │            * Nivel de educación y/o grado
+            │
+            ├────────Contraseña
+            │
+            ├────────Cerrar sesión
+            │
+            │
+            └────────Login
+                         │
+                         ├────────Usuario
+                         │           * E-mail
+                         │           * Contraseña
+                         │
+                         └────────No usuario
+                                     * Apellido de la familia
+                                     * Código del alumno
+                                              (Se autocompleta con los datos del alumno:
+                                                         1. nombre y apellido
+                                                         2. identificación
+                                                         3. grado
+                                               porque está cargado en el sistema)
+                                     * E-mail del padre/madre/tutor
+                                     * Contraseña
+                                     * Repetir contraseña
+                                     * Aceptar términos y condiciones
+</pre>
+
+<pre>
+Home
+├────────Notificaciones
+│           ├────────Generales
+│           └────────Mi grado
+├────────Actividad escolar
+│           ├────────Mis actividades
+│           │             ├────────Datos de la salida
+│           │             └────────Autorización
+│           ├────────Avisos urgentes
+│           └────────Fotos
+├────────Calendario
+│           ├────────Calendario institucional
+│           └────────Mi calendario
+├────────Chat
+│           ├────────Secretaría
+│           └────────Docentes
+├────────Asistencias
+│           ├────────Asistencia
+│           │             └────────Historial
+│           ├────────Ausencia
+│           │             ├────────Historial
+│           │             └────────Justificaciones
+│           ├────────Retiros
+│           │             ├────────Aviso de retiros
+│           │             └────────Historial
+│           └────────Métricas
+├────────Calificaciones
+│           └────────Materias
+│                         ├────────Materia 1
+│                         ├────────Materia 2
+│                         ├────────Materia 3
+│                         ├────────Materia 4
+│                         └────────Materia 5
+├────────Ayuda
+│           ├────────FAQ
+│           └────────Contacto
+└────────Perfil
+            ├────────Datos del niño/a
+            ├────────Contraseña
+            ├────────Cerrar sesión
+            └────────Login
+                         ├────────Usuario
+                         └────────No usuario
+</pre>
