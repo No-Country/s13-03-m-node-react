@@ -1,0 +1,90 @@
+git remote set-url origin https://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@github.com/No-Country/c15-24-m-java-reac
+
+git remote set-url origin https://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@github.com/No-Country/s13-03-m-node-react
+
+front
+│   .eslintrc.cjs
+│   .gitignore
+│   index.html
+│   package-lock.json
+│   package.json
+│   postcss.config.js
+│   README.md
+│   tailwind.config.js
+│   vite.config.js
+│   
+├───public
+│       vite.svg
+│       
+└───src
+    │   App.jsx
+    │   index.css
+    │   main.jsx
+    │   
+    ├───assets
+    │       react.svg
+    │       
+    ├───components
+    │       Loading.jsx
+    │       
+    ├───pages
+    │       Attendance.jsx
+    │       Error.jsx
+    │       Finance.jsx
+    │       Home.jsx
+    │       index.js
+    │       Login.jsx
+    │       Notifications.jsx
+    │       Performance.jsx
+    │       Profile.jsx
+    │       Register.jsx
+    │       
+    └───utils
+            links.jsx
+            
+
+
+
+
+notificaciones
+(generales. para todos
+individuales para grado/alumno)
+
+calificaciones 
+notas
+
+asistencia/ausencias
+excepciones
+
+salidas
+autorizaciones de excursión
+
+calendario
+eventos institucion
+eventos grado
+
+login
+dashboard
+
+* login
+     │
+* dashboard
+     │ 
+     │ (caliente)  
+     ├─── notificaciones
+     │       1. General: todos los usuarios 
+     │       2. Particulares: por grado/individual
+     │        
+     ├─── pedidos de autorización
+     │       * Espera una respuesta
+     │       * Puede contener información
+     │          adjunta: detalles, contrato, etc.
+     │
+     │ (frío)
+     ├─── calendario
+     │       * Eventos generales/particulares
+     │       * Visualización año/mes/semanana
+     │
+     ├─── registro de asistencia
+     │       
+     └─── registro de calificaciones

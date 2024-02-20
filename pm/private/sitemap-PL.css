@@ -1,0 +1,17 @@
+pre{
+    background-color:#77c086ae;
+    /* font-weight:bold; */
+}
+.alta{ color: #f95329; }
+.media{ color: #da9d02; }
+.baja{ color: #fffc39; }
+.muy-baja{ color: #ffcc99; }
+
+/* body{
+--alta: #fd3f0f;
+--media: #ffce53;
+--baja: #fffc39;
+--muy-baja: #ffcc99;
+--verde: #57da71;
+--verde-osc: #018e1d;
+} */

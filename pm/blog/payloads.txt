@@ -1,0 +1,42 @@
+CREATE user | POST /register
+{
+    "_uuid": "{AUTOGENERADO}",
+    "name": "",
+    "last_name": "",
+    "user_name": "",
+    "email": "",
+    "password": "",
+    "rol": "PARENT",
+    "avatar": "{IMG}",
+    "is_active": "TRUE"
+}
+READ user | GET /
+FILTROS:
+{
+    "rol": "",
+    "is_active": ""
+}
+
+READ user BY ID | GET /{id}
+
+UPDATE user | PUT /{id}
+{
+    "name": "",
+    "last_name": "",
+    "email": "",
+    "password": "",
+    "avatar": "{IMG}"
+}
+/* NO SE ACTUALIZA
+    "user_name": "",
+    "rol": "PARENT",
+    "is_active": "TRUE"
+*/
+
+DELETE user | DELETE /{id}
+{
+    "is_active": "FALSE"
+}
+
+---
+CREATE 
