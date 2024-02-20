@@ -1,10 +1,11 @@
-import { Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, NavbarContent, Link } from "@nextui-org/react";
+import { Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, NavbarContent, Link, NavbarItem, Button } from "@nextui-org/react";
 import { useState } from "react";
 import Logo from "./Logo";
 import ProfilePic from "./ProfilePic";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   const menuItems = [
     "Notificaciones",
@@ -36,7 +37,16 @@ const Header = () => {
         </NavbarBrand>
       </NavbarContent>
 
-      <ProfilePic />
+      {isLoggedIn ? <ProfilePic handleLogout={() => setIsLoggedIn(false)} /> : <NavbarContent justify="end">
+        <NavbarItem>
+          <Link href="/login">Login</Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Button as={Link} color="warning" href="/sign-up" variant="flat">
+            Sign Up
+          </Button>
+        </NavbarItem>
+      </NavbarContent>}
 
       <NavbarMenu className="bg-gray-100 overflow-hidden w-[250px] rounded">
         {menuItems.map((item, index) => (
