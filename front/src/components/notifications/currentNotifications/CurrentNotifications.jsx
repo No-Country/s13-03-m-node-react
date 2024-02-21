@@ -24,7 +24,6 @@ function CurrentNotifications({
   );
 
   const handleCheckboxChange = (notification) => {
-    // Mueve la notificación marcada a historyData y elimínala de notificationData
     setNotificationsData(
       notificationsData.filter((item) => item !== notification)
     );
