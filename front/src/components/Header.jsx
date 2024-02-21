@@ -33,7 +33,7 @@ const Header = () => {
       <NavbarContent className="gap-4" justify="center">
         <NavbarBrand>
           <Logo />
-          <p className="font-bold text-inherit">ACME</p>
+          <p className="font-bold text-inherit">EduClass</p>
         </NavbarBrand>
       </NavbarContent>
 
