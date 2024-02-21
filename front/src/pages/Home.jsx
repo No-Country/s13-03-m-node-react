@@ -1,8 +1,10 @@
-import MapToSchool from "../components/MapToSchool"
-
+import Footer from "../components/Footer"
 const Home = () => {
   return (
-    <div>Home</div>    
+    <>
+    <div>Home</div>
+    <Footer/>
+    </>
   )
 }
 
