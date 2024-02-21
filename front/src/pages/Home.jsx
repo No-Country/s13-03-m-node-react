@@ -1,7 +1,8 @@
+import MapToSchool from "../components/MapToSchool"
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <div>Home</div>    
   )
 }
 
