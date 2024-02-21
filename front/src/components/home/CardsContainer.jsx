@@ -1,5 +1,5 @@
-import NotificationsContainer from "./cards/notifications/NotificationsContainer";
-import AcademicPathContainer from "./cards/academicPath/AcademicPathContainer";
+import NotificationsContainer from "./notifications/NotificationsContainer";
+import AcademicPathContainer from "./academicPath/AcademicPathContainer";
 
 function CardsContainer() {
   return (

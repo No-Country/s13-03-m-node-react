@@ -1,9 +1,9 @@
-import CardsContainer from "./cardsContainer/CardsContainer";
+import CardsContainer from "../components/home/CardsContainer";
 
 const Home = () => {
   return (
     <div className="text-3xl h-screen flex justify-center items-center">
-      <CardsContainer />
+      <CardsContainer/>
     </div>
   );
 };
