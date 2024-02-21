@@ -1,5 +1,6 @@
 import CardsContainer from "../components/home/CardsContainer";
 import Banner from "../components/Banner";
+import MapToSchool from "../components/MapToSchool";
 
 const Home = () => {
   return (
@@ -8,6 +9,7 @@ const Home = () => {
       <div className="text-3xl h-screen flex justify-center items-center">
         <CardsContainer />
       </div>
+      <MapToSchool />
     </>
   );
 };
