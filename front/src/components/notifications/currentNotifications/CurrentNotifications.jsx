@@ -1,5 +1,4 @@
-//import { useState } from "react";
-import React from "react";
+import { useState, useMemo } from "react";
 import NotificationCard from "./NotificationCard";
 import {
   Dropdown,
@@ -10,63 +9,33 @@ import {
 } from "@nextui-org/react";
 import { MdKeyboardArrowDown } from "react-icons/md";
 
-const notificationsData = [
-  {
-    title: "Lorem ipsum dolor",
-    date: "21 de febrero de 2024",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur quisquam omnis delectus itaque error veniam totam dicta enim magni incidunt, quibusdam blanditiis sint laborum, sequi molestias fugit modi neque aspernatur.",
-    readed: false,
-  },
-  {
-    title: "Lorem ipsum dolor",
-    date: "22 de febrero de 2024",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur quisquam omnis delectus itaque error veniam totam dicta enim magni incidunt, quibusdam blanditiis sint laborum, sequi molestias fugit modi neque aspernatur.",
-    readed: false,
-  },
-  {
-    title: "Lorem ipsum dolor",
-    date: "23 de febrero de 2024",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur quisquam omnis delectus itaque error veniam totam dicta enim magni incidunt, quibusdam blanditiis sint laborum, sequi molestias fugit modi neque aspernatur.",
-    readed: false,
-  },
-  {
-    title: "Lorem ipsum dolor",
-    date: "24 de febrero de 2024",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur quisquam omnis delectus itaque error veniam totam dicta enim magni incidunt, quibusdam blanditiis sint laborum, sequi molestias fugit modi neque aspernatur.",
-    readed: false,
-  },
-  {
-    title: "Lorem ipsum dolor",
-    date: "25 de febrero de 2024",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur quisquam omnis delectus itaque error veniam totam dicta enim magni incidunt, quibusdam blanditiis sint laborum, sequi molestias fugit modi neque aspernatur.",
-    readed: false,
-  },
-  {
-    title: "Lorem ipsum dolor",
-    date: "26 de febrero de 2024",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur quisquam omnis delectus itaque error veniam totam dicta enim magni incidunt, quibusdam blanditiis sint laborum, sequi molestias fugit modi neque aspernatur.",
-    readed: false,
-  },
-];
+function CurrentNotifications({
+  notificationsData,
+  setNotificationRead,
+  setNotificationsData,
+  setHistoryData,
+  historyData,
+}) {
+  const [selectedKeys, setSelectedKeys] = useState(new Set(["Filtros"]));
 
-function CurrentNotifications() {
-  const [selectedKeys, setSelectedKeys] = React.useState(new Set(["Filtros"]));
-
-  const selectedValue = React.useMemo(
+  const selectedValue = useMemo(
     () => Array.from(selectedKeys).join(", ").replaceAll("_", " "),
     [selectedKeys]
   );
+
+  const handleCheckboxChange = (notification) => {
+    // Mueve la notificación marcada a historyData y elimínala de notificationData
+    setNotificationsData(
+      notificationsData.filter((item) => item !== notification)
+    );
+    setHistoryData([...historyData, notification]);
+  };
+
   return (
-    <div className="h-[50%] bg-slate-300">
+    <div className="">
       <div
         id="currentNotifications-header"
-        className="flex justify-between items-center bg-slate-400"
+        className="flex justify-between items-center"
       >
         <div id="currentNotifications-title-container">
           <h1 className="text-xl">Mis Notificaciones</h1>
@@ -102,7 +71,12 @@ function CurrentNotifications() {
           (notification, index) =>
             !notification.readed &&
             index >= notificationsData.length - 3 && (
-              <NotificationCard key={index} notification={notification} />
+              <NotificationCard
+                key={index}
+                notification={notification}
+                setNotificationRead={setNotificationRead}
+                onCheckboxChange={handleCheckboxChange}
+              />
             )
         )}
       </div>

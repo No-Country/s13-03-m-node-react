@@ -3,7 +3,7 @@ import NotificationContainer from "../components/notifications/NotificationConta
 
 const Notifications = () => {
   return (
-    <div className="text-3xl h-screen flex justify-center ">
+    <div className="text-3xl flex justify-center ">
       <NotificationContainer />
     </div>
   );
