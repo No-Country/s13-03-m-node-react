@@ -1,7 +1,7 @@
 
 const Notifications = () => {
   return (
-    <div>Notifications</div>
+    <div className="text-3xl h-screen flex justify-center items-center">Notifications</div>
   )
 }
 
