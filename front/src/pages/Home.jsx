@@ -1,6 +1,6 @@
 import CardsContainer from "../components/home/CardsContainer";
-import Footer from "../components/Footer"import Banner from "../components/Banner"
-import Banner from "../components/Banner"
+import Footer from "../components/Footer";
+import Banner from "../components/Banner";
 
 const Home = () => {
   return (
