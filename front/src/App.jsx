@@ -1,6 +1,7 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { Attendance, Error, Home, Login, Notifications, Performance, Profile, Register } from './pages';
 import Layout from './components/Layout';
+import { Absences, Attendances, Withdrawals } from './components/attendance';
 
 const router = createBrowserRouter([
   {
@@ -12,7 +13,19 @@ const router = createBrowserRouter([
       },
       {
         path: '/asistencias',
-        element: <Attendance />
+        element: <Attendance />,
+      },
+      {
+        path: '/asistencias/asistencias',
+        element: <Attendances />
+      },
+      {
+        path: '/asistencias/ausencias',
+        element: <Absences />
+      },
+      {
+        path: '/asistencias/retiros',
+        element: <Withdrawals />
       },
       {
         path: '/finanzas',
