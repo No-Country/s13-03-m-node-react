@@ -30,6 +30,21 @@ function CurrentNotifications({
     setHistoryData([...historyData, notification]);
   };
 
+  const filteredNotifications = useMemo(() => {
+    if (selectedKeys.has("Filtros") || selectedKeys.has("todas")) {
+      return notificationsData;
+    } else if (selectedKeys.has("institucional")) {
+      return notificationsData.filter(
+        (notification) => notification.type === "institucional"
+      );
+    } else if (selectedKeys.has("Mi grado")) {
+      return notificationsData.filter(
+        (notification) => notification.type === "Mi grado"
+      );
+    }
+    return [];
+  }, [notificationsData, selectedKeys]);
+
   return (
     <div className="">
       <div
@@ -58,18 +73,18 @@ function CurrentNotifications({
               selectedKeys={selectedKeys}
               onSelectionChange={setSelectedKeys}
             >
-              <DropdownItem key="number">Institucionales</DropdownItem>
-              <DropdownItem key="date">Mi grado</DropdownItem>
-              <DropdownItem key="single_date">Todas</DropdownItem>
+              <DropdownItem key="institucional">Institucionales</DropdownItem>
+              <DropdownItem key="Mi grado">Mi grado</DropdownItem>
+              <DropdownItem key="todas">Todas</DropdownItem>
             </DropdownMenu>
           </Dropdown>
         </div>
       </div>
       <div id="currentNotifications-cards">
-        {notificationsData.map(
+        {filteredNotifications.map(
           (notification, index) =>
             !notification.readed &&
-            index >= notificationsData.length - 3 && (
+            index >= filteredNotifications.length - 3 && (
               <NotificationCard
                 key={index}
                 notification={notification}

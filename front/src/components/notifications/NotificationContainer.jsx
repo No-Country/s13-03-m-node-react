@@ -28,7 +28,7 @@ function NotificationContainer() {
       content:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur quisquam omnis delectus itaque error veniam totam dicta enim magni incidunt, quibusdam blanditiis sint laborum, sequi molestias fugit modi neque aspernatur.",
       readed: notificationRead,
-      type: "mi-grado",
+      type: "Mi grado",
     },
     {
       title: "Lorem ipsum dolor",
@@ -36,7 +36,7 @@ function NotificationContainer() {
       content:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur quisquam omnis delectus itaque error veniam totam dicta enim magni incidunt, quibusdam blanditiis sint laborum, sequi molestias fugit modi neque aspernatur.",
       readed: notificationRead,
-      type: "mi-grado",
+      type: "Mi grado",
     },
     {
       title: "Lorem ipsum dolor",
@@ -44,14 +44,14 @@ function NotificationContainer() {
       content:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur quisquam omnis delectus itaque error veniam totam dicta enim magni incidunt, quibusdam blanditiis sint laborum, sequi molestias fugit modi neque aspernatur.",
       readed: notificationRead,
-      type: "mi-grado",
+      type: "Mi grado",
     },
     {
       title: "Lorem ipsum dolor",
       date: "26 de febrero de 2024",
       content:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur quisquam omnis delectus itaque error veniam totam dicta enim magni incidunt, quibusdam blanditiis sint laborum, sequi molestias fugit modi neque aspernatur.",
-      type: "mi-grado",
+      type: "Mi grado",
     },
   ]);
 

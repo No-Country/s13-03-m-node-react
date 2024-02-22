@@ -8,13 +8,21 @@ import {
 } from "@nextui-org/react";
 import { useState } from "react";
 
-function NotificationCard({ index, notification, onCheckboxChange,setNotificationRead }) {
+function NotificationCard({
+  index,
+  notification,
+  onCheckboxChange,
+  setNotificationRead,
+}) {
   const [isSelected, setIsSelected] = useState(notification.read);
 
   const handleCheckboxChange = () => {
     setIsSelected(true);
-    onCheckboxChange(notification);
-    setNotificationRead(true)
+    setTimeout(() => {
+      setIsSelected(false);
+      onCheckboxChange(notification);
+      setNotificationRead(true);
+    }, 1000);
   };
 
   return (
