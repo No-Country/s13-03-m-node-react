@@ -1,6 +1,6 @@
 import CardsContainer from "../components/home/CardsContainer";
 import Banner from "../components/Banner";
-import MapToSchool from "../components/MapToSchool";
+import MapToSchool from "../components/home/MapToSchool";
 
 const Home = () => {
   return (
