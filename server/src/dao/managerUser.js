@@ -18,17 +18,19 @@ class UserManager {
 	}
 
 	async createUser(data) {
-		const { names, country, lastname, birthDate, email, picture, role } = data;
+		const { names, country, lastname, birthDate, email, password, picture, role } = data;
 		const user = UserModel({
 			names,
 			country,
 			lastname,
 			birthDate,
 			email,
+			password,
 			picture,
 			role,
 		});
-		await this.createDocument('usersCollection', user);
+		const newUser = await this.createDocument('usersCollection', user);
+		return newUser
 	}
 
 	async getOneUser(query) {

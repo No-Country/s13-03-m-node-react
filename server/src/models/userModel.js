@@ -31,6 +31,11 @@ const UserScheme = new mongoose.Schema({
 			message: 'El campo email no es una dirección de correo electrónico válida.',
 		},
 	},
+	password:{
+		type: String,
+		required: true,
+		trim: true
+	},
 
 	country: {
 		type: String,
