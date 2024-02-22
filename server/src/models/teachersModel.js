@@ -1,4 +1,5 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
+
 
 const TeacherScheme = new mongoose.Schema({
 	name: {
@@ -6,28 +7,37 @@ const TeacherScheme = new mongoose.Schema({
 		required: true,
 		trim: true,
 	},
-
-	lastname: {
+	last_name: {
 		type: String,
 		required: true,
 		trim: true,
 	},
-	age: {
-		type: Number,
+	birth_date: {
+		type: Date, 
+		required: true,
+	},
+	subject_id: {
+		type: mongoose.Schema.Types.ObjectId, 
 		required: true,
 		trim: true,
 	},
-
-	specialty: {
-		type: String,
+	class_grade_id: {
+		type: mongoose.Schema.Types.ObjectId, 
 		required: true,
 		trim: true,
 	},
-},
-{
+	is_active: {
+		type: Boolean,
+		default: true,
+	},
+}, {
 	timestamps: true,
 	versionKey: false,
 });
+
+
+
+
 
 const TeacherModel = mongoose.model('teachers', TeacherScheme);
 
