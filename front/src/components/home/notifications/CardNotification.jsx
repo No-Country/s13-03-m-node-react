@@ -1,8 +1,8 @@
 import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
 
-function CardNotification({ key, notification }) {
+function CardNotification({ notification }) {
   return (
-    <Card key={key} className="py-4 h-auto">
+    <Card className="py-4 h-auto">
       <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
         <p className="text-tiny uppercase font-bold">{notification.date}</p>
         <small className="text-default-500 text-sm">

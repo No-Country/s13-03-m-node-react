@@ -37,7 +37,7 @@ function NotificationsContainer() {
         className="flex flex-row space-x-[20px] justify-between mt-5"
       >
         {cardNotificationInfo.slice(-2).map((notification, index) => (
-          <CardNotification key={index} notification={notification} />
+          <div key={index}><CardNotification notification={notification} /></div>
         ))}
       </div>
     </div>
