@@ -11,8 +11,8 @@ function NotificationCard({ index, data }) {
           key={data.id}
           indicator={notificationOpen ? " " : "Ver más"}
           aria-label="Accordion 1"
-          startContent={`${data.date}`}
-          subtitle={`${data.title}`}
+          startContent={data.date}
+          subtitle={data.title}
           className={`text-xs delay-75 ${
             notificationOpen ? "bg-transparent" : "bg-current"
           }`}

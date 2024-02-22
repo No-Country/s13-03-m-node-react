@@ -16,6 +16,22 @@ function HistoryNotifications({ historyData }) {
     () => Array.from(selectedKeys).join(", ").replaceAll("_", " "),
     [selectedKeys]
   );
+
+  const filteredNotifications = useMemo(() => {
+    if (selectedKeys.has("Filtros") || selectedKeys.has("todas")) {
+      return historyData;
+    } else if (selectedKeys.has("institucional")) {
+      return historyData.filter(
+        (notification) => notification.type === "institucional"
+      );
+    } else if (selectedKeys.has("Mi grado")) {
+      return historyData.filter(
+        (notification) => notification.type === "Mi grado"
+      );
+    }
+    return [];
+  }, [historyData, selectedKeys]);
+
   return (
     <>
       {historyData.length > 0 ? (
@@ -46,15 +62,17 @@ function HistoryNotifications({ historyData }) {
                   selectedKeys={selectedKeys}
                   onSelectionChange={setSelectedKeys}
                 >
-                  <DropdownItem key="number">Institucionales</DropdownItem>
-                  <DropdownItem key="date">Mi grado</DropdownItem>
-                  <DropdownItem key="single_date">Todas</DropdownItem>
+                  <DropdownItem key="institucional">
+                    Institucionales
+                  </DropdownItem>
+                  <DropdownItem key="Mi grado">Mi grado</DropdownItem>
+                  <DropdownItem key="todas">Todas</DropdownItem>
                 </DropdownMenu>
               </Dropdown>
             </div>
           </div>
           <div id="historyCards-container">
-            {historyData?.map((data, index) => (
+            {filteredNotifications?.map((data, index) => (
               <NotificationCard key={index} data={data} />
             ))}
           </div>
