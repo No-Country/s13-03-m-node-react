@@ -32,20 +32,20 @@ function UrgentNotifications() {
               />
               <div className="flex flex-col gap-1 items-start justify-center">
                 <h4 className="text-small font-semibold leading-none text-default-600">
-                  Bla bla
+                  Excursion Museo de Historia
                 </h4>
                 <h5 className="text-small tracking-tight text-default-400">
-                  bla-bla-bla
+                  Ajuste de horario
                 </h5>
               </div>
             </div>
           </CardHeader>
           <CardBody className="px-3 py-0 text-small text-default-400">
+            <p>Estimados Padres,</p>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga
-              sapiente non voluptatum nulla nobis officia veritatis quod natus
-              dignissimos sunt nesciunt ullam odio, error delectus praesentium,
-              totam id consectetur magnam!
+              Les informamos que la hora de regreso de la excursión al Museo de
+              Historia ha sido ajustada. El nuevo horario de retorno al colegio
+              será a las 06:30 PM. Agradecemos su comprensión.
             </p>
           </CardBody>
           <CardFooter className="gap-3">

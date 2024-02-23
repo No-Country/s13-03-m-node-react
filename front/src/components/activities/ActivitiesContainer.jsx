@@ -4,6 +4,40 @@ import SectionGallery from "./sectionGallery/SectionGallery";
 import UrgentNotifications from "./urgentNotifications/UrgentNotifications";
 
 function ActivitiesContainer() {
+  const [activitiesImages, setActivitiesImages] = useState([
+    {
+      title: "Excursión al Museo de Historia",
+      imageURL: "https://nextui.org/images/hero-card.jpeg",
+    },
+    {
+      title: "Feria de Ciencias",
+      imageURL: "https://nextui.org/images/hero-card.jpeg",
+    },
+    {
+      title: "Concurso de Ortografía",
+      imageURL: "https://nextui.org/images/hero-card.jpeg",
+    },
+    {
+      title: "Día del Deporte",
+      imageURL: "https://nextui.org/images/hero-card.jpeg",
+    },
+    {
+      title: "Festival de Arte",
+      imageURL: "https://nextui.org/images/hero-card.jpeg",
+    },
+    {
+      title: "Semana de la Lectura",
+      imageURL: "https://nextui.org/images/hero-card.jpeg",
+    },
+    {
+      title: "Obra de Teatro Escolar",
+      imageURL: "https://nextui.org/images/hero-card.jpeg",
+    },
+    {
+      title: "Actividad de Reciclaje",
+      imageURL: "https://nextui.org/images/hero-card.jpeg",
+    },
+  ]);
   const [activitiesData, setActivitiesData] = useState([
     {
       id: "001",
@@ -49,7 +83,10 @@ function ActivitiesContainer() {
         setActivitiesData={setActivitiesData}
       />
       <UrgentNotifications />
-      <SectionGallery />
+      <SectionGallery
+        activitiesImages={activitiesImages}
+        setActivitiesImages={setActivitiesImages}
+      />
     </div>
   );
 }
