@@ -52,8 +52,9 @@ const Attendance = () => {
 
       <h1 className="text-2xl font-semibold text-center mt-10">Métricas</h1>
       <RadioGroup orientation="horizontal" className="flex justify-center items-center  gap-4 mt-4 ">
-        <Radio size="md" value="mes">Asistencias</Radio>
-        <Radio size="md" value="week">Ausencias</Radio>
+        <Radio size="md" value="asistencias">Asistencias</Radio>
+        <Radio size="md" value="ausencias">Ausencias</Radio>
+        <Radio size="md" value="retiros">Retiros</Radio>
       </RadioGroup>
 
       <div>
