@@ -1,5 +1,5 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import { Attendance, Error, Home, Login, Notifications, Performance, Profile, Register } from './pages';
+import { Activities, Attendance, Error, Home, Login, Notifications, Performance, Profile, Register } from './pages';
 import Layout from './components/Layout';
 
 const router = createBrowserRouter([
@@ -25,7 +25,11 @@ const router = createBrowserRouter([
       {
         path: '/perfil',
         element: <Profile />
-      }
+      },
+      {
+        path: "/actividades",
+        element: <Activities />,
+      },
     ]
   },
   {
