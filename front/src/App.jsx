@@ -1,5 +1,6 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { Activities, Attendance, Error, Home, Login, Notifications, Performance, Profile, Register } from './pages';
+import { Absences, Attendances, Withdrawals } from './components/attendance';
 import Layout from './components/Layout';
 
 const router = createBrowserRouter([
