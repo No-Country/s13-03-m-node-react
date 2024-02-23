@@ -18,17 +18,50 @@ const CalendarPage = () => {
       title: "Segunda prueba",
     },
   ];
+  const img = [
+    {
+      id: "img1",
+      src: "https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg",
+    },
+    {
+      id: "img2",
+      src: "https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg",
+    },
+    {
+      id: "img3",
+      src: "https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg",
+    },
+    {
+      id: "img4",
+      src: "https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg",
+    },
+    {
+      id: "img5",
+      src: "https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg",
+    },
+  ];
   return (
     <section className="flex flex-col    ">
       <h1 className="mx-4 mb-8 font-medium text-2xl ">
         Días de importantes de mi escuela
       </h1>
-      <Image
+      <div className="flex overflow-x-auto">
+        {img.map((item) => (
+          <img
+            key={item.id}
+            src={item.src}
+            className=" rounded-lg m-2 min-[320px]:w-1/2 md:w-1/3 lg:w-1/4
+"
+          />
+        ))}
+      </div>
+      {/* Da problemas por ser responsive se achica demaciado impidiendo el overflow
+     <Image
         className="self-center"
         width={300}
         alt="NextUI hero Image"
         src="https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg"
-      />
+  />*/}
       <h2 className="mx-4 my-8 font-medium text-2xl  ">Mi calendario</h2>
       <div className="w-5/6 h-96 self-center mb-8">
         {/* es mejor darle un tamaño determinado a la calendar que el dinamico
