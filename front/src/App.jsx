@@ -1,17 +1,6 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import {
-  Attendance,
-  Error,
-  Home,
-  Login,
-  Notifications,
-  Performance,
-  Profile,
-  Register,
-  Activities,
-} from "./pages";
-import Layout from "./components/Layout";
-import { Absences, Attendances, Withdrawals } from "./components/attendance";
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { Activities, Attendance, Error, Home, Login, Notifications, Performance, Profile, Register } from './pages';
+import Layout from './components/Layout';
 
 const router = createBrowserRouter([
   {
@@ -46,14 +35,14 @@ const router = createBrowserRouter([
         element: <Notifications />,
       },
       {
-        path: "/perfil",
-        element: <Profile />,
+        path: '/perfil',
+        element: <Profile />
       },
       {
         path: "/actividades",
         element: <Activities />,
       },
-    ],
+    ]
   },
   {
     path: "/login",
