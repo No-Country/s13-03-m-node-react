@@ -1,4 +1,4 @@
-import { Card, CardFooter, Image, Button } from "@nextui-org/react";
+import { Card, CardFooter, Image, Button, Link } from "@nextui-org/react";
 
 function SectionGallery({ activitiesImages }) {
   return (
@@ -6,7 +6,10 @@ function SectionGallery({ activitiesImages }) {
       <div id="gallery-title">
         <h2>Fotos</h2>
       </div>
-      <div id="photo-gallery-container" className="flex flex-wrap justify-center max-w-[360px] gap-5 mt-5">
+      <div
+        id="photo-gallery-container"
+        className="flex flex-wrap justify-center max-w-[360px] gap-5 mt-5"
+      >
         {activitiesImages?.map((image, index) => (
           <Card
             key={index}
@@ -23,15 +26,17 @@ function SectionGallery({ activitiesImages }) {
             />
             <CardFooter className="flex flex-col justify-center border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
               <p className="text-center">{image.title}</p>
-              <Button
-                className="text-tiny text-white bg-black/20"
-                variant="flat"
-                color="default"
-                radius="lg"
-                size="sm"
-              >
-                Abrir
-              </Button>
+              <Link href={"linkear galeria"}> {/*LINK GALERIA*/}
+                <Button
+                  className="text-tiny text-white bg-black/20"
+                  variant="flat"
+                  color="default"
+                  radius="lg"
+                  size="sm"
+                >
+                  Abrir
+                </Button>
+              </Link>
             </CardFooter>
           </Card>
         ))}
