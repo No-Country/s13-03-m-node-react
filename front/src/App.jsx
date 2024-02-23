@@ -1,5 +1,5 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import { Attendance, Error, Home, Login, Notifications, Performance, Profile, Register } from './pages';
+import { Attendance, Calendar, Error, Home, Login, Notifications, Performance, Profile, Register } from './pages';
 import Layout from './components/Layout';
 import { Absences, Attendances, Withdrawals } from './components/attendance';
 
@@ -38,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: '/perfil',
         element: <Profile />
+      },
+      {
+        path: '/calendario',
+        element: <Calendar />
       }
     ]
   },
