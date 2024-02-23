@@ -9,7 +9,7 @@
 
 | Teachers |
 | :--- |
-| + _teacher_id <br/> + name <br/> + last_name <br/> + age <br/> + birth_date <br/> + specialty <br/> + classroom_id <br/> + is_active |
+| + _teacher_id <br/> + name <br/> + last_name <br/> + age <kbd>**?**</kbd><br/> + birth_date <br/> + specialty <br/> + classroom_id <br/> + is_active |
 
 | Subjects |
 | :--- |

@@ -1,4 +1,5 @@
 CREATE user | POST /register
+
 {
     "_uuid": "{AUTOGENERADO}",
     "name": "",
@@ -33,10 +34,21 @@ UPDATE user | PUT /{id}
     "is_active": "TRUE"
 */
 
-DELETE user | DELETE /{id}
+PUT user | DELETE /{id}
 {
     "is_active": "FALSE"
 }
 
 ---
-CREATE 
+READ teacher | get all
+
+{
+    "_teacher_id": "",
+    "name": "",
+    "last_name": "",
+    "age": "",
+    "birth_date": "",
+    "specialty": 
+    "classroom_id": 
+    "is_active": 
+} 
