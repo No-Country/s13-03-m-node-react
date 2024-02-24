@@ -1,26 +1,34 @@
-import { Radio, RadioGroup } from "@nextui-org/react";
 import asistenciaPic from '../assets/images/asistencias.jpg';
 import ausenciaPic from '../assets/images/ausencias.jpg';
 import retirosPic from '../assets/images/retiros.jpg';
 import { useNavigate } from "react-router-dom";
-import graph from '../assets/icons/graph.png';
 import AttendanceCard from "../components/attendance/AttendanceCard";
+import AttendanceChart from '../components/attendance/AttendanceChart';
 
-const links = [
+const data = [
   {
     name: "Asistencias",
     link: "/asistencias/asistencias",
-    image: asistenciaPic
+    image: asistenciaPic,
+    acumulado_mensual: 15,
+    acumulado_anual: 35,
+    total_mensual: 20,
+    total_anual: 200
   },
   {
     name: "Ausencias",
     link: "/asistencias/ausencias",
-    image: ausenciaPic
+    image: ausenciaPic,
+    acumulado_mensual: 2,
+    acumulado_anual: 3,
+    total_anual: 10
   },
   {
     name: "Retiros",
     link: "/asistencias/retiros",
-    image: retirosPic
+    image: retirosPic,
+    acumulado_mensual: 1,
+    acumulado_anual: 2
   },
 ];
 
@@ -30,7 +38,7 @@ const Attendance = () => {
   return (
     <div className="max-w-[900px] gap-2 flex flex-col px-8">
       {
-        links.map((link) => (
+        data.map((link) => (
           <AttendanceCard
             key={link.name}
             name={link.name}
@@ -41,15 +49,7 @@ const Attendance = () => {
       }
 
       <h1 className="text-2xl font-semibold text-center mt-10">Métricas</h1>
-      <RadioGroup orientation="horizontal" className="flex justify-center items-center  gap-4 mt-4 ">
-        <Radio size="md" value="asistencias">Asistencias</Radio>
-        <Radio size="md" value="ausencias">Ausencias</Radio>
-        <Radio size="md" value="retiros">Retiros</Radio>
-      </RadioGroup>
-
-      <div>
-        <img src={graph} alt="graph" />
-      </div>
+      <AttendanceChart data={data} />
     </div>
   );
 }
