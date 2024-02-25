@@ -12,6 +12,18 @@ const data = [
     image: asistenciaPic,
     acumulado_mensual: 15,
     acumulado_anual: 35,
+    enero: 18,
+    febrero: 17,
+    marzo: 0,
+    abril: 0,
+    mayo: 0,
+    junio: 0,
+    julio: 0,
+    agosto: 0,
+    septiembre: 0,
+    octubre: 0,
+    noviembre: 0,
+    diciembre: 0,
     total_mensual: 20,
     total_anual: 200
   },
@@ -21,14 +33,38 @@ const data = [
     image: ausenciaPic,
     acumulado_mensual: 2,
     acumulado_anual: 3,
-    total_anual: 10
+    total_anual: 10,
+    enero: 1,
+    febrero: 2,
+    marzo: 0,
+    abril: 0,
+    mayo: 0,
+    junio: 0,
+    julio: 0,
+    agosto: 0,
+    septiembre: 0,
+    octubre: 0,
+    noviembre: 0,
+    diciembre: 0,
   },
   {
     name: "Retiros",
     link: "/asistencias/retiros",
     image: retirosPic,
-    acumulado_mensual: 1,
-    acumulado_anual: 2
+    acumulado_mensual: 3,
+    acumulado_anual: 4,
+    enero: 1,
+    febrero: 3,
+    marzo: 0,
+    abril: 0,
+    mayo: 0,
+    junio: 0,
+    julio: 0,
+    agosto: 0,
+    septiembre: 0,
+    octubre: 0,
+    noviembre: 0,
+    diciembre: 0,
   },
 ];
 
@@ -43,7 +79,7 @@ const Attendance = () => {
             key={link.name}
             name={link.name}
             image={link.image}
-            handleNavigate={() => navigate(link.link)}
+            handleNavigate={() => navigate(link.link, { state: link })}
           />
         ))
       }
