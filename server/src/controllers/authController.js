@@ -21,7 +21,7 @@ const signUp = async(req, res) =>{
     console.log('usuario creado: ', userCreated)
 
     const token = jwt.sign(
-        {exp:600,
+        {exp:60*60,
         _id: newUser._id},
         'eduNetSecretKey')
     res.status(200).json({userCreated, token})
