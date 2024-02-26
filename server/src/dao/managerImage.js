@@ -1,6 +1,6 @@
 import Database from "../config/mongodb.js";
 import { createDocument, getOneDocument, getAllDocuments, updateDocument } from "../config/factory.js";
-import ImagenModel from "../models/ImageModel.js";
+import ImageModel from "../models/ImageModel.js";
 
 class ImageManager{
     constructor(){
@@ -13,7 +13,7 @@ class ImageManager{
 
     async createImage(data){
         const { idCloudinary, url, creationDate, title, description} = data;
-        const image = ImagenModel({
+        const image = ImageModel({
             idCloudinary, url, creationDate, title, description
         })
         const newImage = await this.createDocument('imageCollection', image);
