@@ -11,21 +11,20 @@ const NotificationScheme = new mongoose.Schema({
         required: true, 
         trim: true 
     },
-    contenido:[{
+    contenido:{
         type: String, 
         required: true, 
         trim: true 
-    }],
+    },
     fechaCreacion:{
         type: Date,
 		required: true,
 		trim: true,
     },
-    leido:[{
+    leido:{
         type: Boolean, 
-        required: true, 
         trim: true 
-    }]
+    }
 })
 const NotificationModel = mongoose.model('notification', NotificationScheme)
 

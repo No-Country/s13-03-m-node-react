@@ -19,7 +19,7 @@ class Database {
 			this.usersCollection = this.client.db(DB).collection('user');
 			this.teachersCollection = this.client.db(DB).collection('teacher');
 			this.imageCollection = this.client.db(DB).collection('image');
-			this.notificationCollection = this.client.de(DB).collection('notification')
+			this.notificationCollection = this.client.db(DB).collection('notification')
 			this.subjectsCollection = this.client.db(DB).collection('subject');
 			this.studentsCollection = this.client.db(DB).collection('student');
 			this.attendancesCollection = this.client.db(DB).collection('attendance');

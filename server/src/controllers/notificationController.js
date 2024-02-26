@@ -1,13 +1,14 @@
-import NotificationManager from "../dao/managerNotification";
-import NotificationModel from "../models/notificationModel";
+import NotificationManager from "../dao/managerNotification.js";
+import NotificationModel from "../models/notificationModel.js";
 import { Types } from 'mongoose';
 
 const { ObjectId } = Types;
 const notificationmanager = new NotificationManager();
 
-const createNotificatioin = async(req, res) =>{
+const createNotification = async(req, res) =>{
     try {
 		const data = req.body;
+		console.log(data)
 		const validateError = NotificationModel(data).validateSync();
 		if (validateError) {
 			return res.status(400).json({
@@ -16,11 +17,13 @@ const createNotificatioin = async(req, res) =>{
 				message: 'Error de validación: ' + validateError.message,
 			});
 		}
-		const newNotification = await notificationmanager.createUser(data);
+		const newNotification = await notificationmanager.createNotification(data);
+		const notificationCreated = await notificationmanager.getOneNotification({_id: new ObjectId(newNotification.insertedId)})
+
 		return res.status(200).json({
-			data: newNotification,
+			data: notificationCreated,
 			status: 0,
-			message: 'Usuario creado correctamente',
+			message: 'Notificacion creado correctamente',
 		});
 	} catch (error) {
 		return res.status(500).json({
@@ -107,4 +110,4 @@ async function updateNotification(req, res) {
 	}
 }
 
-export {createNotificatioin, getNotificationById, getNotifications, updateNotification };
+export {createNotification, getNotificationById, getNotifications, updateNotification };

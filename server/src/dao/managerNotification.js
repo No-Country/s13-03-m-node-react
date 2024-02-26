@@ -1,6 +1,6 @@
-import { createDocument, getAllDocuments, getOneDocument, updateDocument } from "../config/factory";
-import Database from "../config/mongodb";
-import NotificationModel from "../models/notificationModel";
+import { createDocument, getAllDocuments, getOneDocument, updateDocument } from "../config/factory.js";
+import Database from "../config/mongodb.js";
+import NotificationModel from "../models/notificationModel.js";
 
 class NotificationManager{
     constructor(){
@@ -14,7 +14,7 @@ class NotificationManager{
     async createNotification(data){
         const { tipo, titulo, contenido, fechaCreacion, leido} = data;
         const notification = NotificationModel({
-            tipo, titulo, contenido, fechaCreacion, leid
+            tipo, titulo, contenido, fechaCreacion, leido
         })
         const newNotification = await this.createDocument('notificationCollection', notification)
         return newNotification

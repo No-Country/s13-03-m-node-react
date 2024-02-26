@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createNotificatioin, getNotificationById, getNotifications, updateNotification } from "../controllers/notificationController";
+import { createNotification, getNotificationById, getNotifications, updateNotification } from "../controllers/notificationController.js";
 
 const notificationRrouter = Router();
 
@@ -7,7 +7,7 @@ notificationRrouter.get('/', getNotifications);
 
 notificationRrouter.get('/:id', getNotificationById);
 
-notificationRrouter.post('/', createNotificatioin);
+notificationRrouter.post('/', createNotification);
 
 notificationRrouter.put('/:id', updateNotification);
 
