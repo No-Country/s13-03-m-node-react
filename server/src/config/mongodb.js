@@ -20,6 +20,9 @@ class Database {
 			this.teachersCollection = this.client.db(DB).collection('teacher');
 			this.imageCollection = this.client.db(DB).collection('image');
 			this.notificationCollection = this.client.de(DB).collection('notification')
+			this.subjectsCollection = this.client.db(DB).collection('subject');
+			this.studentsCollection = this.client.db(DB).collection('student');
+			this.attendancesCollection = this.client.db(DB).collection('attendance');
 			console.log('Conectado a la base de datos');
 		} catch (error) {
 			console.error(error);
