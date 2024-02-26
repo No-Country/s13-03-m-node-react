@@ -39,9 +39,9 @@ class Student {
         }
     }
 
-    async getAllStudents() {
+    async getAllStudents(query) {
         try {
-            const students = await this.getAllDocuments('studentsCollection');
+            const students = await this.getAllDocuments('studentsCollection',query);
             return students;
         } catch (error) {
             console.error(error);

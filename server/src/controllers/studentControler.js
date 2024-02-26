@@ -41,7 +41,7 @@ const getStudents = async (req, res) => {
         } else {
             query = { ...queryParams };
         }
-        const students = await student.getStudent(query);
+        const students = await student.getAllStudents(query);
         if (!students || students.length === 0) {
             throw new Error('No hay estudiantes para mostrar.');
         }
