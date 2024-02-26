@@ -2,6 +2,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { Activities, Attendance, CalendarPage, Error, Home, Login, Notifications, Performance, Profile, Register, Grades } from './pages';
 import { Absences, Attendances, Withdrawals } from './components/attendance';
 import Layout from './components/Layout';
+import ActivitieGallery from "./components/activities/activitieGallery/ActivitieGallery";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: "/actividades",
         element: <Activities />,
+      },
+      {
+        path: "/actividades/galeria/:id",
+        element: <ActivitieGallery />,
       },
     ]
   },
