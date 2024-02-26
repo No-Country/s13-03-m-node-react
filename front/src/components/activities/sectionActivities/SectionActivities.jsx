@@ -6,6 +6,7 @@ import {
   Link,
   Button,
 } from "@nextui-org/react";
+import FirstModal from "../firstModal";
 
 function SectionActivities({ activitiesData }) {
   const currentDate = new Date();
@@ -50,12 +51,15 @@ function SectionActivities({ activitiesData }) {
               </CardHeader>
               <Divider />
               <CardFooter className="flex justify-center">
-                <Link
+                {/* <Link
                   className="text-center"
                   href="modal" // linkear a modal de actividad que corresponda, quizas agregarle un id a cada actividad
                 >
                   <Button>VER MÁS</Button>
-                </Link>
+                </Link> */}
+                <div>
+                  <FirstModal />
+                </div>
               </CardFooter>
             </Card>
           ))}
