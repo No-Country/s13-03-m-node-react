@@ -7,13 +7,8 @@ const StudentScheme = new mongoose.Schema({
 		trim: true,
 	},
 
-	lastname: {
+	lastName: {
 		type: String,
-		required: true,
-		trim: true,
-	},
-	age: {
-		type: Number,
 		required: true,
 		trim: true,
 	},
@@ -21,6 +16,23 @@ const StudentScheme = new mongoose.Schema({
 	birthDate: {
 		type: Date,
 		required: true,
+		trim: true,
+	},
+
+	classroom:{
+		type: String,
+		required: true,
+		trim: true,
+	},
+
+	groupId:{
+		type: String,
+		required: true,
+		trim: true,
+	},
+	isActive: {
+		type: Boolean,
+		default: true,
 		trim: true,
 	},
 },

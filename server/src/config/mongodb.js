@@ -18,6 +18,8 @@ class Database {
 			await this.client.connect();
 			this.usersCollection = this.client.db(DB).collection('user');
 			this.teachersCollection = this.client.db(DB).collection('teacher');
+			this.studentsCollection = this.client.db(DB).collection('student');
+			this.attendancesCollection = this.client.db(DB).collection('attendance');
 			console.log('Conectado a la base de datos');
 		} catch (error) {
 			console.error(error);
