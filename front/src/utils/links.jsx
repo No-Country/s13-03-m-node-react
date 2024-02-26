@@ -12,32 +12,32 @@ export const links = [
   {
     text: 'Notificaciones',
     path: 'notificaciones',
-    icon: <IoMdNotificationsOutline />,
+    icon: <IoMdNotificationsOutline size={24} />,
   },
   {
     text: 'Actividad escolar',
-    path: 'activities',
-    icon: <SlNote />,
+    path: 'actividades',
+    icon: <SlNote size={24} />,
   },
   {
     text: 'Asistencias',
     path: 'asistencias',
-    icon: <IoMdCheckboxOutline />,
+    icon: <IoMdCheckboxOutline size={24} />,
   },
   {
     text: 'Calendario',
     path: 'calendario',
-    icon: <CiCalendar />,
+    icon: <CiCalendar size={24} />,
   },
   {
     text: 'Calificaciones',
     path: 'calificaciones',
-    icon: <CiMedal />,
+    icon: <CiMedal size={24} />,
   },
   {
     text: 'Ayuda',
     path: 'ayuda',
-    icon: <TfiHelpAlt />,
+    icon: <TfiHelpAlt size={24} />,
   },
   // {
   //   text: 'perfil',
