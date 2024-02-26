@@ -1,4 +1,5 @@
 import Logo from "./Logo"
+import { Link, } from "@nextui-org/react";
 
 const Footer = () => {
     return (
@@ -9,10 +10,10 @@ const Footer = () => {
                 <li>E-mail</li>
             </ul>
             <p className="flex items-end text-[10px] font-medium">Todos los derechos reservados</p>
-            <div className="flex flex-col items-center">
+            <Link href="/" className="flex flex-col items-center font-bold text-inherit ">
                 <Logo />
                 <p className="font-bold text-inherit">EduClass</p>
-            </div>
+            </Link>
         </footer>
     )
 }

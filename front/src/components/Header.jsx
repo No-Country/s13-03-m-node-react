@@ -21,8 +21,10 @@ const Header = () => {
 
       <NavbarContent className="gap-4" justify="center">
         <NavbarBrand>
+        <Link href="/" className="font-bold text-inherit">
           <Logo />
           <p className="font-bold text-inherit">EduClass</p>
+          </Link>
         </NavbarBrand>
       </NavbarContent>
 
