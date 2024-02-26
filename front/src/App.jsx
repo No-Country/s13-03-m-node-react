@@ -12,6 +12,7 @@ import {
 } from "./pages";
 import Layout from "./components/Layout";
 import { Absences, Attendances, Withdrawals } from "./components/attendance";
+import ActivitieGallery from "./components/activities/activitieGallery/ActivitieGallery";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
       {
         path: "/actividades",
         element: <Activities />,
+      },
+      {
+        path: "/actividades/galeria/:id",
+        element: <ActivitieGallery />,
       },
     ],
   },
