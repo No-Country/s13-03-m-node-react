@@ -1,6 +1,6 @@
 import Database from "../config/mongodb.js";
 import { createDocument, getOneDocument, getAllDocuments, updateDocument } from "../config/factory.js";
-import ImageModel from "../models/ImageModel.js";
+import ImageModel from "../models/imageModel.js";
 
 class ImageManager{
     constructor(){
