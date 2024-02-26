@@ -1,8 +1,5 @@
 import cloudinary from '../config/upload.cjs';
 import ImageManager from '../dao/managerImage.js';
-import ImageModel from '../models/ImageModel.js';
-//import { ObjectId } from "mongodb";
-//const { ObjectId } = require('mongoose').Types;
 import { Types } from 'mongoose';
 
 const { ObjectId } = Types;
@@ -14,7 +11,7 @@ const createImage = async(req, res) => {
     const image = req.files.image;
     const {datatitle,datadescription} = req.body
     console.log('titulo y descripcion: ', datatitle, datadescription)
-    //let imagen = new ImageModel();
+
 
     try {
       if (!image) {
