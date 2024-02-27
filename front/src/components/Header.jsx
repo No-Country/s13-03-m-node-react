@@ -49,6 +49,7 @@ const Header = () => {
               color="foreground"
               to={`/${item.path}`}
               size="lg"
+              onClick={() => setIsMenuOpen(false)}
             >
               <div className="flex gap-2">{item.icon} {item.text}</div>
             </NavLink>
