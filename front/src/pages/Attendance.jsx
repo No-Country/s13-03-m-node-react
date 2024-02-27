@@ -10,7 +10,7 @@ const Attendance = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="max-w-[900px] gap-2 flex flex-col px-2">
+    <div className="max-w-[900px] gap-2 flex flex-col px-4">
       {data.map((link) => (
         <AttendanceBlock key={link.name} title={link.name} total={link.acumulado_mensual} handleClick={() => navigate(link.link, { state: link })} />
       ))}
