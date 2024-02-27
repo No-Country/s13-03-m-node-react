@@ -1,25 +1,22 @@
 import { useNavigate } from "react-router-dom";
-import AttendanceCard from "../components/attendance/AttendanceCard";
 import AttendanceChart from '../components/attendance/AttendanceChart';
 import { data } from '../utils/data.js';
+import AttendanceBlock from "../components/attendance/AttendanceBlock.jsx";
+import MonthSelection from "../components/attendance/MonthSelection.jsx";
+import { useState } from "react";
 
 const Attendance = () => {
+  const [month, setMonth] = useState("enero")
   const navigate = useNavigate();
 
   return (
-    <div className="max-w-[900px] gap-2 flex flex-col px-8">
-      {
-        data.map((link) => (
-          <AttendanceCard
-            key={link.name}
-            name={link.name}
-            image={link.image}
-            handleNavigate={() => navigate(link.link, { state: link })}
-          />
-        ))
-      }
+    <div className="max-w-[900px] gap-2 flex flex-col px-2">
+      {data.map((link) => (
+        <AttendanceBlock key={link.name} title={link.name} total={link.acumulado_mensual} handleClick={() => navigate(link.link, { state: link })} />
+      ))}
 
-      <h1 className="text-2xl font-semibold text-center mt-10">Métricas</h1>
+      <MonthSelection handleChange={(e) => setMonth(e.target.value)} month={month} data={data} />
+
       <AttendanceChart data={data} />
     </div>
   );
