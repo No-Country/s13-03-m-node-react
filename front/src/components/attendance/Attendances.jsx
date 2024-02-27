@@ -34,7 +34,7 @@ const Attendances = () => {
       <MonthSelection handleChange={(e) => setMonth(e.target.value)} month={month} />
 
       <div className="border-1 rounded-md border-orange-500 shadow-lg shadow-orange-500 p-1 m-2 flex justify-between items-center mt-6">
-        <div className="p-4 text-2xl w-10">
+        <div className="p-4 text-2xl w-10 font-bold flex text-center">
           <small>{month.toUpperCase()} 2024</small>
         </div>
         <div className="p-4 text-2xl">
