@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
 import { NavbarContent, Dropdown, DropdownTrigger, Avatar, DropdownItem, DropdownMenu } from "@nextui-org/react";
 import avatar from '../assets/icons/avatar.png';
+import { NavLink } from "react-router-dom";
 
 const ProfilePic = ({ handleLogout }) => {
   return (
-    <NavbarContent justify="end" aria-label="User" >
-      <Dropdown placement="bottom-end" aria-label="User" >
+    <NavbarContent justify="end" aria-label="User">
+      <Dropdown placement="bottom-end" aria-label="User" className="rounded-lg bg-gradient-to-tr from-[#8f6db8] to-[#fff] mt-[6px]" >
         <DropdownTrigger>
           <Avatar
             isBordered
@@ -22,13 +23,13 @@ const ProfilePic = ({ handleLogout }) => {
         <DropdownMenu aria-label="Profile Actions" variant="flat">
           <DropdownItem key="profile" className="h-14 gap-2">
             <p className="font-semibold">Usuario:</p>
-            <p className="font-semibold">zoey@example.com</p>
+            <p className="font-semibold">lucreciadelvalle@ejemplo.com</p>
           </DropdownItem>
           <DropdownItem key="settings" withDivider>
-            Perfil
+            <NavLink className="font-semibold" to="/perfil">Perfil</NavLink>
           </DropdownItem>
           <DropdownItem key="logout" color="danger" onClick={handleLogout}>
-            Log Out
+            <NavLink className="font-semibold" to="/login">Cerrar sesión</NavLink>
           </DropdownItem>
         </DropdownMenu>
       </Dropdown>
