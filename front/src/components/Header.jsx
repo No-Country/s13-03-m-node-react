@@ -14,7 +14,7 @@ const Header = () => {
       isBordered
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
-      className="mb-4 border-none bg-gradient-to-br from-[#280058] to-[#fff]"
+      className="mb-4 border-none shadow-inner  bg-gradient-to-tr from-[#280058] to-[#fff]"
       aria-label="User"
     >
       <NavbarContent justify="start">
@@ -40,12 +40,12 @@ const Header = () => {
         </NavbarItem>
       </NavbarContent>}
 
-      <NavbarMenu className="bg-gray-100 overflow-hidden w-[250px] rounded bg-gradient-to-tr from-[#280058] to-[#fff]" >
+      <NavbarMenu className="bg-gray-100 overflow-hidden w-[250px] rounded bg-gradient-to-tr from-[#280058] to-[#fff] gap-5" >
         {links.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>
 
             <NavLink
-              className="w-full hover:font-semibold gap-2"
+              className="w-full hover:font-semibold"
               color="foreground"
               to={`/${item.path}`}
               size="lg"
