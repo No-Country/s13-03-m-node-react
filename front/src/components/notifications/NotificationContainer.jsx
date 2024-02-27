@@ -56,7 +56,7 @@ function NotificationContainer() {
   ]);
 
   return (
-    <div className="max-w-[360px] pr-[16px] pl-[16px]">
+    <div className="max-w-[360px] pr-[16px] pl-[16px] bg-[#FDFBFF] ">
       <CurrentNotifications
         notificationsData={notificationsData}
         setNotificationsData={setNotificationsData}
