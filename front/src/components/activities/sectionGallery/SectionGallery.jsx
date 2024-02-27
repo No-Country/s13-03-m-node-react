@@ -13,7 +13,7 @@ function SectionGallery({ activitiesImages }) {
         {activitiesImages?.map((image, index) => (
           <div
             key={index}
-            className="max-w-[150px] mt-5"
+            className="max-w-[150px] mt-5 border rounded-xl  shadow-[#67B7B3] shadow-sm"
             style={{ height: "350px" }}
           >
             <NavLink to={`galeria/${image.id}`}>
