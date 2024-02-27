@@ -1,43 +1,52 @@
-import { FaHome, FaCalendarCheck } from 'react-icons/fa';
-import { FaMoneyCheckDollar } from "react-icons/fa6";
-import { ImProfile } from 'react-icons/im';
-import { MdLogin, MdNotificationAdd } from 'react-icons/md';
-import { GrDocumentPerformance } from "react-icons/gr";
+import { SlNote } from "react-icons/sl";
+import { TfiHelpAlt } from "react-icons/tfi";
+import { IoMdNotificationsOutline, IoMdCheckboxOutline } from "react-icons/io";
+import { CiCalendar, CiMedal } from "react-icons/ci";
 
 export const links = [
+  // {
+  //   text: 'inicio',
+  //   path: '.',
+  //   icon: <FaHome />,
+  // },
   {
-    text: 'asistencia',
-    path: 'attendance',
-    icon: <FaCalendarCheck />,
+    text: 'Notificaciones',
+    path: 'notificaciones',
+    icon: <IoMdNotificationsOutline size={24} />,
   },
   {
-    text: 'finanzas',
-    path: 'finance',
-    icon: <FaMoneyCheckDollar />,
+    text: 'Actividad escolar',
+    path: 'actividades',
+    icon: <SlNote size={24} />,
   },
   {
-    text: 'inicio',
-    path: '.',
-    icon: <FaHome />,
+    text: 'Asistencias',
+    path: 'asistencias',
+    icon: <IoMdCheckboxOutline size={24} />,
   },
   {
-    text: 'login',
-    path: 'login',
-    icon: <MdLogin />,
+    text: 'Calendario',
+    path: 'calendario',
+    icon: <CiCalendar size={24} />,
   },
   {
-    text: 'perfil',
-    path: 'profile',
-    icon: <ImProfile />,
+    text: 'Calificaciones',
+    path: 'calificaciones',
+    icon: <CiMedal size={24} />,
   },
   {
-    text: 'notificaciones',
-    path: 'notifications',
-    icon: <MdNotificationAdd />,
+    text: 'Ayuda',
+    path: 'ayuda',
+    icon: <TfiHelpAlt size={24} />,
   },
-  {
-    text: 'rendimiento',
-    path: 'performance',
-    icon: <GrDocumentPerformance />,
-  }
+  // {
+  //   text: 'perfil',
+  //   path: 'profile',
+  //   icon: <ImProfile />,
+  // },
+  // {
+  //   text: 'login',
+  //   path: 'login',
+  //   icon: <MdLogin />,
+  // },
 ]

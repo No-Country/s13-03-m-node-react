@@ -6,34 +6,42 @@ import UrgentNotifications from "./urgentNotifications/UrgentNotifications";
 function ActivitiesContainer() {
   const [activitiesImages, setActivitiesImages] = useState([
     {
+      id:'01',
       title: "Excursión al Museo de Historia",
       imageURL: "https://nextui.org/images/hero-card.jpeg",
     },
     {
+      id:'02',
       title: "Feria de Ciencias",
       imageURL: "https://nextui.org/images/hero-card.jpeg",
     },
     {
+      id:'03',
       title: "Concurso de Ortografía",
       imageURL: "https://nextui.org/images/hero-card.jpeg",
     },
     {
+      id:'04',
       title: "Día del Deporte",
       imageURL: "https://nextui.org/images/hero-card.jpeg",
     },
     {
+      id:'05',
       title: "Festival de Arte",
       imageURL: "https://nextui.org/images/hero-card.jpeg",
     },
     {
+      id:'06',
       title: "Semana de la Lectura",
       imageURL: "https://nextui.org/images/hero-card.jpeg",
     },
     {
+      id:'07',
       title: "Obra de Teatro Escolar",
       imageURL: "https://nextui.org/images/hero-card.jpeg",
     },
     {
+      id:'08',
       title: "Actividad de Reciclaje",
       imageURL: "https://nextui.org/images/hero-card.jpeg",
     },

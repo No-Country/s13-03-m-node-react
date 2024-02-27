@@ -20,7 +20,8 @@
     "react-icons": "^4.8.0",
     "react-router-dom": "^6.10.0",
     "react-toastify": "^9.1.2",
-    "recharts": "^2.5.0"
+    "recharts": "^2.5.0",
+    "sweetalert2": "^11.10.5"
   },
   "devDependencies": {
     "@types/react": "^18.2.55",

@@ -2,30 +2,20 @@ import { Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, Navb
 import { useState } from "react";
 import Logo from "./Logo";
 import ProfilePic from "./ProfilePic";
+import { links } from "../utils/links";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-
-  const menuItems = [
-    "Notificaciones",
-    "Actividades",
-    "Calendario",
-    "Chat",
-    "Asistencias",
-    "Calificaciones",
-    "Ayuda",
-    "Perfil",
-    "Login",
-    "Sign-Up",
-  ];
 
   return (
     <Navbar
       isBordered
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
-      className="mb-4"
+      className="mb-4 border-none shadow-inner  bg-gradient-to-tr from-[#280058] to-[#fff]"
+      aria-label="User"
     >
       <NavbarContent justify="start">
         <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
@@ -33,10 +23,9 @@ const Header = () => {
 
       <NavbarContent className="gap-4" justify="center">
         <NavbarBrand>
-        <Link href="/" className="font-bold text-inherit">
-          <Logo />
-          <p className="font-bold text-inherit">EduClass</p>
-          </Link>
+          <NavLink to="/" className="font-bold text-inherit">
+            <Logo />
+          </NavLink>
         </NavbarBrand>
       </NavbarContent>
 
@@ -51,17 +40,19 @@ const Header = () => {
         </NavbarItem>
       </NavbarContent>}
 
-      <NavbarMenu className="bg-gray-100 overflow-hidden w-[250px] rounded">
-        {menuItems.map((item, index) => (
+      <NavbarMenu className="bg-gray-100 overflow-hidden w-[250px] rounded bg-gradient-to-tr from-[#280058] to-[#fff] gap-5" >
+        {links.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>
-            <Link
-              className="w-full hover:bg-gray-200 hover:font-semibold"
+
+            <NavLink
+              className="w-full hover:font-semibold"
               color="foreground"
-              href={`/${item.toLowerCase()}`}
+              to={`/${item.path}`}
               size="lg"
+              onClick={() => setIsMenuOpen(false)}
             >
-              {item}
-            </Link>
+              <div className="flex gap-2">{item.icon} {item.text}</div>
+            </NavLink>
           </NavbarMenuItem>
         ))}
       </NavbarMenu>

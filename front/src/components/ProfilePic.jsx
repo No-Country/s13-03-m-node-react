@@ -1,19 +1,21 @@
 /* eslint-disable react/prop-types */
 import { NavbarContent, Dropdown, DropdownTrigger, Avatar, DropdownItem, DropdownMenu } from "@nextui-org/react";
+import avatar from '../assets/icons/avatar.png';
 
 const ProfilePic = ({ handleLogout }) => {
   return (
-    <NavbarContent justify="end">
-      <Dropdown placement="bottom-end">
+    <NavbarContent justify="end" aria-label="User" >
+      <Dropdown placement="bottom-end" aria-label="User" >
         <DropdownTrigger>
           <Avatar
             isBordered
             as="button"
             className="transition-transform"
-            color="secondary"
+            color="default"
             name="Jason Hughes"
-            size="sm"
-            src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+            size="md"
+            src={avatar}
+            aria-label="User"
           />
         </DropdownTrigger>
 
