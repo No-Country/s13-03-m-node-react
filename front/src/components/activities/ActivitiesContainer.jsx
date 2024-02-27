@@ -61,7 +61,7 @@ function ActivitiesContainer() {
     },
     {
       id: "003",
-      title: "Excursión Museo de Historia Natural",
+      title: "Museo de Historia Natural",
       date: "2024-03-25",
       schedule: "8:30 AM",
     },

@@ -1,44 +1,39 @@
-import { Card, CardFooter, Image, Button, Link } from "@nextui-org/react";
+import { NavLink } from "react-router-dom";
 
 function SectionGallery({ activitiesImages }) {
   return (
     <div id="section-gallery-container" className="mt-10">
       <div id="gallery-title">
-        <h2>Fotos</h2>
+        <h2 className="text-[16px] font-medium text-[#280058]">Mis Fotos</h2>
       </div>
       <div
         id="photo-gallery-container"
         className="flex flex-wrap justify-center max-w-[360px] gap-5 mt-5"
       >
         {activitiesImages?.map((image, index) => (
-          <Card
+          <div
             key={index}
-            isFooterBlurred
-            radius="lg"
-            className="border-none max-w-[130px] relative max-h-[150px]"
+            className="max-w-[150px] mt-5"
+            style={{ height: "350px" }}
           >
-            <Image
-              alt="Actividad escolar"
-              className="object-cover"
-              height={170}
-              src={image.imageURL}
-              width={130}
-            />
-            <CardFooter className="flex flex-col justify-center border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
-              <p className="text-center">{image.title}</p>
-              <Link href={`actividades/galeria/${image.id}`}>
-                <Button
-                  className="text-tiny text-white bg-black/20"
-                  variant="flat"
-                  color="default"
-                  radius="lg"
-                  size="sm"
-                >
-                  Abrir
-                </Button>
-              </Link>
-            </CardFooter>
-          </Card>
+            <NavLink to={`galeria/${image.id}`}>
+              <div className="border border-gray-200 rounded-lg overflow-hidden h-full">
+                {/* Contenedor del título con altura fija */}
+                <div className="p-4 h-[fit] flex flex-col justify-center items-center">
+                  <h3 className="text-lg font-semibold mb-2 mt-5 text-[#280058]">{image.title}</h3>
+                  <p className="text-sm text-[#280058] mb-2">{image.date}</p>
+                </div>
+                {/* Imagen con padding */}
+                <div className="p-1">
+                  <img
+                    alt="Actividad escolar"
+                    className="object-cover w-full h-44 rounded-md"
+                    src={image.imageURL}
+                  />
+                </div>
+              </div>
+            </NavLink>
+          </div>
         ))}
       </div>
     </div>
