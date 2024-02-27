@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 
 const UserScheme = new mongoose.Schema({
 	names: { //names or name??
@@ -54,7 +54,10 @@ const UserScheme = new mongoose.Schema({
 		default: 'user',
 		trim: true,
 	},
-},
+	students : [{
+        type: Schema.Types.ObjectId,
+        ref: "students"}]
+	},
 {
 	timestamps: true,
 	versionKey: false,
