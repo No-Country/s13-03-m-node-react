@@ -1,79 +1,71 @@
-import React, { useState } from 'react';
-import { Modal, ModalContent, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
-import SecondModal from "./secondModal";
+import React from 'react';
+import Swal from 'sweetalert2'; 
+import ReactDOMServer from 'react-dom/server';
+import SecondModal from './secondModal';
 
-function FirstModal() {
-  const [backdrop, setBackdrop] = React.useState('blur');
-  const backdrops = ["blur"];
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
 
-  const [modalData, setModalData] = useState({
-    title1: "Titulo de la salida",
-    text1: "Vamos a dar un paseo a la montaña.",
-    title2: "Horario de la salida",
-    text2: "Viernes de 9:00 a 12:00 hs.",
+const FirstModal = () => {
+
+  const dummyData = {
+    id:"001",
+    title1: "Titulo de la actividad",
+    first_description: "Estimadas familias, lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    title2: "Horario de la salida:",
+    schedule: "Viernes de 9:00 a 12:00 hs.",
     title3: "¿Que se necesita?",
-    text3: "Zapatillas cómodas, agua, comida y gorra.",
+    middle_description: "Zapatillas cómodas, agua, comida y gorra.",
     title4: "Autorización",
-    text4: "Autorizo a mi estudiante a cargo a dar esta salida.",
-  });
-
-  const handleOpen = (backdrop) => {
-    setBackdrop(backdrop)
-    onOpen();
+    last_description: "Para esta actividad, se requiere la autorización de los tutores. Ante cualquier duda, por favor contáctenos.",
   };
+  
 
-  const handleAutorizar = () => {
-    setIsSecondModalOpen(true);
-    onClose();
+  const openFirstModal = () => {
+    // primer modal
+    const modalContent = ReactDOMServer.renderToStaticMarkup(
+      <div className='flex flex-col text-left gap-4 text-base'>
+        <div>
+          <h2 className='font-bold text-center'>{dummyData.title1}</h2>
+          <p className='mt-1'>{dummyData.first_description}</p>
+        </div>
+        <div>
+          <h2 className='font-bold text-center'>{dummyData.title2}</h2>
+          <p className='mt-1'>{dummyData.schedule}</p>
+        </div>
+        <div>
+          <h2 className='font-bold text-center'>{dummyData.title3}</h2>
+          <p className='mt-1'>{dummyData.middle_description}</p>
+        </div>
+        <div>
+          <h2 className='font-bold text-center'>{dummyData.title4}</h2>
+          <p className='mt-1'>{dummyData.last_description}</p>
+        </div>
+      </div>
+    );
+   
+    Swal.fire({
+      html: modalContent,
+      showCloseButton: true,
+      showCancelButton: true,
+      confirmButtonText: 'Autorizar',
+      confirmButtonColor: '#8b5cf6',
+      cancelButtonText: 'No autorizar',
+    }).then((result) => {
+      if (result.value) {
+        // entra segundo modal
+        Swal.fire({
+          html: ReactDOMServer.renderToStaticMarkup( <SecondModal /> ),
+          showCloseButton: true,
+          showConfirmButton: false,
+        });
+      }
+    });
   };
-
+    
   return (
     <>
-      <div className="flex p-4">
-        {backdrops.map((b) => (
-          <Button
-            key={b}
-            variant="flat"
-            color="primary"
-            onPress={() => handleOpen(b)}
-            className="font-semibold text-base"
-          >
-            Detalle de la actividad
-          </Button>
-        ))}
-      </div>
-      <Modal backdrop={backdrop} isOpen={isOpen} onClose={onClose} placement="top-center" disableAnimation={true} >
-        <ModalContent>
-          {(onClose) => (
-            <>
-              <ModalBody className='text-left'>
-                <h2 className="text-center text-xl font-semibold">{modalData.title1}</h2>
-                <p>{modalData.text1}</p>
-                <h2 className="text-center text-xl font-semibold">{modalData.title2}</h2>
-                <p>{modalData.text2}</p>
-                <h2 className="text-center text-xl font-semibold">{modalData.title3}</h2>
-                <p>{modalData.text3}</p>
-                <h2 className="text-center text-xl font-semibold">{modalData.title4}</h2>
-                <p>{modalData.text4}</p>
-              </ModalBody>
-              <ModalFooter>
-                <Button color="danger" variant="light" onClick={onClose}>
-                  Rechazar
-                </Button>
-                <Button color="primary" onClick={handleAutorizar}>
-                  Autorizar
-                </Button>
-              </ModalFooter>
-            </>
-          )}
-        </ModalContent>
-      </Modal>
-
-      {isSecondModalOpen && <SecondModal />}
+    <button onClick={openFirstModal} className='bg-violet-500 hover:bg-violet-700 text-white font-medium py-1 px-4 rounded'>VER MÁS</button>
     </>
   );
-}
+};
 
 export default FirstModal;

@@ -1,85 +1,41 @@
-import React, { useState } from "react";
-import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Input, Link} from "@nextui-org/react";
-import { IoMailOutline } from "react-icons/io5";
-import { RiLockPasswordLine } from "react-icons/ri";
+import React, { useEffect } from 'react';
+import Swal from 'sweetalert2';
+import { MdEmail } from 'react-icons/md';
+import { RiLockPasswordFill } from 'react-icons/ri';
 
+const SecondModal = () => {
 
-function SecondModal() {
-  const {isOpen, onOpen, onOpenChange} = useDisclosure();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (email && password) {
-    } else {
-      alert("Por favor, rellena todos los campos");
+  useEffect(() => {
+    const openSecondModal = () => {
+      // segundo modal
+      Swal.fire({
+        html: '<SecondModal />',
+      }).then((loginResult) => {
+        if(loginResult.isConfirmed) {
+          Swal.fire('Inicio de sesión exitoso, autorización confirmada.', "", "success");
+        }
+      });
     }
-  };
+
+    openSecondModal();
+  }, []);
 
   return (
-    <>
-    <div className="p-4">
-      <Button onPress={onOpen} color="primary" className="font-semibold">Confirmar autorización</Button>
+    <div>
+      <form action=""  className='flex flex-col gap-3 m-2'>
+        <small className='text-left mt-3'>*Autorizo dar mi consentimiento para que mi hijo o hija participe de esta actividad.</small>
+        <div className='flex items-center justify-center gap-2 mt-1'>
+          <input className='border-1 py-2 px-4 mr-2' type="text" placeholder="Ingresa tu e-mail" required/>
+          <MdEmail />
+        </div>
+        <div className='flex items-center justify-center gap-2'>
+          <input className='border-1 py-2 px-4 mr-2' type="password" placeholder="Ingresa tu contraseña" required/>
+          <RiLockPasswordFill />
+        </div>
+       
+        <button type="submit" className='bg-violet-500 hover:bg-violet-700 text-white font-semibold py-2 px-4 rounded'>Autorizo</button>
+      </form>
     </div>
-      
-      <Modal 
-        isOpen={isOpen} 
-        onOpenChange={onOpenChange}
-        placement="top-center"
-        disableAnimation={true}
-      >
-        <ModalContent>
-          {(onClose) => (
-            <>
-              <ModalHeader className="flex flex-col gap-1">Inicia sesión para confirmar la autorización</ModalHeader>
-
-              <form onSubmit={handleSubmit}>
-              <ModalBody>
-                <div className="flex items-center gap-1">
-                  <Input
-                    autoFocus
-                    required
-                    label="Email"
-                    placeholder="Ingresa tu Email"
-                    variant="bordered"
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                  <IoMailOutline className="text-3xl" />
-                </div>
-                
-                <div className="flex items-center gap-1">
-                  <Input
-                    required
-                    label="Contraseña"
-                    placeholder="Ingresa tu Contraseña"
-                    type="password"
-                    variant="bordered"
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                  <RiLockPasswordLine className="text-3xl" />
-                </div>
-                
-                <div className="flex py-2 px-1 justify-between">
-                  <Link color="secondary" href="#" size="sm">
-                    Olvide mi contraseña
-                  </Link>
-                </div>
-              </ModalBody>
-              <ModalFooter>
-                <Button color="warning" variant="flat" onPress={onClose}>
-                  Cerrar
-                </Button>
-                <Button color="secondary" onPress={onClose} type="submit">
-                  Iniciar sesión
-                </Button>
-              </ModalFooter>
-              </form>
-            </>
-          )}
-        </ModalContent>
-      </Modal>
-    </>
   );
 }
 

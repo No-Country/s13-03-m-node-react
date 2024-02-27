@@ -1,4 +1,10 @@
-
+import {
+  Card,
+  CardHeader,
+  CardFooter,
+  Divider,
+} from "@nextui-org/react";
+import FirstModal from "../firstModal";
 
 function SectionActivities({ activitiesData }) {
   const currentDate = new Date();
@@ -32,31 +38,32 @@ function SectionActivities({ activitiesData }) {
           id="trimester-card-activities"
           className="flex flex-wrap justify-center max-w-[360px] gap-5"
         >
-          {upcomingActivities.map((activity) => (
-            <div
-              className="flex flex-col justify-start mt-2 w-[150px] max-w-[150px] bg-[#FDFBFF] border rounded-xl pt-5 pb-5 shadow-[#67B7B3] shadow-sm"
-              key={activity.id}
-            >
-              <div className="flex gap-3 bg-[#FDFBFF] pl-2">
+{upcomingActivities.map((activity) => (
+            <Card className="mt-2 w-[150px] max-w-[150px]" key={activity.id}>
+              <CardHeader className="flex gap-3">
                 <div className="flex flex-col">
-                  <p className="font-bold text-[#280058] h-[50px]">
-                    {activity.title}
-                  </p>
-                  <p className="font-medium text-[#280058] h-[20px]  justify-start">
+                  <p className="text-sm h-[50px]">{activity.title}</p>
+                  <p className="text-small text-default-500 h-[20px]">
                     {activity.date}
                   </p>
+                  <p className="text-small text-default-500 h-[30px]">
+                    {activity.schedule}
+                  </p>
                 </div>
-              </div>
-              <div className="flex justify-center bg-[#FDFBFF] pt-3">
-                <button className="text-center">
-                  <a href={`modal/${activity.id}`}>
-                    <button className="px-4 py-2 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600">
-                      VER MÁS
-                    </button>
-                  </a>
-                </button>
-              </div>
-            </div>
+              </CardHeader>
+              <Divider />
+              <CardFooter className="flex justify-center">
+                {/* <Link
+                  className="text-center"
+                  href="modal" // linkear a modal de actividad que corresponda, quizas agregarle un id a cada actividad
+                >
+                  <Button>VER MÁS</Button>
+                </Link> */}
+                <div>
+                  <FirstModal />
+                </div>
+              </CardFooter>
+            </Card>
           ))}
         </div>
       </div>
