@@ -1,4 +1,4 @@
-import { Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, NavbarContent, Link, NavbarItem, Button } from "@nextui-org/react";
+import { Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, NavbarContent } from "@nextui-org/react";
 import { useState } from "react";
 import Logo from "./Logo";
 import ProfilePic from "./ProfilePic";
@@ -7,14 +7,13 @@ import { NavLink } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   return (
     <Navbar
       isBordered
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
-      className="mb-4 border-none shadow-inner  bg-gradient-to-tr from-[#280058] to-[#fff]"
+      className="mb-4 border-none shadow-inner bg-gradient-to-tr from-[#8f6db8] to-[#fff]"
       aria-label="User"
     >
       <NavbarContent justify="start">
@@ -29,18 +28,9 @@ const Header = () => {
         </NavbarBrand>
       </NavbarContent>
 
-      {isLoggedIn ? <ProfilePic handleLogout={() => setIsLoggedIn(false)} /> : <NavbarContent justify="end">
-        <NavbarItem>
-          <Link href="/login">Login</Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Button as={Link} color="warning" href="/sign-up" variant="flat">
-            Sign Up
-          </Button>
-        </NavbarItem>
-      </NavbarContent>}
+      <ProfilePic />
 
-      <NavbarMenu className="bg-gray-100 overflow-hidden w-[250px] rounded bg-gradient-to-tr from-[#280058] to-[#fff] gap-5" >
+      <NavbarMenu className="bg-gray-100 overflow-hidden w-[250px] rounded bg-gradient-to-tr from-[#8f6db8] to-[#fff] gap-5" >
         {links.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>
 
