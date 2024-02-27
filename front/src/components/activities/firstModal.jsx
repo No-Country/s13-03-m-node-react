@@ -15,28 +15,28 @@ const FirstModal = () => {
     title3: "¿Que se necesita?",
     middle_description: "Zapatillas cómodas, agua, comida y gorra.",
     title4: "Autorización",
-    last_description: "Para esta actividad, se requiere la autorización de los tutores. Ante cualquier duda o consulta, por favor contáctenos.",
+    last_description: "Para esta actividad, se requiere la autorización de los tutores. Ante cualquier duda, por favor contáctenos.",
   };
   
 
   const openFirstModal = () => {
     // primer modal
     const modalContent = ReactDOMServer.renderToStaticMarkup(
-      <div className='flex flex-col text-left gap-4'>
+      <div className='flex flex-col text-left gap-4 text-base'>
         <div>
-          <h2 className='font-semibold text-center'>{dummyData.title1}</h2>
+          <h2 className='font-bold text-center'>{dummyData.title1}</h2>
           <p className='mt-1'>{dummyData.first_description}</p>
         </div>
         <div>
-          <h2 className='font-semibold text-center'>{dummyData.title2}</h2>
+          <h2 className='font-bold text-center'>{dummyData.title2}</h2>
           <p className='mt-1'>{dummyData.schedule}</p>
         </div>
         <div>
-          <h2 className='font-semibold text-center'>{dummyData.title3}</h2>
+          <h2 className='font-bold text-center'>{dummyData.title3}</h2>
           <p className='mt-1'>{dummyData.middle_description}</p>
         </div>
         <div>
-          <h2 className='font-semibold text-center'>{dummyData.title4}</h2>
+          <h2 className='font-bold text-center'>{dummyData.title4}</h2>
           <p className='mt-1'>{dummyData.last_description}</p>
         </div>
       </div>
@@ -47,6 +47,7 @@ const FirstModal = () => {
       showCloseButton: true,
       showCancelButton: true,
       confirmButtonText: 'Autorizar',
+      confirmButtonColor: '#8b5cf6',
       cancelButtonText: 'No autorizar',
     }).then((result) => {
       if (result.value) {
