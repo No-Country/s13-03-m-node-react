@@ -4,6 +4,7 @@ import { useState } from "react";
 const MonthSelection = ({ handleChange, month, data }) => {
   const [value, setValue] = useState("asistencias");
   const selectedValue = value === "asistencias" ? 0 : value === "ausencias" ? 1 : 2;
+  const renderedValue = value.slice(-1) === "s" ? value.slice(0, -1) : value
 
   return (
     <>
@@ -35,7 +36,7 @@ const MonthSelection = ({ handleChange, month, data }) => {
           <small>{month.toUpperCase()} 2024</small>
         </div>
         <div className="p-4 text-2xl">
-          <small className="text-[#280058]">{data[selectedValue][month]} {value}</small>
+          <small className="text-[#280058]">{data[selectedValue][month]} {data[selectedValue][month] === 1 ? renderedValue : value}</small>
         </div>
       </div>
     </>
