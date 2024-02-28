@@ -6,6 +6,7 @@ import { imageRouter } from './imageRouter.js';
 import { studentRouter } from './studentRouter.js';
 import { attendanceRouter } from './attendanceRouter.js';
 import { notificationRrouter } from './notificationRouter.js';
+import { evaluationRouter } from './evaluationRouter.js';
 
 const indexRouter = Router();
 
@@ -23,7 +24,6 @@ indexRouter.use('/attendance', attendanceRouter);
 
 indexRouter.use('/notification', notificationRrouter);
 
-
-
+indexRouter.use('/evaluation', evaluationRouter);
 
 export default indexRouter;
