@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+
 import CardActivities from "./CardActivities";
 import CardNotification from "./CardNotification";
 
@@ -32,7 +32,6 @@ import CardNotification from "./CardNotification";
 
 function NotificationsContainer() {
   return (
-    <NavLink to={'/notificaciones'}>
     <div className="w-screen pl-[16px] pr-[16px]">
       <h2 className="text-[20px] font-bold text-[#280058]">¿Qué tenemos hoy?</h2>
       <div
@@ -43,7 +42,6 @@ function NotificationsContainer() {
         <CardActivities />
       </div>
     </div>
-    </NavLink>
   );
 }
 

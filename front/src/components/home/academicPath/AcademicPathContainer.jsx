@@ -1,24 +1,24 @@
-import CardAcademicPath from "./CardAcademicPath";
-import calificationsImage from "../../../assets/images/calificaciones.svg";
-import attendancesImage from "../../../assets/images/asistencias.svg";
+//import CardAcademicPath from "./CardAcademicPath";
+import CardAttendance from "./CardAttendance";
+import CardGrades from "./CardGrades";
 
-const cardAcademicPathInfo = [
+/* const cardAcademicPathInfo = [
   {
     title: "Calificaciones",
     link: "/calificaciones",
     image: `${calificationsImage}`,
     backgroundColor: "#7222D3",
-    backgroundOpacity: 0.05
+    backgroundOpacity: "rgba(114, 34, 211, 0.05)",
   },
   {
     title: "Asistencias",
     link: "/asistencias",
     image: `${attendancesImage}`,
     backgroundColor: "#f4d13d",
-    backgroundOpacity: 0.05
+    backgroundOpacity: "rgba(254, 209, 61, 0.05)",
   },
 ];
-
+ */
 function AcademicPathContainer() {
   return (
     <div className="w-screen pl-[16px] pr-[16px] mt-12">
@@ -27,11 +27,10 @@ function AcademicPathContainer() {
       </h2>
       <div
         id="card-academicPath-container"
-        className="flex flex-row space-x-[20px] justify-between mt-5"
+        className="flex flex-row gap-4 justify-between mt-5"
       >
-        {cardAcademicPathInfo.map((academicPathInfo, index) => (
-          <CardAcademicPath key={index} academicPathInfo={academicPathInfo} />
-        ))}
+        <CardGrades />
+        <CardAttendance />
       </div>
     </div>
   );

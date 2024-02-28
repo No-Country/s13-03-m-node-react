@@ -3,10 +3,14 @@ import { NavLink } from "react-router-dom";
 
 function CardActivities() {
   return (
-    <NavLink to={'/actividades'}>
+    <NavLink to={"/actividades"}>
       <div
-        className="py-4 border rounded-lg shadow-sm shadow-[#67B7B3]"
-        style={{ backgroundColor: "rgba(103, 183, 179, 0.05)" }}
+        className="py-4 border rounded-lg shadow-sm shadow-[#67B7B3]  flex flex-col justify-center items-center"
+        style={{
+          backgroundColor: "rgba(103, 183, 179, 0.05)",
+          height: "350px",
+          width: "180px",
+        }}
       >
         <div className="pb-0 pt-2 px-2 flex flex-col items-start">
           <p className="text-xs uppercase font-bold text-[#280058]">19/02</p>
