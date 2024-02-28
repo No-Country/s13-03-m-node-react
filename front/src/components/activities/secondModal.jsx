@@ -12,7 +12,7 @@ const SecondModal = () => {
         html: '<SecondModal />',
       }).then((loginResult) => {
         if(loginResult.isConfirmed) {
-          Swal.fire('Inicio de sesión exitoso, autorización confirmada.', "", "success");
+          Swal.fire('¡Tus datos se cargaron con éxito! Tu autorización fue recibida.', "", "success");
         }
       });
     }
@@ -33,7 +33,7 @@ const SecondModal = () => {
           <RiLockPasswordFill />
         </div>
        
-        <button type="submit" className='bg-violet-500 hover:bg-violet-700 text-white font-semibold py-2 px-4 rounded'>Autorizo</button>
+        <button type="submit" className='bg-violet-700 hover:bg-violet-800 text-white font-semibold py-2 px-4 rounded'>Autorizo</button>
       </form>
     </div>
   );

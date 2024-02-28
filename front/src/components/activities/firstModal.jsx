@@ -47,7 +47,7 @@ const FirstModal = () => {
       showCloseButton: true,
       showCancelButton: true,
       confirmButtonText: 'Autorizar',
-      confirmButtonColor: '#8b5cf6',
+      confirmButtonColor: '#7222d3',
       cancelButtonText: 'No autorizar',
     }).then((result) => {
       if (result.value) {
@@ -63,7 +63,7 @@ const FirstModal = () => {
     
   return (
     <>
-    <button onClick={openFirstModal} className='bg-violet-500 hover:bg-violet-700 text-white font-medium py-1 px-4 rounded'>VER MÁS</button>
+    <button onClick={openFirstModal} className='bg-violet-700 hover:bg-violet-800 text-white font-medium py-1 px-4 rounded'>VER MÁS</button>
     </>
   );
 };
