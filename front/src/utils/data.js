@@ -43,6 +43,7 @@ export const data = [
     octubre: 0,
     noviembre: 0,
     diciembre: 0,
+    ausencias: ["10/02/2024", "15/02/2024", "22/02/2024"]
   },
   {
     name: "Retiros",
