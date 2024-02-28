@@ -8,14 +8,14 @@ const cardAcademicPathInfo = [
     link: "/calificaciones",
     image: `${calificationsImage}`,
     backgroundColor: "#7222D3",
-    backgroundOpacity: "rgba(114, 34, 211, 0.05)"
+    backgroundOpacity: 0.05
   },
   {
     title: "Asistencias",
     link: "/asistencias",
     image: `${attendancesImage}`,
-    backgroundColor: "#F4D13D",
-    backgroundOpacity: "rgba(244, 209, 61, 0.05)"
+    backgroundColor: "#f4d13d",
+    backgroundOpacity: 0.05
   },
 ];
 

@@ -4,7 +4,7 @@ function CardAcademicPath({ academicPathInfo }) {
   return (
     <NavLink to={academicPathInfo.link}>
       <div
-        className={`py-4 border rounded-lg shadow-sm shadow-${academicPathInfo.backgroundColor}`}
+        className={`py-4 border rounded-lg shadow-sm shadow-[${academicPathInfo.backgroundColor}]`}
         style={{ backgroundColor: academicPathInfo.backgroundOpacity }}
       >
         <div className="pb-0 pt-2 px-2 flex flex-col items-start">
