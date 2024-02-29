@@ -1,8 +1,9 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Logo from "./Logo";
 import { BiCopyright } from "react-icons/bi";
 import { FiPhone } from "react-icons/fi";
 import { MdOutlineEmail } from "react-icons/md";
+import { FaFacebook, FaInstagram  } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -24,6 +25,11 @@ const Footer = () => {
         </p>
       </div>
       <ul className=" text-xs	">
+      <li className="font-semibold	text-sm">Síguenos</li>
+        <ul className="flex gap-2">
+            <li><FaInstagram size={20} /></li>
+            <li><FaFacebook  size={20}/></li>
+        </ul>
         <li className="font-semibold	text-sm">Contáctanos</li>
         <ul>
           <li className="flex items-center gap-1.5">
@@ -43,7 +49,8 @@ const Footer = () => {
         <ul>
           <li>Políticas de seguridad</li>
         </ul>
-        <li className="font-semibold	text-sm">Ayuda</li>
+        <Link to="/ayuda">
+        <li className="font-semibold	text-sm"> Ayuda</li></Link>
       </ul>
     </footer>
   );
