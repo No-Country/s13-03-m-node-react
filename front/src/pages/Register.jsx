@@ -39,7 +39,7 @@ const Register = () => {
       <section className="flex justify-center min-h-screen">
         <div className="hidden bg-cover lg:block lg:w-3/5" style={{backgroundImage: "url('/images/milad-fakurian-F93PQmh4krI-unsplash.webp')"}}></div>
          
-        <div className='className="flex flex-col items-center justify-center w-full max-w-3xl p-8 mx-auto lg:px-12 lg:w-3/5'>
+        <div className='flex flex-col items-center justify-center w-full max-w-3xl p-8 mx-auto lg:px-12 lg:w-3/5'>
 
           <h1 className="text-2xl text-center font-semibold">¡Te damos la bienvenida a Educlass!</h1>
           <p className="mt-4">Completa el siguiente formulario para crear tu cuenta.</p>
