@@ -8,8 +8,8 @@ function CardNotification() {
         className="py-4 border rounded-lg shadow-sm shadow-[#FCA044]  flex flex-col justify-center items-center"
         style={{
           backgroundColor: "rgba(103, 183, 179, 0.05)",
-          height: "350px",
-          width: "180px",
+          height: "250px",
+          width: "150px",
         }}
       >
         <div className="pb-0 pt-2 px-2 flex flex-col items-start">

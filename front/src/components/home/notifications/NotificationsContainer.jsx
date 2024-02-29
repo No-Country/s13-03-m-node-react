@@ -1,4 +1,3 @@
-
 import CardActivities from "./CardActivities";
 import CardNotification from "./CardNotification";
 
@@ -33,7 +32,9 @@ import CardNotification from "./CardNotification";
 function NotificationsContainer() {
   return (
     <div className="w-screen pl-[16px] pr-[16px]">
-      <h2 className="text-[20px] font-bold text-[#280058]">¿Qué tenemos hoy?</h2>
+      <h2 className="text-[20px] font-bold text-[#280058]">
+        ¿Qué tenemos hoy?
+      </h2>
       <div
         id="card-notification-container"
         className="flex flex-row gap-4 justify-between mt-5"
