@@ -7,25 +7,38 @@ const AttendanceScheme = new mongoose.Schema({
         required: true,
         trim: true,
     },
-
     date: {
-        type: Date,
+        type: String,
         required: true,
         trim: true,
+        validate: {
+            validator: function(value) {
+                return /^\d{2}\/\d{2}\/\d{4}$/.test(value);
+            },
+            message: 'El formato de fecha es incorrecto. Debe ser DD/MM/YYYY.'
+        }
     },
-
     isJustified: {
         type: Boolean,
         default: false,
         trim: true,
     },
-
     status: {
         type: String,
-        enum: ['present', 'absent', 'is laving earsy'],
+        enum: ['asistencia', 'ausencia', 'retiro'],
         default: 'present',
         trim: true,
+        required: true,
     },
+    certificado: {
+        type: Object, 
+        required: true,
+        default: {
+            idCloudinary: '',
+            url: '',
+            creationDate: '',
+        } 
+    }
 });
 
 

@@ -20,12 +20,13 @@ class AttendanceManager {
     }
 
     async createAttendance(data) {
-        const { studentid, date, isJustified, status } = data;
+        const { studentid, date, isJustified, status,certificado } = data;
         const attendance = AttendanceModel({
             studentid,
             date,
             isJustified,
             status,
+            certificado,
         });
         const newAttendance = await this.createDocument('attendancesCollection', attendance);
         return newAttendance
