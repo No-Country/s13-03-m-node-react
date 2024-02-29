@@ -26,10 +26,10 @@ const ProfilePic = ({ handleLogout }) => {
             <p className="font-semibold">lucreciadelvalle@ejemplo.com</p>
           </DropdownItem>
           <DropdownItem key="settings" withDivider textValue="settings">
-            <span className="font-semibold"><NavLink to="/perfil">Perfil</NavLink></span>
+            <NavLink className="font-semibold" to="/perfil">Perfil</NavLink>
           </DropdownItem>
           <DropdownItem key="logout" color="danger" onClick={handleLogout} textValue="logout">
-            <span className="font-semibold"><NavLink to="/login">Cerrar sesión</NavLink></span>
+            <NavLink className="font-semibold" to="/login">Cerrar sesión</NavLink>
           </DropdownItem>
         </DropdownMenu>
       </Dropdown>
