@@ -1,64 +1,21 @@
+import { useLoaderData } from "react-router-dom";
 import CurrentNotifications from "./currentNotifications/CurrentNotifications";
 import HistoryNotifications from "./historyNotifications/HistoryNotifications";
 import { useState } from "react";
+import axios from "axios";
 
 function NotificationContainer() {
+  const notificationData = useLoaderData();
   const [notificationRead, setNotificationRead] = useState(false);
   const [historyData, setHistoryData] = useState([]);
-  const [notificationsData, setNotificationsData] = useState([
-    {
-      title: "Lorem ipsum dolor",
-      date: "21 de febrero de 2024",
-      content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur quisquam omnis delectus itaque error veniam totam dicta enim magni incidunt, quibusdam blanditiis sint laborum, sequi molestias fugit modi neque aspernatur.",
-      readed: notificationRead,
-      type: "institucional",
-    },
-    {
-      title: "Lorem ipsum dolor",
-      date: "22 de febrero de 2024",
-      content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur quisquam omnis delectus itaque error veniam totam dicta enim magni incidunt, quibusdam blanditiis sint laborum, sequi molestias fugit modi neque aspernatur.",
-      readed: notificationRead,
-      type: "institucional",
-    },
-    {
-      title: "Lorem ipsum dolor",
-      date: "23 de febrero de 2024",
-      content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur quisquam omnis delectus itaque error veniam totam dicta enim magni incidunt, quibusdam blanditiis sint laborum, sequi molestias fugit modi neque aspernatur.",
-      readed: notificationRead,
-      type: "Mi grado",
-    },
-    {
-      title: "Lorem ipsum dolor",
-      date: "24 de febrero de 2024",
-      content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur quisquam omnis delectus itaque error veniam totam dicta enim magni incidunt, quibusdam blanditiis sint laborum, sequi molestias fugit modi neque aspernatur.",
-      readed: notificationRead,
-      type: "Mi grado",
-    },
-    {
-      title: "Lorem ipsum dolor",
-      date: "25 de febrero de 2024",
-      content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur quisquam omnis delectus itaque error veniam totam dicta enim magni incidunt, quibusdam blanditiis sint laborum, sequi molestias fugit modi neque aspernatur.",
-      readed: notificationRead,
-      type: "Mi grado",
-    },
-    {
-      title: "Lorem ipsum dolor",
-      date: "26 de febrero de 2024",
-      content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur quisquam omnis delectus itaque error veniam totam dicta enim magni incidunt, quibusdam blanditiis sint laborum, sequi molestias fugit modi neque aspernatur.",
-      type: "Mi grado",
-    },
-  ]);
+  const [notificationsData, setNotificationsData] = useState([]);
+
+  console.log(notificationsData);
 
   return (
     <div className="max-w-[360px] pr-[16px] pl-[16px] bg-[#FDFBFF] ">
       <CurrentNotifications
-        notificationsData={notificationsData}
+        notificationsData={notificationData}
         setNotificationsData={setNotificationsData}
         setNotificationRead={setNotificationRead}
         setHistoryData={setHistoryData}
@@ -70,3 +27,19 @@ function NotificationContainer() {
 }
 
 export default NotificationContainer;
+
+export const fetchDataNotification = async () => {
+  try {
+    const response = await axios.get("https://educlass-2024.onrender.com/api/notification");
+    return response.data;
+  } catch (error) {
+    if (error.response) {
+      console.error(`La solicitud falló con el código de estado ${error.response.status}`);
+    } else if (error.request) {
+      console.error('No se recibió respuesta del servidor');
+    } else {
+      console.error(`Ocurrió un error: ${error.message}`);
+    }
+    throw error;
+  }
+};

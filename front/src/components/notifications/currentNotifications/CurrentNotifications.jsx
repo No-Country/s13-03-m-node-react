@@ -12,6 +12,8 @@ function CurrentNotifications({
   const [selectedValue, setSelectedValue] = useState("Filtros");
   const [isOpen, setIsOpen] = useState(false);
 
+  console.log(notificationsData);
+
   const handleItemClick = (item) => {
     setSelectedValue(item);
     setIsOpen(false);
@@ -57,7 +59,11 @@ function CurrentNotifications({
             onClick={() => setIsOpen(!isOpen)}
           >
             {selectedValue}
-            <MdKeyboardArrowDown className={`h-6 w-6 transition-transform transform ${isOpen ? 'rotate-180' : ''}`} />
+            <MdKeyboardArrowDown
+              className={`h-6 w-6 transition-transform transform ${
+                isOpen ? "rotate-180" : ""
+              }`}
+            />
           </button>
           {isOpen && (
             <div className="absolute z-50 right-0 mt-2 w-56 bg-white rounded shadow-md text-sm">
@@ -92,18 +98,19 @@ function CurrentNotifications({
         </div>
       </div>
       <div id="currentNotifications-cards">
-        {filteredNotifications.map(
-          (notification, index) =>
-            !notification.readed &&
-            index >= filteredNotifications.length - 3 && (
-              <NotificationCard
-                key={index}
-                notification={notification}
-                setNotificationRead={setNotificationRead}
-                onCheckboxChange={handleCheckboxChange}
-              />
-            )
-        )}
+        {Array.isArray(filteredNotifications) &&
+          filteredNotifications.map(
+            (notification, index) =>
+              !notification.readed &&
+              index >= filteredNotifications.length - 3 && (
+                <NotificationCard
+                  key={index}
+                  notification={notification}
+                  setNotificationRead={setNotificationRead}
+                  onCheckboxChange={handleCheckboxChange}
+                />
+              )
+          )}
       </div>
     </div>
   );

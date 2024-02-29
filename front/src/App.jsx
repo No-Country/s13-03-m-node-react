@@ -3,6 +3,8 @@ import { Activities, Attendance, CalendarPage, Error, Home, Login, Notifications
 import { Absences, Attendances, Withdrawals } from './components/attendance';
 import Layout from './components/Layout';
 import ActivitieGallery from "./components/activities/activitieGallery/ActivitieGallery";
+import { fetchDataNotification } from './components/notifications/NotificationContainer';
+
 
 const router = createBrowserRouter([
   {
@@ -35,6 +37,15 @@ const router = createBrowserRouter([
       {
         path: "/notificaciones",
         element: <Notifications />,
+        loader: async () => {
+          try {
+            const notificationData = await fetchDataNotification();
+            return { notificationData };
+          } catch (error) {
+            console.error("Error fetching notification data:", error);
+            return { notificationData: null };
+          }
+        }
       },
       {
         path: '/perfil',
