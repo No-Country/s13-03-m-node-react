@@ -13,6 +13,8 @@ const AbsencesModal = ({ isOpen, onOpenChange }) => {
     const formData = new FormData(e.target)
     formData.append('justification', justification)
     onOpenChange(false)
+    console.log(justification)
+    console.log(formData)
 
     try {
       await axios.post('https://educlass-2024.onrender.com/api/attendance', formData)
