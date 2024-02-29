@@ -17,7 +17,7 @@ export const links = [
   {
     text: 'Actividad escolar',
     path: 'actividades',
-    icon: <SlNote size={24} />,
+    icon: <SlNote size={20} />,
   },
   {
     text: 'Asistencias',
