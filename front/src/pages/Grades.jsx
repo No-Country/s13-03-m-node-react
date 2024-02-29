@@ -69,7 +69,7 @@ const Grades = () => {
     content: "text-small px-2 mx-2 my-3  ",
   };
   return (
-    <section className=" my-8  text-[#280058]">
+    <section className=" mt-8  text-[#280058] h-screen">
       <h1 className="mx-4 mb-8 font-bold text-xl 	">
         Sigue mi recorrido académico
       </h1>

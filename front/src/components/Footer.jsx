@@ -6,7 +6,7 @@ import { MdOutlineEmail } from "react-icons/md";
 
 const Footer = () => {
   return (
-    <footer className="flex justify-between pt-4 pb-16 px-6 bg-[#FDFBFF] mt-4 border-t-2 border-[#28005880] text-[#280058]">
+    <footer className="flex justify-between relative  bottom-0  pt-4 pb-10 px-6 bg-[#FDFBFF] mt-4 border-t-2 border-[#28005880] text-[#280058]">
       <NavLink
         to="/"
         className="flex flex-col items-center font-bold text-inherit "
@@ -14,7 +14,8 @@ const Footer = () => {
         <Logo />
         <p className="font-bold text-inherit">EduClass</p>
       </NavLink>
-      <div className="flex items-end ">
+      <div className="  absolute  inset-x-24 bottom-0 pb-3 pl-2
+ ">
         <p className="flex items-center text-[10px] font-medium  gap-1">
           <span>
             <BiCopyright />
