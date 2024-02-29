@@ -2,8 +2,32 @@ import { useState } from "react";
 import SectionActivities from "./sectionActivities/SectionActivities";
 import SectionGallery from "./sectionGallery/SectionGallery";
 import UrgentNotifications from "./urgentNotifications/UrgentNotifications";
+import { useLoaderData } from "react-router-dom";
+import axios from "axios";
+
+const API_BASE = "https://educlass-2024.onrender.com/";
+const API_ACTIVITIES = "api/activities";
+
+export const activitiesLoader = async () => {
+  try {
+    const { data } = await axios.get(`${API_BASE}${API_ACTIVITIES}`);
+    return data;
+  } catch (error) {
+    if (error.response) {
+      console.error(
+        `La solicitud falló con el código de estado ${error.response.status}`
+      );
+    } else if (error.request) {
+      console.error("No se recibió respuesta del servidor");
+    } else {
+      console.error(`Ocurrió un error: ${error.message}`);
+    }
+    throw error;
+  }
+};
 
 function ActivitiesContainer() {
+  const { data } = useLoaderData();
   const [activitiesImages, setActivitiesImages] = useState([
     {
       id:'01',
@@ -46,44 +70,7 @@ function ActivitiesContainer() {
       imageURL: "https://nextui.org/images/hero-card.jpeg",
     },
   ]);
-  const [activitiesData, setActivitiesData] = useState([
-    {
-      id: "001",
-      title: "Examen de Matemáticas",
-      date: "2024-02-28",
-      schedule: "9:00 AM",
-    },
-    {
-      id: "002",
-      title: "Proyecto de Ciencias",
-      date: "2024-03-15",
-      schedule: "10:30 AM",
-    },
-    {
-      id: "003",
-      title: "Museo de Historia Natural",
-      date: "2024-03-25",
-      schedule: "8:30 AM",
-    },
-    {
-      id: "004",
-      title: "Feria de Ciencias",
-      date: "2024-05-10",
-      schedule: "9:00 AM",
-    },
-    {
-      id: "005",
-      title: "Acto",
-      date: "2024-06-15",
-      schedule: "7:00 PM",
-    },
-    {
-      id: "006",
-      title: "Concierto de Fin de Año",
-      date: "2024-12-15",
-      schedule: "9:00 PM",
-    },
-  ]);
+  const [activitiesData, setActivitiesData] = useState({data});
   return (
     <div className="mr-[16px] ml-[16px]">
       <SectionActivities

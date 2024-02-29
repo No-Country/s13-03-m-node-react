@@ -37,7 +37,7 @@ function NotificationCard({
           />
           <div className="flex flex-col gap-1 items-start justify-center">
             <h4 className="text-small font-semibold leading-none text-[#280058]">
-              {notification.title}
+              {notification.titulo}
             </h4>
             <h5 className="text-small tracking-tight text-[#280058]">
               {notification.date}
