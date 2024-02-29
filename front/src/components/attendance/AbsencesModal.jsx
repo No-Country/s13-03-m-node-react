@@ -1,4 +1,4 @@
-import { Modal, ModalContent, ModalHeader, ModalBody, Input, Button } from "@nextui-org/react"
+import { Modal, ModalContent, ModalHeader, ModalBody, Button } from "@nextui-org/react"
 import uploadIcon from '../../assets/icons/upload.png'
 import { useState } from "react"
 import SkeletonImage from "./SkeletonImage"
@@ -49,7 +49,7 @@ const AbsencesModal = ({ isOpen, onOpenChange }) => {
                     <img src={uploadIcon} alt="upload icon" className="w-[50px] h-[50px]" />
                   </div>
                 </label>
-                <Input id="justification" name="justification" type="file" accept="image/*" className="hidden"
+                <input id="justification" name="justification" type="file" accept="image/*" className="hidden"
                   onChange={(e) => setJustification(URL.createObjectURL(e.target.files[0]))} />
 
                 {!justification && <SkeletonImage />}
