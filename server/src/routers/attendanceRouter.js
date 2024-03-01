@@ -8,7 +8,7 @@ attendanceRouter.get('/', getAttendances);
 
 attendanceRouter.post('/', createAttendance);
 
-attendanceRouter.put('/update/:_id', updateAttendance);
+attendanceRouter.put('/update/', updateAttendance);
 
 attendanceRouter.delete('/:_id', deleteAttendance);
 

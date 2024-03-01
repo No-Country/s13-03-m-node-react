@@ -7,6 +7,7 @@ import { studentRouter } from './studentRouter.js';
 import { attendanceRouter } from './attendanceRouter.js';
 import { notificationRrouter } from './notificationRouter.js';
 import { activityRouter } from './activityRouter.js';
+import { evaluationRouter } from './evaluationRouter.js';
 
 const indexRouter = Router();
 
@@ -26,6 +27,6 @@ indexRouter.use('/notification', notificationRrouter);
 
 indexRouter.use('/activity', activityRouter);
 
-
+indexRouter.use('/evaluation', evaluationRouter);
 
 export default indexRouter;

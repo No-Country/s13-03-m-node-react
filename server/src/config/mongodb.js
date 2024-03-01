@@ -24,6 +24,7 @@ class Database {
 			this.studentsCollection = this.client.db(DB).collection('student');
 			this.attendancesCollection = this.client.db(DB).collection('attendance');
 			this.activityCollection = this.client.db(DB).collection('activity');
+			this.evaluationsCollection = this.client.db(DB).collection('evaluation');
 			console.log('Conectado a la base de datos');
 		} catch (error) {
 			console.error(error);

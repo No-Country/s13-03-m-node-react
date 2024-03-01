@@ -2,14 +2,42 @@ import mongoose from 'mongoose';
 import AttendanceManager from "../dao/managerAttendance.js";
 import AttendanceModel from "../models/attendanceModel.js";
 import { ObjectId } from 'mongodb';
+import cloudinary from '../config/upload.cjs';
+
 
 const attendanceManager = new AttendanceManager();
 
 const createAttendance = async (req, res) => {
-    const { date, isJustified, status } = req.body;
+    const { date, status } = req.body;
     let { studentid } = req.body;
-
-    // trasformo en objetId studenId
+    const image = req.files && req.files.image; // Verificar si existe req.files y req.files.image
+    console.log('image: ', image)
+    let newImage = {}; // Inicializar como un objeto vacío
+    
+    try {
+        if (image) {
+            console.log("Image to be saved");
+            console.log('Image tempFilePath:', image.tempFilePath);
+            let result_image = await cloudinary.uploader.upload(image.tempFilePath, {
+                public_id: `${Date.now()}`,
+                resource_type: "auto",
+            });
+            console.log('Result image cloudinary:', result_image);
+            console.log('Saving image data on Atlas Cloud');
+            newImage = {
+                idCloudinary: result_image.public_id,
+                url: result_image.secure_url,
+                creationDate: new Date(),
+            };
+        }
+    } catch (error) {
+        console.error('Error uploading image to Cloudinary:', error);
+        return res.status(500).json({
+            data: {},
+            status: 1,
+            message: 'Error al cargar la imagen a Cloudinary: ' + error.message,
+        });
+    }
 
     try {
         if (studentid) {
@@ -26,16 +54,21 @@ const createAttendance = async (req, res) => {
         const newAttendance = {
             studentid,
             date,
-            isJustified,
+            isJustified: newImage.url ? true : false,
             status,
-        }
+            certificado: image ? newImage : {
+                idCloudinary: '',
+                url: '',
+                creationDate: '',
+            } 
+        };
 
-        const vallitareError = AttendanceModel(newAttendance).validateSync();
-        if (vallitareError) {
+        const validateError = AttendanceModel(newAttendance).validateSync();
+        if (validateError) {
             return res.status(400).json({
                 data: {},
                 status: 1,
-                message: 'Error de validación: ' + vallitareError.message,
+                message: 'Error de validación: ' + validateError.message,
             });
         } else {
             await attendanceManager.createAttendance(newAttendance);
@@ -54,6 +87,10 @@ const createAttendance = async (req, res) => {
         });
     }
 };
+
+
+
+
 
 const getAttendances = async (req, res) => {
     const queryParams = req.query;
@@ -91,21 +128,31 @@ const getAttendances = async (req, res) => {
 };
 
 async function updateAttendance(req, res) {
+    const filter = req.params;
+    console.log('esto es data,', filter)
+    const image = req.files && req.files.image;
     try {
-        const filter = req.params;
-        let dataUpdate = req.body;
-
-        // Verificar y transformar studentId si es necesario
-        if (dataUpdate.studentid) {
-            if (!ObjectId.isValid(dataUpdate.studentid)) {
-                return res.status(400).json({
-                    data: {},
-                    status: 1,
-                    message: 'El ID del estudiante no es válido',
-                });
-            }
-            dataUpdate.studentid = new ObjectId(dataUpdate.studentid); 
+        if (!image || !image.tempFilePath) {
+            return res.status(400).json({
+                data: {},
+                status: 1,
+                message: 'No se ha proporcionado una imagen válida.',
+            });
         }
+
+        console.log("Image to be saved");
+        console.log('Image tempFilePath:', image.tempFilePath);
+        let result_image = await cloudinary.uploader.upload(image.tempFilePath, {
+            public_id: `${Date.now()}`,
+            resource_type: "auto",
+        });
+        console.log('Result image cloudinary:', result_image);
+        console.log('Saving image data on Atlas Cloud');
+        const newImage = {
+            idCloudinary: result_image.public_id,
+            url: result_image.secure_url,
+            creationDate: new Date(),
+        };
 
         let query;
         if (filter._id) {
@@ -113,12 +160,12 @@ async function updateAttendance(req, res) {
         } else {
             query = filter;
         }
-        console.log(dataUpdate)
-        const updatedTeacher = await attendanceManager.updateAttendance(query, dataUpdate);
+
+        const updatedAttendance = await attendanceManager.updateAttendance(query, newImage);
         return res.status(200).json({
-            data: updatedTeacher,
+            data: updatedAttendance,
             status: 0,
-            message: 'Profesor actualizado correctamente',
+            message: 'Asistencia actualizada correctamente.',
         });
     } catch (error) {
         console.error(error);
@@ -129,6 +176,7 @@ async function updateAttendance(req, res) {
         });
     }
 }
+
 
 
 async function deleteAttendance(req, res) {
