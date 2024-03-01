@@ -3,18 +3,17 @@ import { useState } from "react";
 function NotificationCard({ index, data }) {
   const [notificationOpen, setNotificationOpen] = useState(false);
 
-  function formatDate(dateString) {
+  /*   function formatDate(dateString) {
     const [day, month, year] = dateString.split("/");
     const isoDateString = `${year}-${month}-${day}`;
     return isoDateString;
-  }
+  } */
 
-  function convertToDisplayDate(isoDateString) {
-    const date = new Date(isoDateString);
-    const day = date.getDate().toString().padStart(2, "0");
-    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
     const year = date.getFullYear();
-
     return `${day}/${month}/${year}`;
   }
 
@@ -31,9 +30,9 @@ function NotificationCard({ index, data }) {
           onClick={() => setNotificationOpen(!notificationOpen)}
         >
           <div className="flex items-center gap-2 justify-between">
-            <span>{convertToDisplayDate(formatDate(data.date))}</span>
+            <span>{formatDate(data.fechaCreacion)}</span>
             <span>
-              {notificationOpen ? " " : data.content.substr(0, 50) + "..."}
+              {notificationOpen ? " " : data.contenido.substr(0, 50) + "..."}
             </span>
             <span className="flex min-w-fit">
               {notificationOpen ? " " : "Ver más"}
@@ -41,7 +40,7 @@ function NotificationCard({ index, data }) {
           </div>
         </div>
         {notificationOpen && (
-          <div className="px-4 py-2 text-xs">{data.content}</div>
+          <div className="px-4 py-2 text-xs">{data.contenido}</div>
         )}
       </div>
     </div>

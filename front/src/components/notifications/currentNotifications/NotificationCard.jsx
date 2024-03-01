@@ -7,23 +7,42 @@ import {
   Checkbox,
 } from "@nextui-org/react";
 import { useState } from "react";
+import { notificationsAction } from "../NotificationContainer";
 
 function NotificationCard({
   index,
   notification,
   onCheckboxChange,
   setNotificationRead,
+  setNotificationsReaded,
 }) {
-  const [isSelected, setIsSelected] = useState(notification.read);
+  const [isSelected, setIsSelected] = useState(notification.leido);
 
-  const handleCheckboxChange = () => {
+
+
+  const handleCheckboxChange = async () => {
     setIsSelected(true);
-    setTimeout(() => {
+    try {
+      await notificationsAction(notification._id, { leido: true });
+      setNotificationsReaded((prev) => [...(prev || []), notification]);
+      setTimeout(() => {
+        setIsSelected(false);
+        onCheckboxChange(notification);
+        setNotificationRead(true);
+      }, 1000);
+    } catch (error) {
+      console.error("Error al actualizar la notificación:", error);
       setIsSelected(false);
-      onCheckboxChange(notification);
-      setNotificationRead(true);
-    }, 1000);
+    }
   };
+
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  }
 
   return (
     <Card key={index} className="max-w-[340px] mt-5 shadow-sm shadow-[#FCA044]">
@@ -40,13 +59,13 @@ function NotificationCard({
               {notification.titulo}
             </h4>
             <h5 className="text-small tracking-tight text-[#280058]">
-              {notification.date}
+              {formatDate(notification.fechaCreacion)}
             </h5>
           </div>
         </div>
       </CardHeader>
       <CardBody className="px-3 py-0 text-small text-default-400">
-        <p className="text-[#280058]">{notification.content}</p>
+        <p className="text-[#280058]">{notification.contenido}</p>
       </CardBody>
       <CardFooter className="gap-3">
         <div className="flex flex-col w-full justify-end align-top items-end text-[#280058]">

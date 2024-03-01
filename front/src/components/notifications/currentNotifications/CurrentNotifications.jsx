@@ -1,18 +1,17 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo,useEffect } from "react";
 import NotificationCard from "./NotificationCard";
 import { MdKeyboardArrowDown } from "react-icons/md";
 
 function CurrentNotifications({
   notificationsData,
   setNotificationRead,
-  setNotificationsData,
   setHistoryData,
   historyData,
+  setNotificationsReaded,
 }) {
   const [selectedValue, setSelectedValue] = useState("Filtros");
   const [isOpen, setIsOpen] = useState(false);
-
-  console.log(notificationsData);
+  const [leidoChanged, setLeidoChanged] = useState(false);
 
   const handleItemClick = (item) => {
     setSelectedValue(item);
@@ -24,22 +23,24 @@ function CurrentNotifications({
       return notificationsData;
     } else if (selectedValue === "Institucionales") {
       return notificationsData.filter(
-        (notification) => notification.type === "institucional"
+        (notification) => notification.tipo === "general"
       );
     } else if (selectedValue === "Mi grado") {
       return notificationsData.filter(
-        (notification) => notification.type === "Mi grado"
+        (notification) => notification.tipo === "mi grado"
       );
     }
     return [];
   }, [notificationsData, selectedValue]);
 
   const handleCheckboxChange = (notification) => {
-    setNotificationsData(
-      notificationsData.filter((item) => item !== notification)
-    );
     setHistoryData([...historyData, notification]);
+    setLeidoChanged(!leidoChanged);
   };
+
+  useEffect(() => {
+  }, [leidoChanged]);
+
 
   return (
     <div className="text-[#280058]">
@@ -99,18 +100,18 @@ function CurrentNotifications({
       </div>
       <div id="currentNotifications-cards">
         {Array.isArray(filteredNotifications) &&
-          filteredNotifications.map(
-            (notification, index) =>
-              !notification.readed &&
-              index >= filteredNotifications.length - 3 && (
-                <NotificationCard
-                  key={index}
-                  notification={notification}
-                  setNotificationRead={setNotificationRead}
-                  onCheckboxChange={handleCheckboxChange}
-                />
-              )
-          )}
+          filteredNotifications
+            .filter((notification) => !notification.leido)
+            .slice(-3)
+            .map((notification, index) => (
+              <NotificationCard
+                key={index}
+                notification={notification}
+                setNotificationRead={setNotificationRead}
+                onCheckboxChange={handleCheckboxChange}
+                setNotificationsReaded={setNotificationsReaded}
+              />
+            ))}
       </div>
     </div>
   );
