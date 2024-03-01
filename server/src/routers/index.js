@@ -6,6 +6,7 @@ import { imageRouter } from './imageRouter.js';
 import { studentRouter } from './studentRouter.js';
 import { attendanceRouter } from './attendanceRouter.js';
 import { notificationRrouter } from './notificationRouter.js';
+import { activityRouter } from './activityRouter.js';
 
 const indexRouter = Router();
 
@@ -23,6 +24,7 @@ indexRouter.use('/attendance', attendanceRouter);
 
 indexRouter.use('/notification', notificationRrouter);
 
+indexRouter.use('/activity', activityRouter);
 
 
 

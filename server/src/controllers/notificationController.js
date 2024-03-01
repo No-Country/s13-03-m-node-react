@@ -38,14 +38,15 @@ async function getNotificationById(req, res) {
     const id = req.params.id
     console.log('id: ', id) 
 	try {
-		const notification = await notificationmanager.getOneNotification({_id: new ObjectId(id)});
+		const notification = await notificationmanager
+		.getOneNotification({_id: new ObjectId(id)});
 		if (!notification) {
-			throw new Error('la notification no existe');
+			throw new Error('La notification no existe');
 		}
 		return res.status(200).json({
 			data: notification,
 			status: 0,
-			message: 'Usuario encontrado exitosamente.',
+			message: 'Notificacion encontrada exitosamente.',
 		});
 	} catch (error) {
 		return res.status(400).json({
@@ -60,12 +61,12 @@ async function getNotifications(req, res) {
 	try {
 		const notificationes = await notificationmanager.getAllNotifiations();
 		if (!notificationes) {
-			throw new Error('No hay usuarios para mostrar.');
+			throw new Error('No hay notificaciones para mostrar.');
 		}
 		return res.status(200).json({
 			data: notificationes,
 			status: 0,
-			message: 'Se han encontrado los siguientes usuarios',
+			message: 'Se han encontrado las siguientes notificaciones',
 		});
 	} catch (error) {
 		return res.status(400).json({

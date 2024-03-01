@@ -7,4 +7,5 @@ authRouter.post('/register', signUp);
 
 authRouter.post('/login', signIn)
 
+
 export {authRouter};

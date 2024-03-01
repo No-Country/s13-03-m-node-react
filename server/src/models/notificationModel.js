@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 const NotificationScheme = new mongoose.Schema({
     tipo:{
-        type: String, 
+        type: String, //general o individual
         required: true, 
         trim: true
     },
@@ -24,7 +24,10 @@ const NotificationScheme = new mongoose.Schema({
     leido:{
         type: Boolean, 
         trim: true 
-    }
+    },
+    idCurso:[{
+
+    }]
 })
 const NotificationModel = mongoose.model('notification', NotificationScheme)
 
