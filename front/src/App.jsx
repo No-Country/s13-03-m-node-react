@@ -4,6 +4,7 @@ import { Absences, Attendances, Withdrawals } from './components/attendance';
 import Layout from './components/Layout';
 import ActivitieGallery from "./components/activities/activitieGallery/ActivitieGallery";
 import Help from './pages/Help';
+import { loader as loaderAttendance } from "./pages/Attendance";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
       {
         path: "/asistencias",
         element: <Attendance />,
+        loader: loaderAttendance
       },
       {
         path: "/asistencias/asistencias",
@@ -43,7 +45,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/calendario',
-        element: <CalendarPage />
+        element: <CalendarPage />,
       },
       {
         path: '/calificaciones',
