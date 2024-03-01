@@ -14,7 +14,7 @@ const MonthSelection = ({ handleChange, month, data }) => {
         <Radio size="sm" value="ausencias">Ausencias</Radio>
         <Radio size="sm" value="retiros">Retiros</Radio>
       </RadioGroup>
-      <div className="border-1 rounded-md border-orange-500 shadow-lg shadow-orange-500 p-2 m-2 flex justify-between bg-white">
+      <div className="border-1 rounded-md border-orange-300 shadow-md shadow-orange-300 p-2 m-2 flex justify-between bg-white">
         <select className="w-full text-xl bg-white" onChange={handleChange} value={month}>
           <option value="enero">Enero</option>
           <option value="febrero">Febrero</option>
@@ -31,7 +31,7 @@ const MonthSelection = ({ handleChange, month, data }) => {
         </select>
       </div>
 
-      <div className="border-1 rounded-md border-orange-500 shadow-lg shadow-orange-500 p-1 m-2 flex justify-between items-center mt-6">
+      <div className="border-1 rounded-md border-orange-300 shadow-md shadow-orange-300 p-1 m-2 flex justify-between items-center mt-6">
         <div className="p-4 text-2xl w-10 font-bold flex text-center">
           <small>{month.toUpperCase()} 2024</small>
         </div>
