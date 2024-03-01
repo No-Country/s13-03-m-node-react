@@ -129,7 +129,6 @@ const getAttendances = async (req, res) => {
 
 async function updateAttendance(req, res) {
     const filter = req.query;
-    console.log('esto es data,', filter)
     const image = req.files && req.files.image;
     try {
         if (!image || !image.tempFilePath) {
