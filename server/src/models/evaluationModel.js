@@ -7,17 +7,17 @@ const EvaluationSchema = new mongoose.Schema({
         required: true,
         trim: true,
     },
-    titulo: {
+    title: {
         type: String,
         required: true,
         trim: true,
     },
-    calificacion: {
+    grade: {
         type: Number,
         required: true,
         trim: true,
     },
-    fechaEvaluacion: {
+    testDate: {
         type: String,
         required: true,
         trim: true,

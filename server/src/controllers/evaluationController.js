@@ -6,7 +6,7 @@ import {ObjectId} from 'mongodb';
 const evaluationManager = new EvaluationManager();
 
 const createEvaluation = async (req, res) => {
-    const { titulo, calificacion, fechaEvaluacion } = req.body;
+    const { title, grade, testDate } = req.body;
     let {studentid} = req.body;
 
     try{
@@ -21,9 +21,9 @@ const createEvaluation = async (req, res) => {
             studentid = new ObjectId(studentid);
         }
         const data = {
-            titulo,
-            calificacion,
-            fechaEvaluacion,
+            title,
+            grade,
+            testDate,
             studentid
         }
 

@@ -128,21 +128,31 @@ const getAttendances = async (req, res) => {
 };
 
 async function updateAttendance(req, res) {
+    const filter = req.params;
+    console.log('esto es data,', filter)
+    const image = req.files && req.files.image;
     try {
-        const filter = req.params;
-        let dataUpdate = req.body;
-
-        // Verificar y transformar studentId si es necesario
-        if (dataUpdate.studentid) {
-            if (!ObjectId.isValid(dataUpdate.studentid)) {
-                return res.status(400).json({
-                    data: {},
-                    status: 1,
-                    message: 'El ID del estudiante no es válido',
-                });
-            }
-            dataUpdate.studentid = new ObjectId(dataUpdate.studentid); 
+        if (!image || !image.tempFilePath) {
+            return res.status(400).json({
+                data: {},
+                status: 1,
+                message: 'No se ha proporcionado una imagen válida.',
+            });
         }
+
+        console.log("Image to be saved");
+        console.log('Image tempFilePath:', image.tempFilePath);
+        let result_image = await cloudinary.uploader.upload(image.tempFilePath, {
+            public_id: `${Date.now()}`,
+            resource_type: "auto",
+        });
+        console.log('Result image cloudinary:', result_image);
+        console.log('Saving image data on Atlas Cloud');
+        const newImage = {
+            idCloudinary: result_image.public_id,
+            url: result_image.secure_url,
+            creationDate: new Date(),
+        };
 
         let query;
         if (filter._id) {
@@ -150,12 +160,12 @@ async function updateAttendance(req, res) {
         } else {
             query = filter;
         }
-        console.log(dataUpdate)
-        const updatedTeacher = await attendanceManager.updateAttendance(query, dataUpdate);
+
+        const updatedAttendance = await attendanceManager.updateAttendance(query, newImage);
         return res.status(200).json({
-            data: updatedTeacher,
+            data: updatedAttendance,
             status: 0,
-            message: 'Profesor actualizado correctamente',
+            message: 'Asistencia actualizada correctamente.',
         });
     } catch (error) {
         console.error(error);
@@ -166,6 +176,7 @@ async function updateAttendance(req, res) {
         });
     }
 }
+
 
 
 async function deleteAttendance(req, res) {
