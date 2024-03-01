@@ -6,7 +6,7 @@ import {ObjectId} from 'mongodb';
 const evaluationManager = new EvaluationManager();
 
 const createEvaluation = async (req, res) => {
-    const { title, grade, testDate } = req.body;
+    const { title, grade,subject, testDate } = req.body;
     let {studentid} = req.body;
 
     try{
@@ -24,7 +24,8 @@ const createEvaluation = async (req, res) => {
             title,
             grade,
             testDate,
-            studentid
+            studentid,
+            subject
         }
 
         const vallitareError = EvaluationModel(data).validateSync();
