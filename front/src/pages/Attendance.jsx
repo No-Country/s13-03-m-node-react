@@ -12,7 +12,7 @@ export const loader = async () => {
     const { data } = await axios.get('https://educlass-2024.onrender.com/api/attendance');
     return data
   } catch (error) {
-    return redirect('/asistencias')
+    return redirect('/')
   }
 }
 const Attendance = () => {
