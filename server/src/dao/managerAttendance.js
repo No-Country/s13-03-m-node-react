@@ -43,6 +43,8 @@ class AttendanceManager {
     }
 
     async updateAttendance(filter, dataUpdate) {
+        console.log('esto es dataUpdate', dataUpdate)
+        console.log('esto es filter', filter)
         const attendance = await this.updateDocument('attendancesCollection', filter, dataUpdate);
         return attendance;
     }

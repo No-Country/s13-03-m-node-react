@@ -128,7 +128,7 @@ const getAttendances = async (req, res) => {
 };
 
 async function updateAttendance(req, res) {
-    const filter = req.params;
+    const filter = req.query;
     console.log('esto es data,', filter)
     const image = req.files && req.files.image;
     try {
@@ -149,9 +149,11 @@ async function updateAttendance(req, res) {
         console.log('Result image cloudinary:', result_image);
         console.log('Saving image data on Atlas Cloud');
         const newImage = {
-            idCloudinary: result_image.public_id,
-            url: result_image.secure_url,
-            creationDate: new Date(),
+            certificado: {
+                idCloudinary: result_image.public_id,
+                url: result_image.secure_url,
+                creationDate: new Date()
+            }
         };
 
         let query;
