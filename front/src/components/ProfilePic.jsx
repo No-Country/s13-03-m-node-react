@@ -21,14 +21,14 @@ const ProfilePic = ({ handleLogout }) => {
         </DropdownTrigger>
 
         <DropdownMenu aria-label="Profile Actions" variant="flat">
-          <DropdownItem key="profile" className="h-14 gap-2">
+          <DropdownItem key="profile" className="h-14 gap-2" textValue="user">
             <p className="font-semibold">Usuario:</p>
             <p className="font-semibold">lucreciadelvalle@ejemplo.com</p>
           </DropdownItem>
-          <DropdownItem key="settings" withDivider>
+          <DropdownItem key="settings" withDivider textValue="settings">
             <NavLink className="font-semibold" to="/perfil">Perfil</NavLink>
           </DropdownItem>
-          <DropdownItem key="logout" color="danger" onClick={handleLogout}>
+          <DropdownItem key="logout" color="danger" onClick={handleLogout} textValue="logout">
             <NavLink className="font-semibold" to="/login">Cerrar sesión</NavLink>
           </DropdownItem>
         </DropdownMenu>
