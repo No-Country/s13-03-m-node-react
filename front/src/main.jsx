@@ -5,9 +5,9 @@ import './index.css'
 import { NextUIProvider } from '@nextui-org/react'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <NextUIProvider>
       <App />
     </NextUIProvider>
-  </React.StrictMode>,
+  // </React.StrictMode>,
 )

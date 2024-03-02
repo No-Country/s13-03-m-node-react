@@ -37,7 +37,7 @@ const Register = () => {
 
     return (
       <section className="flex justify-center min-h-screen">
-        <div className="hidden bg-cover lg:block lg:w-3/5" style={{backgroundImage: "url('/images/milad-fakurian-F93PQmh4krI-unsplash.webp')"}}></div>
+        <div className="hidden bg-cover lg:block lg:w-3/5" style={{backgroundImage: "url('src/assets/images/milad-fakurian-F93PQmh4krI-unsplash.webp')"}}></div>
          
         <div className='flex flex-col items-center justify-center w-full max-w-3xl p-8 mx-auto lg:px-12 lg:w-3/5'>
 
