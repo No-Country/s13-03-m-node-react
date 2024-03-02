@@ -41,7 +41,11 @@ async function getActivityById(req, res) {
 		const activity = await activityManager
 		.getOneActivity({_id: new ObjectId(id)});
 		if (!activity) {
-			throw new Error('la actividad no existe');
+			return res.status(200).json({
+				data: {},
+				status: 1,
+				message: 'No existe la actividad buscada, Intente nuevamente',
+			});
 		}
 		return res.status(200).json({
 			data: activity,

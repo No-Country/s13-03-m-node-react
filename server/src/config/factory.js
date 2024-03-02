@@ -30,6 +30,7 @@ async function getAllDocuments(collection, query = {}, select) {
 // Funcion para buscar por parametro
 async function getOneDocument(collection, query) {
 	try {
+		console.log('factory query: ', query)
 		if (!db[collection]) {
 			await db.connectToDatabase();
 		}
