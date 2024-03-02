@@ -114,6 +114,8 @@ const getAttendances = async (req, res) => {
 
         return res.status(200).json({
             data: attendances,
+            total_month: 20,
+            total_year: 200,
             status: 0,
             message: 'Se han encontrado las siguientes asistencias',
         });
