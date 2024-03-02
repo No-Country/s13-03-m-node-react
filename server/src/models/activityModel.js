@@ -41,11 +41,11 @@ const ActivityScheme = new mongoose.Schema({
         type: Boolean, 
         trim: true 
     },
-    // grade:{
-    //     type: Schema.Types.ObjectId,
-    //     ref: "grades"
-    // }
-    greade:{
+    isAuthorized:{
+        type: Boolean, 
+        trim: true 
+    },
+    grade:{
         type: String,
         trim: true,
         require: true

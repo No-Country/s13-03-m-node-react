@@ -129,6 +129,29 @@ async function updateImage(req, res) {
 	}
 }
 
+//TODO: hacer delete image from cloudinary y eliminar de la base de datos
+async function deleteImage(req,res){
+	const id=req.params.id;
+	try{
+		await imagemanager.deleteFromCloudinary(id);
+		const deletedImg=await imagemanager.deleteImage(id);
+		if(deletedImg){
+			return res.status(200).json({
+				data: imageUpdatedTwo,
+				status: 0,
+				message: 'Imagen eliminada correctamente de la bd',
+			});
+		}
+	
+	}catch(error){
+		return res.status(400).json({
+			data: {},
+			status: 1,
+			message: error.message,
+		});
+	}
+}
+
 
 
 export { createImage, getImages, getImageById, updateImage };
