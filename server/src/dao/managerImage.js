@@ -1,5 +1,5 @@
 import Database from "../config/mongodb.js";
-import { createDocument, getOneDocument, getAllDocuments, updateDocument } from "../config/factory.js";
+import { createDocument, getOneDocument, getAllDocuments, updateDocument, deleteDocument } from "../config/factory.js";
 import ImageModel from "../models/imageModel.js";
 
 class ImageManager{
@@ -9,15 +9,21 @@ class ImageManager{
         this.getOneDocument = getOneDocument;
 		this.getAllDocuments = getAllDocuments;
 		this.updateDocument = updateDocument;
+        this.deleteDocument = deleteDocument;
     }
 
     async createImage(data){
-        const { idCloudinary, url, creationDate, title, description} = data;
-        const image = ImageModel({
-            idCloudinary, url, creationDate, title, description
-        })
-        const newImage = await this.createDocument('imageCollection', image);
-        return newImage
+        try{
+            const { idCloudinary, url, creationDate, title, description} = data;
+            const image = ImageModel({
+                idCloudinary, url, creationDate, title, description
+            })
+            const newImage = await this.createDocument('imageCollection', image);
+            return newImage
+        }catch{
+            console.error(error);
+			throw new Error(`Error al crear la imagen: ${error.message}`);
+        }
     }
 
     async getOneImage(query){
@@ -26,7 +32,7 @@ class ImageManager{
 			return image;
 		} catch (error) {
 			console.error(error);
-			throw new Error(`Error al obtener el usuario: ${error.message}`);
+			throw new Error(`Error al obtener la imagen: ${error.message}`);
 		}
     }
 
@@ -48,6 +54,16 @@ class ImageManager{
             console.log(error)            
             throw new Error(`Error al obtener las imagenes: ${error.message}` )
         }
+    }
+
+    async deleteOneImage(query){
+        try {
+			const image = await this.deleteDocument('imageCollection', query);
+			return image;
+		} catch (error) {
+			console.error(error);
+			throw new Error(`Error al eliminar la imagen: ${error.message}`);
+		}
     }
 }
 

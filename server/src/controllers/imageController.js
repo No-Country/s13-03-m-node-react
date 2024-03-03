@@ -1,4 +1,5 @@
 import cloudinary from '../config/upload.cjs';
+//import cloudinary, { uploader } from '../config/upload.cjs';
 import ImageManager from '../dao/managerImage.js';
 import { Types } from 'mongoose';
 
@@ -129,29 +130,53 @@ async function updateImage(req, res) {
 	}
 }
 
-//TODO: hacer delete image from cloudinary y eliminar de la base de datos
+//Done: hacer delete image from cloudinary y eliminar de la base de datos
 async function deleteImage(req,res){
 	const id=req.params.id;
-	try{
-		await imagemanager.deleteFromCloudinary(id);
-		const deletedImg=await imagemanager.deleteImage(id);
-		if(deletedImg){
-			return res.status(200).json({
-				data: imageUpdatedTwo,
-				status: 0,
-				message: 'Imagen eliminada correctamente de la bd',
-			});
-		}
+
+	if (!id) {
+        return res.status(500).json({
+            data: {},
+            status: 1,
+            message: 'Por favor, ingrese un id de imagen',
+        });
+    }
 	
-	}catch(error){
-		return res.status(400).json({
-			data: {},
-			status: 1,
-			message: error.message,
-		});
+	const imageToDelete = await imagemanager.getOneImage({_id: new ObjectId(id)})
+	console.log('image to delete: ', imageToDelete, imageToDelete.idCloudinary)
+	if (!imageToDelete) {
+        return res.status(500).json({
+            data: {},
+            status: 1,
+            message: 'La imagen no existe',
+        });
+    }
+	let deletedImage
+	try {
+		deletedImage = cloudinary.uploader.upload(imageToDelete.idCloudinary);
+	} catch (error) {
+		return res.status(500).json({
+            data: {},
+            status: 1,
+            message: 'La imagen no se pudo eliminar, intente nuevamente mas tarde',
+        });
 	}
+	const deletedImageFromDB = imagemanager.deleteOneImage({_id: new ObjectId(id)})
+	if(!deletedImageFromDB){
+		return res.status(500).json({
+            data: {},
+            status: 1,
+            message: 'La imagen no se pudo eliminar, intente nuevamente mas tarde',
+        });
+	}
+	return res.status(200).json({
+        data: deletedImageFromDB,
+        status:0,
+        message:'Imagen eliminada correctamente'
+      })
+
 }
 
 
 
-export { createImage, getImages, getImageById, updateImage };
+export { createImage, getImages, getImageById, updateImage, deleteImage };
