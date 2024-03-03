@@ -9,7 +9,7 @@ import axios from "axios";
 
 export const loader = async () => {
   try {
-    const { data } = await axios.get('https://educlass-2024.onrender.com/api/attendance');
+    const data = await axios.get('https://educlass-2024.onrender.com/api/attendance');
     return data
   } catch (error) {
     return redirect('/')
@@ -17,7 +17,6 @@ export const loader = async () => {
 }
 const Attendance = () => {
   const { data } = useLoaderData();
-  console.log(data.document)
   const [month, setMonth] = useState("enero")
   const navigate = useNavigate();
 
