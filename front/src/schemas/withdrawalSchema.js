@@ -2,7 +2,7 @@ import * as Yup from 'yup';
 
 export const initialValues = {
   studentid: "65de921dc4b8e7383f8d3acd",
-  date: '29/02/2024',
+  date: '22/02/2024',
   status: 'retiro',
   name: '',
   document: '',
