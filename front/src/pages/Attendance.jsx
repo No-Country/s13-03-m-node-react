@@ -26,9 +26,9 @@ const Attendance = () => {
         <AttendanceBlock key={link.name} title={link.name} total={link.acumulado_mensual} handleClick={() => navigate(link.link, { state: link })} />
       ))}
 
-      <MonthSelection handleChange={(e) => setMonth(e.target.value)} month={month} data={mockData} />
+      <MonthSelection handleChange={(e) => setMonth(e.target.value)} month={month} data={data} />
 
-      <AttendanceChart data={mockData} />
+      <AttendanceChart mockData={mockData} />
     </div>
   );
 }
