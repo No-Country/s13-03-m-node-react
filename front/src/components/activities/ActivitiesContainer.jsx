@@ -6,7 +6,7 @@ import { useLoaderData } from "react-router-dom";
 import axios from "axios";
 
 const API_BASE = "https://educlass-2024.onrender.com/";
-const API_ACTIVITIES = "api/activities";
+const API_ACTIVITIES = "api/activity";
 
 export const activitiesLoader = async () => {
   try {
@@ -70,12 +70,12 @@ function ActivitiesContainer() {
       imageURL: "https://nextui.org/images/hero-card.jpeg",
     },
   ]);
-  const [activitiesData, setActivitiesData] = useState({data});
+  //const [activitiesData, setActivitiesData] = useState({data});
   return (
     <div className="mr-[16px] ml-[16px]">
       <SectionActivities
-        activitiesData={activitiesData}
-        setActivitiesData={setActivitiesData}
+        activitiesData={data.document}
+        //setActivitiesData={setActivitiesData}
       />
       <UrgentNotifications />
       <SectionGallery

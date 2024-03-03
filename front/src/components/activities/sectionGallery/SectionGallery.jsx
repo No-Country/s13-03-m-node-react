@@ -18,12 +18,10 @@ function SectionGallery({ activitiesImages }) {
           >
             <NavLink to={`galeria/${image.id}`}>
               <div className="border border-gray-200 rounded-lg overflow-hidden h-full">
-                {/* Contenedor del título con altura fija */}
                 <div className="p-4 h-[fit] flex flex-col justify-center items-center">
                   <h3 className="text-lg font-semibold mb-2 mt-5 text-[#280058]">{image.title}</h3>
                   <p className="text-sm text-[#280058] mb-2">{image.date}</p>
                 </div>
-                {/* Imagen con padding */}
                 <div className="p-1">
                   <img
                     alt="Actividad escolar"

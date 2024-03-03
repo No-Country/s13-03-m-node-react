@@ -7,7 +7,6 @@ import axios from "axios";
 const API_BASE = "https://educlass-2024.onrender.com/";
 const API_NOTIFICATIONS = "api/notification";
 
-
 // eslint-disable-next-line react-refresh/only-export-components
 export const notificationsLoader = async () => {
   try {
@@ -50,8 +49,6 @@ export const notificationsAction = async (notificationId, data) => {
   }
 };
 
-
-
 function NotificationContainer() {
   const { data } = useLoaderData();
   const [notificationsReaded, setNotificationsReaded] = useState();
@@ -67,6 +64,7 @@ function NotificationContainer() {
         setHistoryData={setHistoryData}
         historyData={historyData}
         setNotificationsReaded={setNotificationsReaded}
+        notificationsReaded={notificationsReaded}
       />
       <HistoryNotifications notificationsData={data.document} />
     </div>

@@ -6,14 +6,15 @@ function SectionActivities({ activitiesData }) {
   threeMonthsFromNow.setMonth(currentDate.getMonth() + 3);
 
   const upcomingActivities = activitiesData.filter((activity) => {
-    const activityDate = new Date(activity.date);
+    const activityDate = new Date(activity.activityDate);
     return activityDate >= currentDate && activityDate <= threeMonthsFromNow;
   });
 
   const upcomingEvents = activitiesData.filter((event) => {
-    const eventDate = new Date(event.date);
+    const eventDate = new Date(event.activityDate);
     return eventDate > threeMonthsFromNow;
   });
+
 
   return (
     <div id="allActivities-container">
@@ -35,15 +36,15 @@ function SectionActivities({ activitiesData }) {
           {upcomingActivities.map((activity) => (
             <div
               className="flex flex-col justify-start mt-2 w-[150px] max-w-[150px] bg-[#FDFBFF] border rounded-xl pt-5 pb-5 shadow-[#67B7B3] shadow-sm"
-              key={activity.id}
+              key={activity._id}
             >
               <div className="flex gap-3 bg-[#FDFBFF] pl-2">
                 <div className="flex flex-col">
-                  <p className="font-bold text-[#280058] h-[50px]">
+                  <p className="font-bold text-[#280058] h-[fit]">
                     {activity.title}
                   </p>
-                  <p className="font-medium text-[#280058] h-[20px]  justify-start">
-                    {activity.date}
+                  <p className="font-medium text-[#280058] h-[fit]  justify-start">
+                    {activity.activityDate}
                   </p>
                 </div>
               </div>
@@ -68,18 +69,18 @@ function SectionActivities({ activitiesData }) {
           id="year-card-activities"
           className="flex flex-wrap max-w-[360px] gap-5"
         >
-          {upcomingEvents.map((event) => (
+          {upcomingEvents?.map((event) => (
             <div
               className="flex flex-col justify-start mt-2 w-[150px] max-w-[150px] bg-[#FDFBFF] border rounded-xl pt-5 pb-5 shadow-[#67B7B3] shadow-sm"
-              key={event.id}
+              key={event._id}
             >
               <div className="flex gap-3 bg-[#FDFBFF] pl-2">
                 <div className="flex flex-col">
-                  <p className="font-bold text-[#280058] h-[50px]">
+                  <p className="font-bold text-[#280058] h-[fit]">
                     {event.title}
                   </p>
                   <p className="font-medium text-[#280058] h-[30px] h-min-[15px]  justify-start">
-                    {event.date}
+                    {event.activityDate}
                   </p>
                 </div>
               </div>
