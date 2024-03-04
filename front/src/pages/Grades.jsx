@@ -35,7 +35,7 @@ const Grades = () => {
 
   const data1 = [matematica, cienciasNaturales, lenguaLiteratura, cienciasSociales, educacionFisica, tecnologia, artes]
 
-
+//este array se utiliza para sincronizar las tablas
   const columns1 = [
     {
       key: "testDate",
@@ -50,6 +50,7 @@ const Grades = () => {
       label: "Nota",
     },
   ];
+//obejto para el estilo del acordion
   const itemClasses = {
     base: " mx-2 mb-6  shadow-md shadow-[#7222d366]  rounded-xl border-1 border-[#7222D3] ",
     title: "font-medium	text-lg  text-[#280058]	",
