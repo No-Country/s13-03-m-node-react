@@ -17,7 +17,7 @@ function UrgentNotifications() {
               <div className="flex items-center gap-5">
                 <img
                   className="w-10 h-10 border-2 border-[#7828c8] rounded-lg"
-                  src="/avatars/avatar-1.png"
+                  src="https://content3.cdnprado.net/imagenes/Documentos/imgsem/92/92a1/92a13834-fb16-179a-f71f-968524312368/29bfa12c-a5f0-f152-5af2-4449a919387d.jpg"
                   alt="Avatar"
                 />
                 <div className="flex flex-col">
