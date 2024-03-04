@@ -6,7 +6,7 @@ const AbsenceBlock = ({ date }) => {
 
   return (
     <>
-      <div className="border-1 rounded-md border-orange-500 shadow-lg shadow-orange-500 mt-4 flex justify-between m-4">
+      <div className="border-1 rounded-md border-orange-300 shadow-md shadow-orange-300 mt-4 flex justify-between m-4">
         <div className="p-4 text-2xl">
           <small>{date}</small>
         </div>

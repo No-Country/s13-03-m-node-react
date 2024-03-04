@@ -1,6 +1,10 @@
 import * as Yup from 'yup';
+import { getCurrentDateFormatted } from '../utils/months';
 
 export const initialValues = {
+  studentid: "65de921dc4b8e7383f8d3acd",
+  date: getCurrentDateFormatted(),
+  status: 'retiro',
   name: '',
   document: '',
   message: '',

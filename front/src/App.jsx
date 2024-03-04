@@ -1,9 +1,14 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import { Activities, Attendance, CalendarPage, Error, Home, Login, Notifications, Performance, Profile, Register, Grades } from './pages';
+import { Activities, Attendance, CalendarPage, Error, Home, Login, Notifications, Performance, Register, Grades } from './pages';
 import { Absences, Attendances, Withdrawals } from './components/attendance';
 import Layout from './components/Layout';
 import ActivitieGallery from "./components/activities/activitieGallery/ActivitieGallery";
+import { notificationsLoader } from './components/notifications/NotificationContainer';
+import { activitiesLoader } from './components/activities/ActivitiesContainer';
+
 import Help from './pages/Help';
+import UserProfile from './pages/Profile';
+import { loader as loaderAttendance } from "./pages/Attendance";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +21,7 @@ const router = createBrowserRouter([
       {
         path: "/asistencias",
         element: <Attendance />,
+        loader: loaderAttendance
       },
       {
         path: "/asistencias/asistencias",
@@ -36,14 +42,15 @@ const router = createBrowserRouter([
       {
         path: "/notificaciones",
         element: <Notifications />,
+        loader: notificationsLoader
       },
       {
         path: '/perfil',
-        element: <Profile />
+        element: <UserProfile />
       },
       {
         path: '/calendario',
-        element: <CalendarPage />
+        element: <CalendarPage />,
       },
       {
         path: '/calificaciones',
@@ -52,6 +59,7 @@ const router = createBrowserRouter([
       {
         path: "/actividades",
         element: <Activities />,
+        loader: activitiesLoader
       },
       {
         path: "/actividades/galeria/:id",

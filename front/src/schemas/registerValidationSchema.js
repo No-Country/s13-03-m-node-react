@@ -1,10 +1,7 @@
 import * as Yup from 'yup';
 
 export const registerValidationSchema = Yup.object().shape({
-    apellidoFamiliar: Yup.string().required('*Campo obligatorio'),
-    codigoAlumno: Yup.string()
-    .required('*Campo obligatorio')
-    .matches(/^[0-9]+$/, 'Solo debe contener valores numéricos'),
+    lastname: Yup.string().required('*Campo obligatorio'),
     email: Yup.string().email('Email invalido').required('*Campo obligatorio'),
     password: Yup.string()
       .required('*Campo obligatorio')
@@ -14,4 +11,6 @@ export const registerValidationSchema = Yup.object().shape({
         /^[0-9]{8,16}$/,
         'Solo debe contener valores numéricos'
     ),
+    idstudents: Yup.string()
+    .required('*Campo obligatorio')
 });

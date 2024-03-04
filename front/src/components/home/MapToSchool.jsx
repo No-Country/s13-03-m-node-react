@@ -1,7 +1,7 @@
 const MapToSchool = () => {
     //CREAR UN ARRAY CON LAS DISTINTAS URL O TAMAÑOS
     return (
-      <section className="flex  flex-col">
+      <section className="flex flex-col justify-center min-h-[500px]">
         <h3 className="font-bold text-base mx-4 mb-8 ">¿Cómo llego a mi escuela?</h3>
         <iframe
           className="self-center w-full h-64 px-4"

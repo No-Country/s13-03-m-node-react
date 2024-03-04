@@ -2,7 +2,7 @@ import { Radio, RadioGroup } from "@nextui-org/react";
 import { useState } from "react";
 import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-const AttendanceChart = ({ data }) => {
+const AttendanceChart = ({ chartData }) => {
   const [value, setValue] = useState("year");
 
   return (
@@ -16,7 +16,7 @@ const AttendanceChart = ({ data }) => {
 
       <ResponsiveContainer width="100%" height={300} minWidth={360}>
         <BarChart
-          data={data}
+          data={chartData}
           margin={{
             top: 5,
             right: 0,
