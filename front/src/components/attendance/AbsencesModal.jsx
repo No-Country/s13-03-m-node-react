@@ -5,10 +5,12 @@ import SkeletonImage from "./SkeletonImage"
 import Swal from "sweetalert2"
 import axios from "axios"
 import { useAuth } from "../../contexts/authContext"
+import { useNavigate } from "react-router-dom"
 
 const AbsencesModal = ({ isOpen, onOpenChange }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
+  const navigate = useNavigate();
   const { user } = useAuth();
   const { _id } = user
 
@@ -30,6 +32,7 @@ const AbsencesModal = ({ isOpen, onOpenChange }) => {
         title: 'Justificación enviada',
         text: 'Se ha enviado tu justificación',
       })
+      navigate('/asistencias')
     } catch (error) {
       console.log(error)
       Swal.fire({
