@@ -1,10 +1,14 @@
 import { Radio, RadioGroup } from "@nextui-org/react"
 import { useState } from "react";
+import { countDaysInMonth, getCurrentMonth, getWorkingDaysSinceStartOfMonth, hasMonthPassed } from "../../utils/months";
 
 const MonthSelection = ({ handleChange, month, data }) => {
   const [value, setValue] = useState("asistencias");
-  const selectedValue = value === "asistencias" ? 0 : value === "ausencias" ? 1 : 2;
-  const renderedValue = value.slice(-1) === "s" ? value.slice(0, -1) : value
+  const ausencias = data.data.document.filter((item) => item.status === 'ausencia').map((item) => item.date)
+  const retiros = data.data.document.filter((item) => item.status === 'retiro').map((item) => item.date)
+  const asistencias = hasMonthPassed(month) ? data.total_month - countDaysInMonth(ausencias, month) : getCurrentMonth() === month ? getWorkingDaysSinceStartOfMonth() - countDaysInMonth(ausencias, month) : 0
+
+  const selectedDatesArray = value === "asistencias" ? asistencias : value === "ausencias" ? ausencias : retiros
 
   return (
     <>
@@ -36,7 +40,7 @@ const MonthSelection = ({ handleChange, month, data }) => {
           <small>{month.toUpperCase()} 2024</small>
         </div>
         <div className="p-4 text-2xl">
-          <small className="text-[#280058]">{data[selectedValue][month]} {data[selectedValue][month] === 1 ? renderedValue : value}</small>
+          <small className="text-[#280058]">{value === 'asistencias' ? asistencias : countDaysInMonth(selectedDatesArray, month)} {value}</small>
         </div>
       </div>
     </>
