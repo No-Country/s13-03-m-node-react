@@ -25,7 +25,7 @@ export function countDaysInMonth(dateArray, targetMonth) {
 
   let daysCount = 0;
   dateArray.forEach(dateStr => {
-    const monthIndex = parseInt(dateStr.split('/')[1]) - 1; // Subtract 1 to convert to 0-based index
+    const monthIndex = parseInt(dateStr.split('/')[1]) - 1;
 
     if (monthIndex === targetMonthIndex) {
       daysCount++;
@@ -75,4 +75,11 @@ export function hasMonthPassed(targetMonth) {
   }
 
   return currentMonthIndex > targetMonthIndex;
+}
+
+export function getTotalAsistencias(totalMes) {
+  const currentMonthAsistencias = getWorkingDaysSinceStartOfMonth()
+  const previousMonthAsistencias = new Date().getMonth() * totalMes
+
+  return currentMonthAsistencias + previousMonthAsistencias
 }
