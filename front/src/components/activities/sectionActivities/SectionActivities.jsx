@@ -1,7 +1,7 @@
 import FirstModal from "../firstModal";
 
 function SectionActivities({ activitiesData }) {
-  const currentDate = new Date();
+/*   const currentDate = new Date();
   const threeMonthsFromNow = new Date();
   threeMonthsFromNow.setMonth(currentDate.getMonth() + 3);
 
@@ -13,7 +13,7 @@ function SectionActivities({ activitiesData }) {
   const upcomingEvents = activitiesData.filter((event) => {
     const eventDate = new Date(event.activityDate);
     return eventDate > threeMonthsFromNow;
-  });
+  }); */
 
 
   return (
@@ -33,7 +33,7 @@ function SectionActivities({ activitiesData }) {
           id="trimester-card-activities"
           className="flex flex-wrap justify-center max-w-[360px] gap-5  bg-[#FDFBFF]"
         >
-          {upcomingActivities.map((activity) => (
+          {activitiesData.map((activity) => (
             <div
               className="flex flex-col justify-start mt-2 w-[150px] max-w-[150px] bg-[#FDFBFF] border rounded-xl pt-5 pb-5 shadow-[#67B7B3] shadow-sm"
               key={activity._id}
@@ -45,42 +45,6 @@ function SectionActivities({ activitiesData }) {
                   </p>
                   <p className="font-medium text-[#280058] h-[fit]  justify-start">
                     {activity.activityDate}
-                  </p>
-                </div>
-              </div>
-              <div className="flex justify-center bg-[#FDFBFF] pt-3">
-                <button className="text-center">
-                  <div className="mx-auto">
-                    <FirstModal />
-                  </div>
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-      <div id="year-activities" className="mt-10">
-        <div id="year-activities-title">
-          <h2 className="text-[16px] font-medium text-[#280058]">
-            Que nos espera en el año
-          </h2>
-        </div>
-        <div
-          id="year-card-activities"
-          className="flex flex-wrap max-w-[360px] gap-5"
-        >
-          {upcomingEvents?.map((event) => (
-            <div
-              className="flex flex-col justify-start mt-2 w-[150px] max-w-[150px] bg-[#FDFBFF] border rounded-xl pt-5 pb-5 shadow-[#67B7B3] shadow-sm"
-              key={event._id}
-            >
-              <div className="flex gap-3 bg-[#FDFBFF] pl-2">
-                <div className="flex flex-col">
-                  <p className="font-bold text-[#280058] h-[fit]">
-                    {event.title}
-                  </p>
-                  <p className="font-medium text-[#280058] h-[30px] h-min-[15px]  justify-start">
-                    {event.activityDate}
                   </p>
                 </div>
               </div>
