@@ -2,38 +2,57 @@ import React, { useState, useEffect } from 'react';
 import { Formik, Form, Field } from 'formik';
 import { registerValidationSchema } from '../schemas/registerValidationSchema.js';
 import axios from 'axios';
+import { useAuth } from '../contexts/authContext.jsx';
 
 
-const Profile = () => {
+const UserProfile = () => {
   const [userData, setUserData] = useState(null);
+  const [updatedUserData, setUpdatedUserData] = useState(null);
+  const { user } = useAuth();
+  const [ userEmail, setUserEmail ] = useState('');
 
   useEffect(() => {
-    axios.get('https://educlass-2024.onrender.com/api/user')
-        .then(response => {
-            setUserData(response.data);
-        })
-        .catch(error => {
-            console.error('Error fetching user data', error);
-        });
-  }, []);
+    if (user) {
+      setUserEmail(user.email);
+      axios.get(`https://educlass-2024.onrender.com/api/user/${user.email}`)
+      .then(response => {
+        setUserData(response.data);
+        console.log('Datos del usuario cargados correctamente:', response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching user data', error);
+      });
+    }
+}, [user]);
 
+  useEffect(() => {
+    if (userData) {
+      const initialValues = {
+        lastname: userData?.lastname || '',
+        email: userData?.email || '',
+        idstudents: userData?.idstudents || '',
+        password: '',
+      };
+      console.log('Initial values:', initialValues);
+    }
+  }, [userData]);
+   
 
-const handleSubmit = (values) => {
-  axios.put('https://educlass-2024.onrender.com/api/user/:email', values)
-  .then(response => {
-    console.log('Los datos se han actualizado correctamente'); 
-  })
-  .catch(error => {
-    console.error('Error al actualizar los datos, intente nuevamente', error);
-  });
-};
+const handleUpdateUser = (values) => {
+  if (user) {
+    const updatedData = { ...userData, ...values }
+    setUpdatedUserData(updatedData);
 
-const initialValues = {
-  lastName: userData?.lastName || '',
-  email: userData?.email || '',
-  codigoAlumno: userData?.codigoAlumno || '',
-  password: '',
-};
+    axios.put(`https://educlass-2024.onrender.com/api/user/${user.email}`, updatedUserData) 
+    .then(response => {
+      console.log('Los datos se han actualizado correctamente');
+      setUserData(updatedData); 
+    })
+    .catch(error => {
+      console.error('Error al actualizar los datos, intente nuevamente', error);
+    });
+  };
+}
 
   return (
     <section className="h-screen flex flex-col justify-center items-center">
@@ -43,20 +62,20 @@ const initialValues = {
           <Formik
           initialValues={initialValues}
           validationSchema={registerValidationSchema}
-          onSubmit={handleSubmit}
+          onSubmit={handleUpdateUser}
         >
         {({ errors, touched }) => (
         <Form className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2">
             <div>
               <label className="block mb-2 text-sm">Apellido de la familia</label>
-              <Field type="text" name="apellidoFamiliar" placeholder="Ej: Montero" className="w-full px-4 py-2 border rounded-md focus:border-blue-500 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
-                {errors.lastName && touched.lastName && <div>{errors.lastName}</div>}
+              <Field type="text" name="lastname" placeholder="Ej: Montero" className="w-full px-4 py-2 border rounded-md focus:border-blue-500 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                {errors.lastname && touched.lastname && <div>{errors.lastname}</div>}
             </div>
 
             <div>
               <label className="block mb-2 text-sm">Código del alumno</label>
-              <Field type="number" name="codigoAlumno" placeholder="Ej: 12345B" className="w-full px-4 py-2 border rounded-md focus:border-blue-500 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
-                {errors.codigoAlumno && touched.codigoAlumno && <div>{errors.codigoAlumno}</div>}
+              <Field type="number" name="idstudents" placeholder="Ej: 12345B" className="w-full px-4 py-2 border rounded-md focus:border-blue-500 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                {errors.idstudents && touched.idstudents && <div>{errors.idstudents}</div>}
             </div>
 
             <div>
@@ -83,4 +102,4 @@ const initialValues = {
   );
 }
 
-export default Profile;
+export default UserProfile;
