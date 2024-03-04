@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const ImageScheme = new mongoose.Schema({
     idCloudinary:{
@@ -25,6 +25,18 @@ const ImageScheme = new mongoose.Schema({
         type: String,
         required: false,
 		trim: true,
+    },
+    isportada:{
+        type: Boolean, 
+        required: true
+    },
+    isGaleria:{
+        type: Boolean, 
+        required: true
+    },
+    idActivity:{
+        type: String,
+        required: true
     }
 })
 

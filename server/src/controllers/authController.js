@@ -151,7 +151,7 @@ const signUp3 = async (req, res) => {
     const userCreated = await usermanager.getOneUser({ _id: newUser.insertedId });
 
     const token = jwt.sign(
-        { _id: newUser.insertedId },
+        { _id: newUser.insertedId }, 
         process.env.JWT_SECRET || 'your_default_secret_key'
     );
 
@@ -168,7 +168,7 @@ const signIn = async(req, res)=>{
         if(user.password !== password) return res.status(401).send('Wrong Password')
 
         const token = jwt.sign({_id:user._id}, 'eduNetSecretKey')
-        res.status(200).send({token})
+        res.status(200).send({user, token})
     } catch (error) {
         res.status(400).send({error})
     }
