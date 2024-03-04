@@ -2,43 +2,68 @@ import React from 'react';
 import Swal from 'sweetalert2'; 
 import ReactDOMServer from 'react-dom/server';
 import SecondModal from './secondModal';
+import axios from 'axios';
 
 
 const FirstModal = () => {
-
-  const dummyData = {
-    id:"001",
-    title1: "Titulo de la actividad",
-    first_description: "Estimadas familias, lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    title2: "Horario de la salida:",
-    schedule: "Viernes de 9:00 a 12:00 hs.",
-    title3: "¿Que se necesita?",
-    middle_description: "Zapatillas cómodas, agua, comida y gorra.",
-    title4: "Autorización",
-    last_description: "Para esta actividad, se requiere la autorización de los tutores. Ante cualquier duda, por favor contáctenos.",
-  };
+  // const dummyData = {
+  //   id:"001",
+  //   title1: "Titulo de la actividad",
+  //   first_description: "Estimadas familias, lorem ipsum dolor sit amet consectetur adipisicing elit.",
+  //   title2: "Horario de la salida:",
+  //   schedule: "Viernes de 9:00 a 12:00 hs.",
+  //   title3: "¿Que se necesita?",
+  //   middle_description: "Zapatillas cómodas, agua, comida y gorra.",
+  //   title4: "Autorización",
+  //   last_description: "Para esta actividad, se requiere la autorización de los tutores. Ante cualquier duda, por favor contáctenos.",
+  // };
   
 
   const openFirstModal = () => {
+
+    axios.get('https://educlass-2024.onrender.com/api/activity')
+    .then(response => {
+      const activityData = response.data.data.document[0];
+      console.log(activityData);
     // primer modal
     const modalContent = ReactDOMServer.renderToStaticMarkup(
       <div className='flex flex-col text-left gap-4 text-base'>
         <div>
-          <h2 className='font-bold text-center'>{dummyData.title1}</h2>
-          <p className='mt-1'>{dummyData.first_description}</p>
+          <h2 className='font-bold text-center'>
+            {/* {dummyData.title1} */}
+            {activityData.title}
+          </h2> 
+          <p className='mt-1'>
+            {/* {dummyData.first_description} */}
+            {activityData.description}
+          </p>
         </div>
         <div>
-          <h2 className='font-bold text-center'>{dummyData.title2}</h2>
-          <p className='mt-1'>{dummyData.schedule}</p>
+          <h2 className='font-bold text-center'>
+            {/* {dummyData.title2} */}
+            Horario:
+          </h2>
+          <p className='mt-1'>
+            {/* {dummyData.schedule} */}
+           El dia {activityData.activityDate}. De {activityData.hourBegin} a {activityData.hourEnd} 
+          </p>
         </div>
         <div>
-          <h2 className='font-bold text-center'>{dummyData.title3}</h2>
-          <p className='mt-1'>{dummyData.middle_description}</p>
+          <h2 className='font-bold text-center'>
+            {/* {dummyData.title3} */}
+            ¿Que se necesita?
+          </h2>
+          <p className='mt-1'>
+            {/* {dummyData.middle_description} */}
+            {activityData.requirements}
+          </p>
         </div>
-        <div>
-          <h2 className='font-bold text-center'>{dummyData.title4}</h2>
-          <p className='mt-1'>{dummyData.last_description}</p>
+        {activityData.needAuthorization && (
+          <div>
+            <h2 className='font-bold text-center'>Autorización</h2>
+            <p className='mt-1'>Para esta actividad, se requiere la autorización de los tutores. Ante cualquier duda, por favor contáctenos.</p>
         </div>
+        )} 
       </div>
     );
    
@@ -58,6 +83,10 @@ const FirstModal = () => {
           showConfirmButton: false,
         });
       }
+    });
+  })
+    .catch(error => {
+      console.error('Error al obtener los datos', error);
     });
   };
     

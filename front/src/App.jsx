@@ -1,5 +1,5 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import { Activities, Attendance, CalendarPage, Error, Home, Login, Notifications, Performance, Profile, Register, Grades } from './pages';
+import { Activities, Attendance, CalendarPage, Error, Home, Login, Notifications, Performance, Register, Grades } from './pages';
 import { Absences, Attendances, Withdrawals } from './components/attendance';
 import Layout from './components/Layout';
 import ActivitieGallery from "./components/activities/activitieGallery/ActivitieGallery";
@@ -7,6 +7,7 @@ import { notificationsLoader } from './components/notifications/NotificationCont
 import { activitiesLoader } from './components/activities/ActivitiesContainer';
 
 import Help from './pages/Help';
+import UserProfile from './pages/Profile';
 import { loader as loaderAttendance } from "./pages/Attendance";
 
 const router = createBrowserRouter([
@@ -45,7 +46,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/perfil',
-        element: <Profile />
+        element: <UserProfile />
       },
       {
         path: '/calendario',
