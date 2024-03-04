@@ -44,3 +44,35 @@ export function getCurrentMonth() {
 
   return currentMonthName;
 }
+
+export function getWorkingDaysSinceStartOfMonth() {
+  const currentDate = new Date();
+
+  const currentDayOfMonth = currentDate.getDate();
+
+  let workingDaysCount = 0;
+
+  for (let day = 1; day <= currentDayOfMonth; day++) {
+    const currentDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
+
+    const dayOfWeek = currentDay.getDay();
+    if (dayOfWeek >= 1 && dayOfWeek <= 5) {
+      workingDaysCount++;
+    }
+  }
+
+  return workingDaysCount;
+}
+
+export function hasMonthPassed(targetMonth) {
+  const monthNames = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+  const currentDate = new Date();
+  const currentMonthIndex = currentDate.getMonth();
+  const targetMonthIndex = monthNames.findIndex(month => month.toLowerCase() === targetMonth.toLowerCase());
+
+  if (targetMonthIndex === -1) {
+    return false;
+  }
+
+  return currentMonthIndex > targetMonthIndex;
+}
