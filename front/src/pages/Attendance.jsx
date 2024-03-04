@@ -1,13 +1,11 @@
 /* eslint-disable react-refresh/only-export-components */
 import { redirect, useLoaderData, useNavigate } from "react-router-dom";
 import AttendanceChart from '../components/attendance/AttendanceChart';
-import { data as mockData } from '../utils/data.js';
 import AttendanceBlock from "../components/attendance/AttendanceBlock.jsx";
 import MonthSelection from "../components/attendance/MonthSelection.jsx";
 import { useState } from "react";
 import axios from "axios";
 import { countDaysInMonth, getCurrentMonth, getWorkingDaysSinceStartOfMonth, hasMonthPassed, getTotalAsistencias } from "../utils/months";
-
 
 export const loader = async () => {
   try {
@@ -29,6 +27,7 @@ const Attendance = () => {
   const chartData = [
     {
       name: 'Asistencias',
+      link: "/asistencias/asistencias",
       total_anual: getTotalAsistencias(data.total_month),
       acumulado_anual: getTotalAsistencias(data.total_month) - ausencias.length,
       total_mensual: getWorkingDaysSinceStartOfMonth(),
@@ -36,12 +35,15 @@ const Attendance = () => {
     },
     {
       name: 'Ausencias',
+      link: "/asistencias/ausencias",
+      ausencias,
       acumulado_anual: ausencias.length,
       acumulado_mensual: countDaysInMonth(ausencias, getCurrentMonth()),
       total_anual: 10,
     },
     {
       name: 'Retiros',
+      link: "/asistencias/retiros",
       acumulado_anual: retiros.length,
       acumulado_mensual: countDaysInMonth(retiros, getCurrentMonth()),
     }
@@ -49,8 +51,8 @@ const Attendance = () => {
 
   return (
     <div className="max-w-[900px] gap-2 flex flex-col px-4">
-      {mockData.map((link) => (
-        <AttendanceBlock key={link.name} title={link.name} total={link.acumulado_mensual} handleClick={() => navigate(link.link, { state: link })} />
+      {chartData.map((link) => (
+        <AttendanceBlock key={link.name} title={link.name} total={link.acumulado_anual} handleClick={() => navigate(link.link, { state: link })} />
       ))}
 
       <MonthSelection handleChange={(e) => setMonth(e.target.value)} month={month} asistencias={asistencias} ausencias={ausencias} retiros={retiros} />
