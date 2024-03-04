@@ -83,3 +83,16 @@ export function getTotalAsistencias(totalMes) {
 
   return currentMonthAsistencias + previousMonthAsistencias
 }
+
+export function getCurrentDateFormatted() {
+  // Get the current date
+  const currentDate = new Date();
+
+  // Extract day, month, and year components from the current date
+  const day = currentDate.getDate().toString().padStart(2, '0');
+  const month = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // Add 1 because month is zero-based
+  const year = currentDate.getFullYear();
+
+  // Return the formatted date string
+  return `${day}/${month}/${year}`;
+}
