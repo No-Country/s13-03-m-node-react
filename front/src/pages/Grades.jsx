@@ -9,50 +9,40 @@ import {
   TableCell,
   getKeyValue,
 } from "@nextui-org/react";
+import axios from "axios";
+import { useLoaderData } from "react-router";
 
+
+export const loader = async () => {
+  try {
+    const data = await axios.get('https://educlass-2024.onrender.com/api/evaluation');
+    return data
+  } catch (error) {
+    return redirect('/')
+  }
+}
 const Grades = () => {
-  const data = [
-    {
-      title: "Materia 1",
-      grade: [
-        { key: "m1.1", date: "01/01", tema: "??", grade: 10 },
-        { key: "m1.2", date: "01/01", tema: "??", grade: 18 },
-        { key: "m1.3", date: "01/01", tema: "??", grade: 16 },
-        { key: "m1.4", date: "01/01", tema: "??", grade: 15 },
-        { key: "m1.5", date: "01/01", tema: "??", grade: 14 },
-        { key: "m1.6", date: "01/01", tema: "??", grade: 13 },
-      ],
-    },
-    {
-      title: "Materia 2",
-      grade: [
-        { key: "m2.1", date: "01/01", tema: "??", grade: 12 },
-        { key: "m2.2", date: "01/01", tema: "??", grade: 11 },
-        { key: "m2.3", date: "01/01", tema: "??", grade: 9 },
-        { key: "m2.4", date: "01/01", tema: "??", grade: 8 },
-        { key: "m2.5", date: "01/01", tema: "??", grade: 4 },
-      ],
-    },
-    {
-      title: "Materia 3",
-      grade: [
-        { key: "m3.1", date: "01/01", tema: "??", grade: 6 },
-        { key: "m3.2", date: "01/01", tema: "??", grade: 3 },
-        { key: "m3.3", date: "01/01", tema: "??", grade: 1 },
-      ],
-    },
-    {
-      title: "Materia 4",
-      grade: [{ key: "m4.1", date: "01/01", tema: "??", grade: 7 }],
-    },
-  ];
+  const { data } = useLoaderData();
+  const { document } = data.data
+
+  const matematica = { title: "Matemática", grade: document.filter((item) => item.subject == "Matemática") }
+  const cienciasNaturales = { title: "Ciencias Naturales", grade: document.filter((item) => item.subject == "Ciencias Naturales") }
+  const lenguaLiteratura = { title: "Lengua y Literatura", grade: document.filter((item) => item.subject == "Lengua y Literatura") }
+  const cienciasSociales = { title: "Ciencias Sociales", grade: document.filter((item) => item.subject == "Ciencias Sociales") }
+  const educacionFisica = { title: "Educación Fisica", grade: document.filter((item) => item.subject == "Educación física") }
+  const tecnologia = { title: "Tecnología", grade: document.filter((item) => item.subject == "Tecnología") }
+  const artes = { title: "Artes", grade: document.filter((item) => item.subject == "Artes") }
+
+  const data1 = [matematica, cienciasNaturales, lenguaLiteratura, cienciasSociales, educacionFisica, tecnologia, artes]
+
+
   const columns1 = [
     {
-      key: "date",
+      key: "testDate",
       label: "Fecha",
     },
     {
-      key: "tema",
+      key: "title",
       label: "Tema",
     },
     {
@@ -73,9 +63,8 @@ const Grades = () => {
       <h1 className="mx-4 mb-8 font-bold text-xl 	">
         Sigue mi recorrido académico
       </h1>
-
       <Accordion showDivider={false} itemClasses={itemClasses}>
-        {data.map((item) => (
+        {data1.map((item) => (
           <AccordionItem
             key={item.title}
             aria-label={item.title}
@@ -83,21 +72,21 @@ const Grades = () => {
           >
             {item.grade && (
               <Table
-              hideHeader 
-              isStriped 
-                key={item.title}
+                hideHeader
+                isStriped
+                key={item.id}
                 removeWrapper
-                aria-label={"Notas de la " + item.title}
+                aria-label={"Notas de la "}
                 className="text-[#280058]"
               >
-                <TableHeader  columns={columns1}>
+                <TableHeader columns={columns1}>
                   {(column) => (
                     <TableColumn key={column.key}>{column.label}</TableColumn>
                   )}
                 </TableHeader>
                 <TableBody items={item.grade}>
                   {(item) => (
-                    <TableRow key={item.key}>
+                    <TableRow key={item._id}>
                       {(columnKey) => (
                         <TableCell className=" font-medium">
                           {getKeyValue(item, columnKey)}
