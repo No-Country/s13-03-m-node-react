@@ -7,6 +7,7 @@ import axios from "axios";
 
 const API_BASE = "https://educlass-2024.onrender.com/";
 const API_ACTIVITIES = "api/activity";
+const API_IMAGES = "api/activity";
 
 export const activitiesLoader = async () => {
   try {
@@ -26,8 +27,27 @@ export const activitiesLoader = async () => {
   }
 };
 
+export const activitiesGalleryLoader = async () => {
+  try {
+    const { dataImage } = await axios.get(`${API_BASE}${API_IMAGES}`);
+    return dataImage;
+  } catch (error) {
+    if (error.response) {
+      console.error(
+        `La solicitud falló con el código de estado ${error.response.status}`
+      );
+    } else if (error.request) {
+      console.error("No se recibió respuesta del servidor");
+    } else {
+      console.error(`Ocurrió un error: ${error.message}`);
+    }
+    throw error;
+  }
+};
+
 function ActivitiesContainer() {
-  const { data } = useLoaderData();
+  const { data} = useLoaderData();
+  
   const [activitiesImages, setActivitiesImages] = useState([
     {
       id:'01',
