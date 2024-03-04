@@ -1,134 +1,78 @@
-//import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Image } from "@nextui-org/react";
+import axios from "axios";
+import { useLoaderData } from "react-router-dom";
+
+const API_BASE = "https://educlass-2024.onrender.com/";
+const API_IMAGES = "api/image";
+
+export const activitiesGalleryLoader = async () => {
+  try {
+    const dataImage = await axios.get(`${API_BASE}${API_IMAGES}`);
+    return dataImage.data;
+  } catch (error) {
+    if (error.response) {
+      console.error(
+        `La solicitud falló con el código de estado ${error.response.status}`
+      );
+    } else if (error.request) {
+      console.error("No se recibió respuesta del servidor");
+    } else {
+      console.error(`Ocurrió un error: ${error.message}`);
+    }
+    throw error;
+  }
+};
 
 function ActivityGallery() {
-  const { id } = useParams();
-  console.log(id);
-  const activitiesImages = [
-    {
-      id: "01",
-      title: "Excursión al Museo de Historia",
-      imageURLs: [
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-      ],
-    },
-    {
-      id: "02",
-      title: "Feria de Ciencias",
-      imageURLs: [
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-      ],
-    },
-    {
-      id: "03",
-      title: "Concurso de Ortografía",
-      imageURLs: [
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-      ],
-    },
-    {
-      id: "04",
-      title: "Día del Deporte",
-      imageURLs: [
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-      ],
-    },
-    {
-      id: "05",
-      title: "Festival de Arte",
-      imageURLs: [
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-      ],
-    },
-    {
-      id: "06",
-      title: "Semana de la Lectura",
-      imageURLs: [
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-      ],
-    },
-    {
-      id: "07",
-      title: "Obra de Teatro Escolar",
-      imageURLs: [
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-      ],
-    },
-    {
-      id: "08",
-      title: "Actividad de Reciclaje",
-      imageURLs: [
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-        "https://nextui.org/images/hero-card.jpeg",
-      ],
-    },
-  ];
+  const [selectedPhoto, setSelectedPhoto] = useState([]);
+  const [selectedPhotoTittle, setSelectedPhotoTittle] = useState();
+  const [primaryImage, setPrimaryImage] = useState();
+  const id = useParams();
+  const dataImage = useLoaderData();
 
-  const selectedPhoto = activitiesImages.find((image) => image.id === id);
+  useEffect(() => {
+    setSelectedPhoto(
+      dataImage.data.document.filter((image) => image.idActivity === id.id)
+    );
+
+    setSelectedPhotoTittle(
+      dataImage.data.document.find((image) => image.idActivity === id.id).title
+    );
+  }, []);
+
+  console.log(selectedPhoto[0]?.url);
 
   return (
     <div className="mr-[16px] ml-[16px]">
-      {selectedPhoto && (
-        <div className="flex flex-wrap justify-center">
-          <h1>{selectedPhoto.title}</h1>
-          <div className="flex flex-wrap justify-center gap-5 mt-5">
-            {selectedPhoto.imageURLs.map((url, index) => (
-              <div key={index} className="mr-[8px] mb-[8px]">
-                <Image
-                  alt={`Actividad escolar ${index}`}
-                  className="object-cover"
-                  height={170}
-                  src={url}
-                  width={130}
-                />
-              </div>
-            ))}
+      <div className="flex flex-wrap justify-center">
+        <h1 className="text-[#280058]">{selectedPhotoTittle}</h1>
+        <div className="flex flex-wrap justify-center gap-5 mt-5">
+          <div className="mr-[8px] mb-[8px]">
+            <Image
+              className="object-cover"
+              height={170}
+              src={primaryImage ? primaryImage.url : selectedPhoto[0]?.url}
+              width={300}
+            />
           </div>
+          {selectedPhoto.map((image, index) => (
+            <div key={index} className="mr-[8px] mb-[8px]">
+              <Image
+                alt={`Actividad escolar ${index}`}
+                className="object-cover"
+                height={170}
+                src={image.url}
+                width={130}
+                onClick={() => setPrimaryImage(image)}
+              />
+            </div>
+          ))}
         </div>
-      )}
+      </div>
     </div>
   );
-  
 }
 
 export default ActivityGallery;
