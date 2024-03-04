@@ -26,7 +26,7 @@ const ImageScheme = new mongoose.Schema({
         required: false,
 		trim: true,
     },
-    isportada:{
+    isPortada:{
         type: Boolean, 
         required: true
     },
