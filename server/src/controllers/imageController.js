@@ -10,7 +10,7 @@ const createImage = async(req, res) => {
 
     console.log('req.files: ', req.files)
     const image = req.files.image;
-    const {datatitle,datadescription} = req.body
+    let {datatitle,datadescription, isPortada, isGaleria, idActivity} = req.body
     console.log('titulo y descripcion: ', datatitle, datadescription)
 
 
@@ -27,12 +27,32 @@ const createImage = async(req, res) => {
       });
       console.log('result image cloudinary:' , result_image)
       console.log('savind image data on atlas cloud')
+      let isPortadab;
+      let isGaleriab;
+
+      // cast string to booolean
+      if(isPortada =="true"){
+        isPortada = true
+      }
+      if(isGaleria =="true"){
+        isGaleria = true
+      }
+      if(isPortada =="false"){
+        isPortada = false
+      }
+      if(isGaleria =="false"){
+        isGaleria = false
+      }
+
       let newImage = {
         idCloudinary : result_image.public_id,
         url : result_image.secure_url,
         creationDate: new Date(),
         title:  datatitle,
-        description: datadescription
+        description: datadescription,
+        isPortada: isPortada,
+        isGaleria: isGaleria,
+        idActivity: idActivity
       }
       console.log(newImage)
       const newImageToCreate = await imagemanager.createImage(newImage)
