@@ -9,6 +9,7 @@ import { activitiesLoader } from './components/activities/ActivitiesContainer';
 import Help from './pages/Help';
 import UserProfile from './pages/Profile';
 import { loader as loaderAttendance } from "./pages/Attendance";
+import { loader as loaderEvaluations } from "./pages/Grades";
 import { loader as loaderActivity } from "./pages/Calendar";
 
 const router = createBrowserRouter([
@@ -56,7 +57,8 @@ const router = createBrowserRouter([
       },
       {
         path: '/calificaciones',
-        element: <Grades />
+        element: <Grades />,
+        loader: loaderEvaluations
       },
       {
         path: "/actividades",
