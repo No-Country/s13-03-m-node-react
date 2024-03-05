@@ -1,10 +1,4 @@
 function UrgentNotifications() {
-  //const [selectedKeys, setSelectedKeys] = useState(new Set(["Filtros"]));
-
-  /* const selectedValue = useMemo(
-    () => Array.from(selectedKeys).join(", ").replaceAll("_", " "),
-    [selectedKeys]
-  );*/
   return (
     <div id="urgent-notification-container" className="mt-10 ">
       <div id="urgent-notification-title">
@@ -12,7 +6,7 @@ function UrgentNotifications() {
       </div>
       <div id="urgentNotification-card">
         <div className="max-w-[340px] mt-5 border rounded-xl bg-white shadow-sm shadow-[#67B7B3]">
-          <div className="px-4 py-3 border-b">
+          <div className="px-4 py-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-5">
                 <img
@@ -30,12 +24,14 @@ function UrgentNotifications() {
             </div>
           </div>
           <div className="px-4 py-3 text-sm text-[#280058]">
-            <p>Estimados Padres,</p>
-            <p>
-              Les informamos que la hora de regreso de la excursión al Museo de
-              Historia ha sido ajustada. El nuevo horario de retorno al colegio
-              será a las 06:30 PM. Agradecemos su comprensión.
-            </p>
+            <div className="border p-2">
+              <p>Estimados Padres,</p>
+              <p>
+                Les informamos que la hora de regreso de la excursión al Museo
+                de Historia ha sido ajustada. El nuevo horario de retorno al
+                colegio será a las 06:30 PM. Agradecemos su comprensión.
+              </p>
+            </div>
           </div>
           <div className="px-4 py-3 flex items-center justify-end">
             <label className="inline-flex items-center">
