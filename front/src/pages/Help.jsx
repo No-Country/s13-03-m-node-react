@@ -43,8 +43,7 @@ function Help() {
         <>
         <section className="mb-16">
             <div className="flex flex-col items-center justify-center gap-3">
-                <h1 className="text-2xl font-semibold text-gray-800 md:text-4xl">Resuelve tus dudas</h1>
-                <p className="mb-6 font-semibold bg-clip-text text-transparent bg-gradient-to-r from-violet-700 to-orange-600">Frequently asked questions</p>
+                <h1 className="text-2xl font-semibold p-1 mb-6 bg-clip-text text-transparent bg-gradient-to-r from-violet-600 to-orange-400">Resuelve tus dudas</h1>
             </div>
                 <Accordion variant="splitted">
                     {answers.map(item => (

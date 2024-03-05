@@ -25,10 +25,10 @@ export const AuthProvider = ({ children }) => {
 
             setUser({ email, _id });
 
-            Swal.fire({
-            icon: 'success',
-            title: 'Inicio de sesión exitoso!',
-            });
+            // Swal.fire({
+            // icon: 'success',
+            // title: 'Inicio de sesión exitoso!',
+            // });
             
         } catch (error) {
             if (error.response && error.response.status === 401) {

@@ -55,7 +55,7 @@ const Register = () => {
                 <Field type="password" name="password" placeholder="Ingresa tu contraseña" className="w-full px-4 py-2 border rounded-md focus:bg-blue-50 focus:border-blue-500 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                 <ErrorMessage name="password" component="div" className="text-red-600" />
               </div>
-              <button type="submit" className="block w-full p-3 text-center bg-violet-700 text-white rounded-2xl hover:bg-violet-800 drop-shadow-xl">
+              <button type="submit" className="block w-full p-3 text-xl text-center bg-violet-700 text-white rounded-2xl hover:bg-violet-800 drop-shadow-xl">
                 Registrarse
               </button>
             </Form>
