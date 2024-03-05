@@ -3,7 +3,6 @@ import {
   CardHeader,
   CardBody,
   CardFooter,
-  Avatar,
   Checkbox,
 } from "@nextui-org/react";
 import { useEffect, useState } from "react";

@@ -20,7 +20,7 @@ function SectionActivities({ activitiesData }) {
         </div>
         <div
           id="trimester-card-activities"
-          className="flex flex-wrap justify-center max-w-[360px] gap-5  bg-[#FDFBFF]"
+          className="flex flex-wrap justify-center max-w-[360px] gap-5  bg-[#FDFBFF] mt-5"
         >
           {activitiesData.map((activity) => (
             <div
