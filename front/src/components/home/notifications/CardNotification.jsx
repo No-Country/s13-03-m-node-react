@@ -12,7 +12,7 @@ function CardNotification() {
           width: "154px",
         }}
       >
-        <div className="flex flex-col items-start justify-start pr-4">
+        <div className="flex flex-col items-start justify-start pr-5">
           <p className="text-[12px] font-semibold text-[#280058]  mb-[-20px] text-start">
             Ayer
           </p>
