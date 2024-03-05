@@ -9,6 +9,7 @@ import { activitiesLoader } from './components/activities/ActivitiesContainer';
 import Help from './pages/Help';
 import UserProfile from './pages/Profile';
 import { loader as loaderAttendance } from "./pages/Attendance";
+import { loader as loaderActivity } from "./pages/Calendar";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,7 @@ const router = createBrowserRouter([
       {
         path: '/calendario',
         element: <CalendarPage />,
+        loader: loaderActivity,
       },
       {
         path: '/calificaciones',
