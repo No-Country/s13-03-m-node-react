@@ -1,14 +1,26 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import { Activities, Attendance, CalendarPage, Error, Home, Login, Notifications, Performance, Register, Grades } from './pages';
-import { Absences, Attendances, Withdrawals } from './components/attendance';
-import Layout from './components/Layout';
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  Activities,
+  Attendance,
+  CalendarPage,
+  Error,
+  Home,
+  Login,
+  Notifications,
+  Performance,
+  Register,
+  Grades,
+} from "./pages";
+import { Absences, Attendances, Withdrawals } from "./components/attendance";
+import Layout from "./components/Layout";
 import ActivitieGallery from "./components/activities/activitieGallery/ActivitieGallery";
-import { notificationsLoader } from './components/notifications/NotificationContainer';
-import { activitiesLoader } from './components/activities/ActivitiesContainer';
+import { notificationsLoader } from "./components/notifications/NotificationContainer";
+import { loaders } from "./components/activities/ActivitiesContainer";
 
-import Help from './pages/Help';
-import UserProfile from './pages/Profile';
+import Help from "./pages/Help";
+import UserProfile from "./pages/Profile";
 import { loader as loaderAttendance } from "./pages/Attendance";
+import { activitiesGalleryLoader } from "./components/activities/activitieGallery/ActivitieGallery";
 import { loader as loaderEvaluations } from "./pages/Grades";
 import { loader as loaderActivity } from "./pages/Calendar";
 
@@ -23,7 +35,7 @@ const router = createBrowserRouter([
       {
         path: "/asistencias",
         element: <Attendance />,
-        loader: loaderAttendance
+        loader: loaderAttendance,
       },
       {
         path: "/asistencias/asistencias",
@@ -44,14 +56,14 @@ const router = createBrowserRouter([
       {
         path: "/notificaciones",
         element: <Notifications />,
-        loader: notificationsLoader
+        loader: notificationsLoader,
       },
       {
-        path: '/perfil',
-        element: <UserProfile />
+        path: "/perfil",
+        element: <UserProfile />,
       },
       {
-        path: '/calendario',
+        path: "/calendario",
         element: <CalendarPage />,
         loader: loaderActivity,
       },
@@ -63,17 +75,18 @@ const router = createBrowserRouter([
       {
         path: "/actividades",
         element: <Activities />,
-        loader: activitiesLoader
+        loader: loaders,
       },
       {
         path: "/actividades/galeria/:id",
         element: <ActivitieGallery />,
+        loader: activitiesGalleryLoader,
       },
       {
         path: "/ayuda",
         element: <Help />,
-      }
-    ]
+      },
+    ],
   },
   {
     path: "/login",

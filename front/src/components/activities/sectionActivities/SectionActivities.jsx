@@ -1,20 +1,6 @@
 import FirstModal from "../firstModal";
 
 function SectionActivities({ activitiesData }) {
-/*   const currentDate = new Date();
-  const threeMonthsFromNow = new Date();
-  threeMonthsFromNow.setMonth(currentDate.getMonth() + 3);
-
-  const upcomingActivities = activitiesData.filter((activity) => {
-    const activityDate = new Date(activity.activityDate);
-    return activityDate >= currentDate && activityDate <= threeMonthsFromNow;
-  });
-
-  const upcomingEvents = activitiesData.filter((event) => {
-    const eventDate = new Date(event.activityDate);
-    return eventDate > threeMonthsFromNow;
-  }); */
-
 
   return (
     <div id="allActivities-container">
