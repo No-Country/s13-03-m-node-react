@@ -1,6 +1,7 @@
 import React, { useState, createContext, useContext } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const AuthContext = createContext();
 
@@ -18,18 +19,19 @@ export const AuthProvider = ({ children }) => {
                 password,
             });
 
-            const { token, _id } = response.data;
+            const { user, token } = response.data;
             localStorage.setItem('token', token);
-            
-            console.log(token, _id);
 
-            setUser({ email, _id });
+            console.log(token, user);
+
+            setUser(user);
 
             Swal.fire({
-            icon: 'success',
-            title: 'Inicio de sesión exitoso!',
+                icon: 'success',
+                title: 'Inicio de sesión exitoso!',
             });
-            
+
+
         } catch (error) {
             if (error.response && error.response.status === 401) {
                 console.error('Credenciales incorrectas o invalidas');
@@ -45,7 +47,7 @@ export const AuthProvider = ({ children }) => {
     };
 
 
-    const registerUser = async (lastname, email, password, idstudents ) => {
+    const registerUser = async (lastname, email, password, idstudents) => {
         try {
             const response = await axios.post('https://educlass-2024.onrender.com/api/auth/register', {
                 lastname,
@@ -70,18 +72,18 @@ export const AuthProvider = ({ children }) => {
                 const errorMessage = error.response.data.message || 'Hubo un error al crear tu cuenta';
                 console.error('errorMessage');
 
-                Swal.fire({ 
-                    icon: 'error', 
-                    title: 'Error', 
-                    text: errorMessage 
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: errorMessage
                 });
             } else {
                 console.error('Hubo un error:', error);
-                
-                Swal.fire({ 
-                    icon: 'error', 
-                    title: 'Error', 
-                    text: 'Ocurrió un error inesperado. Por favor, inténtalo de nuevo más tarde.' 
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ocurrió un error inesperado. Por favor, inténtalo de nuevo más tarde.'
                 });
             }
         }

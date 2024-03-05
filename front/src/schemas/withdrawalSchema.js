@@ -1,14 +1,4 @@
 import * as Yup from 'yup';
-import { getCurrentDateFormatted } from '../utils/months';
-
-export const initialValues = {
-  studentid: "65de921dc4b8e7383f8d3acd",
-  date: getCurrentDateFormatted(),
-  status: 'retiro',
-  name: '',
-  document: '',
-  message: '',
-};
 
 export const withdrawalSchema = Yup.object().shape({
   name: Yup.string().required('*Campo obligatorio').matches(/^[a-zA-Z\s]*$/, 'Solo se aceptan letras').min(3, 'Debe contener al menos 3 caracteres').max(30, 'Debe contener menos de 30 caracteres'),

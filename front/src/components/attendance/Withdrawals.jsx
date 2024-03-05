@@ -1,10 +1,15 @@
 import { Button, Input, Textarea } from "@nextui-org/react"
 import Swal from "sweetalert2"
 import { useFormik } from 'formik';
-import { initialValues, withdrawalSchema } from '../../schemas/withdrawalSchema.js'
+import { withdrawalSchema } from '../../schemas/withdrawalSchema.js'
 import axios from 'axios';
+import { getCurrentDateFormatted } from "../../utils/months.js";
+import { useAuth } from "../../contexts/authContext.jsx";
+import { useNavigate } from "react-router-dom";
 
 const Withdrawals = () => {
+  const { user } = useAuth()
+  const navigate = useNavigate()
   const handleAlert = () => {
     Swal.fire({
       icon: 'success',
@@ -13,14 +18,23 @@ const Withdrawals = () => {
     })
   }
 
+  const initialValues = {
+    studentid: user._id,
+    date: getCurrentDateFormatted(),
+    status: 'retiro',
+    name: '',
+    document: '',
+    message: '',
+  };
+
   const { handleSubmit, handleChange, values, errors } = useFormik({
     initialValues,
     validateOnChange: true,
     validationSchema: withdrawalSchema,
     onSubmit: (data) => {
       axios.post('https://educlass-2024.onrender.com/api/attendance/', data)
-      console.log(data)
       handleAlert()
+      navigate('/asistencias')
     }
   });
 

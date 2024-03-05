@@ -5,7 +5,7 @@ const Absences = () => {
   const { state } = useLocation()
 
   return (
-    <div className="text-3xl h-screen w-full flex-col justify-center items-center">
+    <div className="text-3xl h-100  w-full flex-col justify-center items-center">
       <h1 className="text-2xl font-semibold text-left mt-8 text-[#280058] p-4">Ausencias</h1>
 
       {state.ausencias.map((date) => (

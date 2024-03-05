@@ -4,10 +4,15 @@ import { useState } from "react"
 import SkeletonImage from "./SkeletonImage"
 import Swal from "sweetalert2"
 import axios from "axios"
+import { useAuth } from "../../contexts/authContext"
+import { useNavigate } from "react-router-dom"
 
 const AbsencesModal = ({ isOpen, onOpenChange }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
+  const navigate = useNavigate();
+  const { user } = useAuth();
+  const { _id } = user
 
   const onFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -20,17 +25,14 @@ const AbsencesModal = ({ isOpen, onOpenChange }) => {
     const formData = new FormData();
     formData.append('image', selectedFile);
 
-    console.log(selectedFile)
-    console.log(imageUrl)
-    console.log(formData)
-
     try {
-      await axios.put('https://educlass-2024.onrender.com/api/attendance/update/?_id=65de921dc4b8e7383f8d3acd', formData)
+      await axios.put(`https://educlass-2024.onrender.com/api/attendance/update/?_id=${_id}`, formData)
       Swal.fire({
         icon: 'success',
         title: 'Justificación enviada',
         text: 'Se ha enviado tu justificación',
       })
+      navigate('/asistencias')
     } catch (error) {
       console.log(error)
       Swal.fire({
