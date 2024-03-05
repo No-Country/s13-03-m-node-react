@@ -71,7 +71,9 @@ function NotificationCard({
         </div>
       </CardHeader>
       <CardBody className="px-3 py-0 text-small text-default-400">
-        <p className="text-[14px] text-[#280058] bg-[#FDFBFF] p-4 rounded-lg">{notification.contenido}</p>
+        <p className="text-[14px] text-[#280058] bg-[#FDFBFF] p-4 rounded-lg">
+          {notification.contenido}
+        </p>
       </CardBody>
       <CardFooter className="gap-3">
         <div className="flex flex-col w-full justify-end align-top items-end text-[#280058]">
@@ -80,8 +82,8 @@ function NotificationCard({
             iconStyle={{ fill: "white" }}
             color="warning"
             labelColor="warning"
-            /*isSelected={isSelected}*/
-            /*onValueChange={handleCheckboxChange}*/
+            isSelected={isSelected}
+            onValueChange={handleCheckboxChange}
             className="text-[12px] text-[#280058]"
           >
             Leído
