@@ -42,7 +42,6 @@ function ActivityGallery() {
     );
   }, []);
 
-  console.log(selectedPhoto[0]?.url);
 
   return (
     <div className="mr-[16px] ml-[16px]">
