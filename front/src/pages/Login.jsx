@@ -3,6 +3,8 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { loginValidationSchema } from '../schemas/loginValidationSchema.js';
 import { useAuth } from '../contexts/authContext.jsx';
 import { useNavigate } from 'react-router-dom';
+import logo from '../assets/images/logo_educlass.webp'
+import loginBg from '../assets/images/loginBg.webp'
 
 const Login = () => {
   const { loginUser, user } = useAuth();
@@ -30,7 +32,7 @@ const Login = () => {
     <section className="flex justify-center min-h-screen">
       <div className="flex flex-col items-center justify-center w-full max-w-3xl p-8 mx-auto lg:px-12 lg:w-3/5">
         <div className='flex justify-center'>
-          <img src="src/assets/images/logo_educlass.webp" alt="logo" className="object-center border-8 rounded-3xl border-blue-400 w-[150px]" />
+          <img src={logo} alt="logo" className="object-center border-8 rounded-3xl border-blue-400 w-[150px]" />
         </div>
         <div>
           <h1 className="text-2xl text-center font-semibold mt-2">¡Te damos la bienvenida a Educlass!</h1>
@@ -68,7 +70,7 @@ const Login = () => {
         </Formik>
       </div>
 
-      <div className="hidden bg-cover lg:block lg:w-3/5" style={{ backgroundImage: "url('src/assets/images/milad-fakurian-0_8gAoFrzbw-unsplash.webp')" }}></div>
+      <div className="hidden bg-cover lg:block lg:w-3/5" style={{ backgroundImage: `url(${loginBg})` }}></div>
 
     </section>
   );
