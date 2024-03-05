@@ -25,11 +25,11 @@ function HistoryNotifications({ notificationsData }) {
   const filteredNotifications = useMemo(() => {
     if (selectedValue === "Filtros" || selectedValue === "todas") {
       return notificationsData;
-    } else if (selectedValue === "general") {
+    } else if (selectedValue === "Institucionales") {
       return notificationsData.filter(
         (notification) => notification.tipo === "general"
       );
-    } else if (selectedValue === "alumno") {
+    } else if (selectedValue === "Personales") {
       return notificationsData.filter(
         (notification) => notification.tipo === "alumno"
       );
@@ -67,13 +67,13 @@ function HistoryNotifications({ notificationsData }) {
                 <ul className="py-1">
                   <button
                     className="hover:bg-[#FCA044] block px-4 py-2 text-[#280058] font-bold w-full text-left  text-[14px]"
-                    onClick={() => handleDropdownItemClick("general")}
+                    onClick={() => handleDropdownItemClick("Institucionales")}
                   >
                     Institucionales
                   </button>
                   <button
                     className="hover:bg-[#FCA044] block px-4 py-2 text-[#280058] font-bold w-full text-left  text-[14px]"
-                    onClick={() => handleDropdownItemClick("alumno")}
+                    onClick={() => handleDropdownItemClick("Personales")}
                   >
                     Personales
                   </button>

@@ -21,11 +21,11 @@ function CurrentNotifications({
   const filteredNotifications = useMemo(() => {
     if (selectedValue === "Filtros" || selectedValue === "Todas") {
       return notificationsData;
-    } else if (selectedValue === "general") {
+    } else if (selectedValue === "Institucionales") {
       return notificationsData.filter(
         (notification) => notification.tipo === "general"
       );
-    } else if (selectedValue === "alumno") {
+    } else if (selectedValue === "Personales") {
       return notificationsData.filter(
         (notification) => notification.tipo === "alumno"
       );
@@ -72,7 +72,7 @@ function CurrentNotifications({
                 <li className="bg-[#FDFBFF]">
                   <button
                     className="hover:bg-[#FCA044] block px-4 py-2 text-[#280058] font-bold w-full text-left"
-                    onClick={() => handleItemClick("general")}
+                    onClick={() => handleItemClick("Institucionales")}
                   >
                     Institucionales
                   </button>
@@ -80,7 +80,7 @@ function CurrentNotifications({
                 <li>
                   <button
                     className="hover:bg-[#FCA044] block px-4 py-2 text-[#280058] font-bold w-full text-left"
-                    onClick={() => handleItemClick("alumno")}
+                    onClick={() => handleItemClick("Personales")}
                   >
                     Personales
                   </button>
