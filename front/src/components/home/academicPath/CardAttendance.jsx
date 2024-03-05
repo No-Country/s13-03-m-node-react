@@ -8,8 +8,8 @@ function CardAttendance() {
         className="py-4 border rounded-lg shadow-sm shadow-[#f4d13d]  flex flex-col justify-center items-center"
         style={{
           backgroundColor: "rgba(254, 209, 61, 0.05)",
-          height: "250px",
-          width: "150px",
+          height: "180px",
+          width: "154px",
         }}
       >
         <div className="pb-0 pt-2 px-2 flex flex-col items-start">
@@ -18,9 +18,9 @@ function CardAttendance() {
         <div className="overflow-visible py-2 pt-5">
           <img
             alt="Card background"
-            className="object-cover rounded-xl min-w-[136px]"
+            className="object-cover rounded-xl"
             src={attendancesImage}
-            width={136}
+            width={89}
           />
         </div>
       </div>

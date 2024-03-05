@@ -21,13 +21,13 @@ function CurrentNotifications({
   const filteredNotifications = useMemo(() => {
     if (selectedValue === "Filtros" || selectedValue === "Todas") {
       return notificationsData;
-    } else if (selectedValue === "Institucionales") {
+    } else if (selectedValue === "general") {
       return notificationsData.filter(
         (notification) => notification.tipo === "general"
       );
-    } else if (selectedValue === "Mi grado") {
+    } else if (selectedValue === "alumno") {
       return notificationsData.filter(
-        (notification) => notification.tipo === "mi grado"
+        (notification) => notification.tipo === "alumno"
       );
     }
     return [];
@@ -49,7 +49,7 @@ function CurrentNotifications({
         className="flex justify-between items-center"
       >
         <div id="currentNotifications-title-container">
-          <h1 className="text-[20px] font-bold">Mis Notificaciones</h1>
+          <h1 className="text-[20px] font-bold">Mis notificaciones</h1>
         </div>
         <div
           id="currentNotifications-filter-container"
@@ -67,12 +67,12 @@ function CurrentNotifications({
             />
           </button>
           {isOpen && (
-            <div className="absolute z-50 right-0 mt-2 w-56 bg-white rounded shadow-md text-sm">
+            <div className="absolute z-50 right-0 mt-2 w-56 bg-white rounded shadow-md text-sm ">
               <ul>
                 <li className="bg-[#FDFBFF]">
                   <button
                     className="hover:bg-[#FCA044] block px-4 py-2 text-[#280058] font-bold w-full text-left"
-                    onClick={() => handleItemClick("Institucionales")}
+                    onClick={() => handleItemClick("general")}
                   >
                     Institucionales
                   </button>
@@ -80,9 +80,9 @@ function CurrentNotifications({
                 <li>
                   <button
                     className="hover:bg-[#FCA044] block px-4 py-2 text-[#280058] font-bold w-full text-left"
-                    onClick={() => handleItemClick("Mi grado")}
+                    onClick={() => handleItemClick("alumno")}
                   >
-                    Mi grado
+                    Personales
                   </button>
                 </li>
                 <li>

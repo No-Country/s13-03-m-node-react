@@ -1,4 +1,3 @@
-import React from 'react';
 import { FaCheck } from 'react-icons/fa';
 
 
@@ -22,7 +21,7 @@ const CheckboxItem = ({ text }) => {
 
 const Banner = () => {
   return (
-    <section className='flex justify-center items-center gap-4 h-40 border-1 rounded-md border-gray-800 p-4 m-4 mb-16 max-w-5xl'>
+    <section className='flex justify-center items-center gap-4 h-40 border-1 rounded-md border-gray-800 p-4 m-4 max-w-5xl'>
       <DateComponent date='21 Feb' />
      
       <div className='w-4/5 h-full rounded-md bg-no-repeat bg-cover' style={{backgroundImage: "url('src/assets/images/banner-img.webp')"}}>
