@@ -15,6 +15,7 @@ const Withdrawals = () => {
       icon: 'success',
       title: 'Retiro enviado',
       text: '¡Tu aviso se envió con éxito!',
+      timer: 2000
     })
   }
 
@@ -34,7 +35,9 @@ const Withdrawals = () => {
     onSubmit: (data) => {
       axios.post('https://educlass-2024.onrender.com/api/attendance/', data)
       handleAlert()
-      navigate('/asistencias')
+      setTimeout(() => {
+        navigate('/asistencias')
+      }, 2000)
     }
   });
 
