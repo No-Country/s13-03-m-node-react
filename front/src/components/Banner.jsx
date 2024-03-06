@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import bannerBg from '../assets/images/banner-img.webp'
 
 
 const DateComponent = ({ date }) => {
@@ -43,16 +44,16 @@ const Banner = () => {
   }, []);
 
   return (
-    <section className='flex justify-center items-center gap-4 h-40 mb-16 mt-6 border rounded-lg border-blue-400 p-4 m-4 max-w-5xl bg-blue-50 shadow-md shadow-[#3FA3EB]'>
+    <section className='flex justify-center items-center gap-4 h-40 mb-32 mt-6 border rounded-lg border-blue-400 p-4 m-4 max-w-5xl bg-blue-50 shadow-md shadow-[#3fa3eb6d]'>
       <DateComponent date={new Date().toLocaleDateString('es-ES', { day: 'numeric', month: 'short' })} />
-     
-      <div className='w-4/5 h-full rounded-md bg-no-repeat bg-cover' style={{backgroundImage: "url('src/assets/images/banner-img.webp')"}}>
+
+      <div className='w-4/5 h-full rounded-md bg-no-repeat bg-cover' style={{ backgroundImage: `url(${bannerBg})` }}>
         <div className='rounded-md backdrop-blur-sm bg-white/50 m-2 p-2'>
-        {notification && (
-          <>
-          <CheckboxItem text={notification.titulo} />
-          </>
-        )}
+          {notification && (
+            <>
+              <CheckboxItem text={notification.titulo} />
+            </>
+          )}
         </div>
       </div>
     </section>

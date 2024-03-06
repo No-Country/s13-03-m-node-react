@@ -1,4 +1,4 @@
-import { useState, useMemo,useEffect } from "react";
+import { useState, useMemo, useEffect } from "react";
 import NotificationCard from "./NotificationCard";
 import { MdKeyboardArrowDown } from "react-icons/md";
 
@@ -53,7 +53,7 @@ function CurrentNotifications({
         </div>
         <div
           id="currentNotifications-filter-container"
-          className="justify-center content-center align-middle relative inline-block bg-[#FDFBFF]"
+          className="justify-center content-center align-middle relative inline-block"
         >
           <button
             className="capitalize bg-[#FDFBFF] text-[#280058] font-bold px-4 py-2 flex items-center justify-between text-sm"
@@ -61,15 +61,14 @@ function CurrentNotifications({
           >
             {selectedValue}
             <MdKeyboardArrowDown
-              className={`h-6 w-6 transition-transform transform ${
-                isOpen ? "rotate-180" : ""
-              }`}
+              className={`h-6 w-6 transition-transform transform ${isOpen ? "rotate-180" : ""
+                }`}
             />
           </button>
           {isOpen && (
-            <div className="absolute z-50 right-0 mt-2 w-56 bg-white rounded shadow-md text-sm ">
+            <div className="absolute z-50 right-0 mt-2 w-56 rounded shadow-md text-sm filterBox">
               <ul>
-                <li className="bg-[#FDFBFF]">
+                <li>
                   <button
                     className="hover:bg-[#FCA044] block px-4 py-2 text-[#280058] font-bold w-full text-left"
                     onClick={() => handleItemClick("Institucionales")}

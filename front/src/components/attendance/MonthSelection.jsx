@@ -10,9 +10,9 @@ const MonthSelection = ({ handleChange, month, asistencias, ausencias, retiros }
     <>
       <h1 className="text-2xl font-semibold text-left mt-9 text-[#280058]">Historial</h1>
       <RadioGroup orientation="horizontal" className="flex justify-between items-center mt-4" value={value} onChange={(e) => setValue(e.target.value)}>
-        <Radio className="px-6" color="warning" size="sm" value="asistencias">Asistencias</Radio>
-        <Radio className="px-6" color="warning" size="sm" value="ausencias">Ausencias</Radio>
-        <Radio className="px-6" color="warning" size="sm" value="retiros">Retiros</Radio>
+        <Radio className="px-2" color="warning" size="sm" value="asistencias">Asistencias</Radio>
+        <Radio className="px-2" color="warning" size="sm" value="ausencias">Ausencias</Radio>
+        <Radio className="px-2" color="warning" size="sm" value="retiros">Retiros</Radio>
       </RadioGroup>
       <div className="border-1 rounded-md border-orange-300 shadow-md shadow-orange-300 p-2 m-2 flex justify-between bg-white h-11">
         <select className="w-full text-xl bg-white" onChange={handleChange} value={month}>

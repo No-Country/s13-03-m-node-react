@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { NavbarContent, Dropdown, DropdownTrigger, Avatar, DropdownItem, DropdownMenu } from "@nextui-org/react";
-import avatar from '../assets/icons/avatar.png';
+import avatar from '../assets/icons/image190.jpg';
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../contexts/authContext";
 
@@ -14,9 +14,11 @@ const ProfilePic = ({ handleLogout }) => {
         <DropdownTrigger>
           <Avatar
             isBordered
+            color='secondary'
+            classNames='bg-white'
+            radius="md"
             as="button"
             className="transition-transform"
-            color="default"
             name="Jason Hughes"
             size="md"
             src={user.picture || avatar}

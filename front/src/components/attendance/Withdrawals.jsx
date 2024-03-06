@@ -44,11 +44,11 @@ const Withdrawals = () => {
       <p className="text-sm p-4 text-[#280058]">Para retirar a tu hijo o hija, por favor completar los siguientes campos.</p>
 
       <form className="flex flex-col gap-4 justify-center items-center" onSubmit={handleSubmit}>
-        <Input name="name" label="Nombre y apellido del responsable" placeholder="Ingresa tu nombre y apellido" type="text" required className="w-full px-4 py-2 focus:border-violet-500 focus:ring-violet-400 focus:outline-none focus:ring focus:ring-opacity-40" isRequired onChange={handleChange} value={values.name} isInvalid={errors.name ? true : false} errorMessage={errors.name} />
+        <Input variant="bordered" name="name" label="Nombre y apellido del responsable" placeholder="Ingresa tu nombre y apellido" type="text" required className="w-full px-4 py-2 focus:border-violet-500 focus:ring-violet-400 focus:outline-none focus:ring focus:ring-opacity-40" isRequired onChange={handleChange} value={values.name} isInvalid={errors.name ? true : false} errorMessage={errors.name} />
 
-        <Input name="document" label="Documento / Pasaporte" placeholder="Ingresa tu documento o pasaporte" type="text" required className="w-full px-4 py-2 focus:border-violet-500 focus:ring-violet-400 focus:outline-none focus:ring focus:ring-opacity-40" isRequired onChange={handleChange} value={values.document} isInvalid={errors.document ? true : false} errorMessage={errors.document} />
+        <Input variant="bordered" name="document" label="Documento / Pasaporte" placeholder="Ingresa tu documento o pasaporte" type="text" required className="w-full px-4 py-2 focus:border-violet-500 focus:ring-violet-400 focus:outline-none focus:ring focus:ring-opacity-40" isRequired onChange={handleChange} value={values.document} isInvalid={errors.document ? true : false} errorMessage={errors.document} />
 
-        <Textarea name="message" label="Mensaje" placeholder="Indicar motivo del retiro" required className="w-full px-4 py-2 focus:border-violet-500 focus:ring-violet-400 focus:outline-none focus:ring focus:ring-opacity-40" isRequired onChange={handleChange} value={values.message} isInvalid={errors.message ? true : false} errorMessage={errors.message} />
+        <Textarea variant="bordered" name="message" label="Mensaje" placeholder="Indicar motivo del retiro" required className="w-full px-4 py-2 focus:border-violet-500 focus:ring-violet-400 focus:outline-none focus:ring focus:ring-opacity-40" isRequired onChange={handleChange} value={values.message} isInvalid={errors.message ? true : false} errorMessage={errors.message} />
 
         <Button className="w-[320px]" size="lg" color="secondary" type="submit">Enviar aviso</Button>
       </form>

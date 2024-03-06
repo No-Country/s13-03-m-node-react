@@ -7,7 +7,7 @@ function SectionGallery({ activitiesImages }) {/*
   } */
 
   return (
-    <div id="section-gallery-container" className="mt-10">
+    <div id="section-gallery-container" className="mt-10 mb-10">
       <div id="gallery-title">
         <h2 className="text-[16px] font-medium text-[#280058]">Mis Fotos</h2>
       </div>

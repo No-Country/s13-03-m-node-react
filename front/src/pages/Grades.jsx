@@ -35,7 +35,7 @@ const Grades = () => {
 
   const data1 = [matematica, cienciasNaturales, lenguaLiteratura, cienciasSociales, educacionFisica, tecnologia, artes]
 
-//este array se utiliza para sincronizar las tablas
+  //este array se utiliza para sincronizar las tablas
   const columns1 = [
     {
       key: "testDate",
@@ -50,7 +50,7 @@ const Grades = () => {
       label: "Nota",
     },
   ];
-//obejto para el estilo del acordion
+  //obejto para el estilo del acordion
   const itemClasses = {
     base: " mx-2 mb-6  shadow-md shadow-[#7222d366]  rounded-xl border-1 border-[#7222D3] ",
     title: "font-medium	text-lg  text-[#280058]	",
@@ -64,7 +64,7 @@ const Grades = () => {
       <h1 className="mx-4 mb-10 font-bold text-xl 	">
         Sigue mi recorrido académico
       </h1>
-      <Accordion showDivider={false} itemClasses={itemClasses}>
+      <Accordion showDivider={false} itemClasses={itemClasses} >
         {data1.map((item) => (
           <AccordionItem
             key={item.title}

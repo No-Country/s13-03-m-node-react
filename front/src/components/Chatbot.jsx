@@ -21,9 +21,9 @@ const EduChatbot = ({ isOpen, onClose }) => {
         {
             id: '4',
             options: [
-              { value: 1, label: '1. Area Administrativa', trigger: '5' },
-              { value: 2, label: '2. Area Financiera', trigger: '6' },
-              { value: 3, label: '3. Despacho de Alumnos', trigger: '7' },
+                { value: 1, label: '1. Area Administrativa', trigger: '5' },
+                { value: 2, label: '2. Area Financiera', trigger: '6' },
+                { value: 3, label: '3. Despacho de Alumnos', trigger: '7' },
             ],
         },
         {
@@ -43,7 +43,7 @@ const EduChatbot = ({ isOpen, onClose }) => {
         },
         {
             id: '8',
-            options : [
+            options: [
                 { value: 1, label: 'Volver al Menu', trigger: '4' },
                 { value: 2, label: 'Finalizar', trigger: '9' },
             ]
@@ -54,17 +54,17 @@ const EduChatbot = ({ isOpen, onClose }) => {
             end: true,
         },
     ];
-     
-  return (
-    <div className={`absolute top-0 right-14 p-4 ${isOpen ? 'block' : 'hidden'}`}>
-        <ChatBot 
-        steps={steps} 
-        opened={isOpen}
-        toggleFloating={() => {}}
-        handleEnd={() => onClose()}
-        />
-    </div>
-  );
+
+    return (
+        <div className={`absolute top-12 right-14 p-4 ${isOpen ? 'block' : 'hidden'}`}>
+            <ChatBot
+                steps={steps}
+                opened={isOpen}
+                toggleFloating={() => { }}
+                handleEnd={() => onClose()}
+            />
+        </div>
+    );
 };
 
 export default EduChatbot;
