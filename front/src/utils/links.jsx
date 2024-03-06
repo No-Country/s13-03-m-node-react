@@ -4,11 +4,6 @@ import { IoMdNotificationsOutline, IoMdCheckboxOutline } from "react-icons/io";
 import { CiCalendar, CiMedal } from "react-icons/ci";
 
 export const links = [
-  // {
-  //   text: 'inicio',
-  //   path: '.',
-  //   icon: <FaHome />,
-  // },
   {
     text: 'Notificaciones',
     path: 'notificaciones',
@@ -39,14 +34,4 @@ export const links = [
     path: 'ayuda',
     icon: <TfiHelpAlt size={24} />,
   },
-  // {
-  //   text: 'perfil',
-  //   path: 'profile',
-  //   icon: <ImProfile />,
-  // },
-  // {
-  //   text: 'login',
-  //   path: 'login',
-  //   icon: <MdLogin />,
-  // },
 ]
