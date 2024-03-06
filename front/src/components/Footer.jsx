@@ -3,13 +3,13 @@ import Logo from "./Logo";
 import { BiCopyright } from "react-icons/bi";
 import { FiPhone } from "react-icons/fi";
 import { MdOutlineEmail } from "react-icons/md";
-import { FaFacebook, FaInstagram  } from "react-icons/fa";
+import { FaFacebook, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   return (
     <footer className="flex justify-between relative  bottom-0  pt-4 pb-10 px-6 bg-[#FDFBFF] mt-4 border-t-2 border-[#28005880] text-[#280058]">
       <NavLink
-        to="/"
+        to="/home"
         className="flex flex-col items-center font-bold text-inherit "
       >
         <Logo />
@@ -25,16 +25,16 @@ const Footer = () => {
         </p>
       </div>
       <ul className=" text-xs	">
-      <li className="font-semibold	text-sm">Síguenos</li>
+        <li className="font-semibold	text-sm">Síguenos</li>
         <ul className="flex gap-2">
-            <li><FaInstagram size={20} /></li>
-            <li><FaFacebook  size={20}/></li>
+          <li><FaInstagram size={20} /></li>
+          <li><FaFacebook size={20} /></li>
         </ul>
         <li className="font-semibold	text-sm">Contáctanos</li>
         <ul>
           <li className="flex items-center gap-1.5">
             <span >
-              <FiPhone  size="1rem" />
+              <FiPhone size="1rem" />
             </span>
             (011) 4812-9843
           </li>
@@ -50,7 +50,7 @@ const Footer = () => {
           <li>Políticas de seguridad</li>
         </ul>
         <Link to="/ayuda">
-        <li className="font-semibold	text-sm"> Ayuda</li></Link>
+          <li className="font-semibold	text-sm"> Ayuda</li></Link>
       </ul>
     </footer>
   );

@@ -32,7 +32,7 @@ const ProfilePic = ({ handleLogout }) => {
             <NavLink className="font-medium text-[#280058]" to="/perfil">Perfil</NavLink>
           </DropdownItem>
           <DropdownItem key="logout" color="danger" onClick={handleLogout} textValue="logout">
-            <NavLink className="font-medium text-[#280058]" to="/login">Cerrar sesión</NavLink>
+            <NavLink className="font-medium text-[#280058]" to="/">Cerrar sesión</NavLink>
           </DropdownItem>
         </DropdownMenu>
       </Dropdown>

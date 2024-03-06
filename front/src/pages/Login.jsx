@@ -16,7 +16,7 @@ const Login = () => {
 
       console.log('Datos del usuario después de autenticarse:', user);
       // const userId = user._id;
-      navigate('/')
+      navigate('/home');
 
     } catch (error) {
       if (error.response && error.response.status === 401) {
@@ -40,7 +40,7 @@ const Login = () => {
         </div>
 
         <Formik
-          initialValues={{ email: '', password: '' }}
+          initialValues={{ email: 'emai3l@email.com', password: '12345678' }}
           validationSchema={loginValidationSchema}
           onSubmit={handleSubmit}
         >
