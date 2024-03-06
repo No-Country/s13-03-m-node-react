@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chat</title>
+    <script type="module" src="../src/routers/index.js"></script> <!-- Incluir el archivo index.js -->
+    <script type="module">
+        import { io } from 'https://cdn.socket.io/4.4.1/socket.io.esm.min.js';
+        const socket = io();
+
+        const form = document.getElementById('form');
+        const messages = document.getElementById('messages');
+
+        // Función para mantener el scroll en la parte inferior
+        function scrollBottom() {
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+
+        socket.on('chat message', (msg) => {
+            const item = `<li> ${msg} </li>`;
+            messages.insertAdjacentHTML('beforeend', item);
+            scrollBottom();
+        });
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const inputText = input.value;
+            if (inputText.trim() !== '') {
+                socket.emit('chat message', inputText);
+                input.value = ''; // Limpiar el campo de entrada después de enviar el mensaje
+            }
+        });
+
+    </script>
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            display: grid;
+            place-content: center;
+            height: 100vh;
+            padding: 36px;
+            grid-template-rows: 1fr;
+            
+        }
+
+        #messages {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            flex: 1;
+            overflow-y: auto;
+            max-height: 90%;
+            
+            
+        }
+
+        #messages>li {
+            padding: 3px;
+            margin: 5px;
+            font-size: 12px;
+        }
+
+        #messages>li:nth-child(odd) {
+    position: relative;
+    background: #c6c8cb;
+    border-radius: 14px;
+    margin-left: 20px; /* Ajusta este valor según sea necesario */
+}
+
+#messages>li:nth-child(odd)::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -15px; /* Ajusta este valor según sea necesario */
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 8px solid #cbc6c6;
+    transform: translateY(-50%);
+}
+
+        #chat {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            overflow: hidden;
+            width: 350px;
+            height: 100vh;
+            position: relative;
+        }
+
+        #form {
+            bottom: 0;
+            display: felx;
+            height: 48px;
+            left: 0;
+            padding: 4px;
+            position: absolute;
+            right: 0;
+        }
+
+        #input {
+            border-radius: 9999px;
+            border: 1px solid #eee;
+            flex: 1;
+            margin: 4px;
+            padding: 0 8px;
+        }
+
+        #input:focus {
+            outline: 0;
+        }
+
+        #form>button {
+            background: #09f;
+            color: #fff;
+            border: 0;
+            margin: 4px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="chat">
+        <ul id="messages"></ul>
+        <form id="form">
+            <input type="text" name="message" id="input" placeholder="Ingresa tu mensaje" autocomplete="off">
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+</body>
+
+</html>

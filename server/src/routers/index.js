@@ -8,7 +8,6 @@ import { attendanceRouter } from './attendanceRouter.js';
 import { notificationRrouter } from './notificationRouter.js';
 import { activityRouter } from './activityRouter.js';
 import { evaluationRouter } from './evaluationRouter.js';
-import { subjectRouter } from './subjectRouter.js';
 
 const indexRouter = Router();
 
@@ -29,7 +28,5 @@ indexRouter.use('/notification', notificationRrouter);
 indexRouter.use('/activity', activityRouter);
 
 indexRouter.use('/evaluation', evaluationRouter);
-
-indexRouter.use('/subject', subjectRouter);
 
 export default indexRouter;
