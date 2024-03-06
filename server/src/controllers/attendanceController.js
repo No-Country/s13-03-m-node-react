@@ -155,7 +155,8 @@ async function updateAttendance(req, res) {
                 idCloudinary: result_image.public_id,
                 url: result_image.secure_url,
                 creationDate: new Date()
-            }
+            },
+            isJustified: true // Añadir esta línea para marcar como justificado
         };
 
         let query;

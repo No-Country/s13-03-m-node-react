@@ -8,6 +8,7 @@ import { attendanceRouter } from './attendanceRouter.js';
 import { notificationRrouter } from './notificationRouter.js';
 import { activityRouter } from './activityRouter.js';
 import { evaluationRouter } from './evaluationRouter.js';
+import { chatRouter } from './chatRouter.js';
 
 const indexRouter = Router();
 
@@ -28,5 +29,9 @@ indexRouter.use('/notification', notificationRrouter);
 indexRouter.use('/activity', activityRouter);
 
 indexRouter.use('/evaluation', evaluationRouter);
+
+indexRouter.use('/chat', chatRouter);
+
+
 
 export default indexRouter;
