@@ -21,7 +21,7 @@ function NotificationCard({ index, data }) {
       key={index}
       className="mt-2 rounded-lg overflow-hidden shadow-sm shadow-[#FCA044]"
       style={{
-        backgroundColor: "rgba(252, 200, 68, 0.1)",
+        backgroundColor: "#FFFEF9",
       }}
     >
       <div className="relative">
