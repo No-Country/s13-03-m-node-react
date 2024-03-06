@@ -43,7 +43,7 @@ const Banner = () => {
   }, []);
 
   return (
-    <section className='flex justify-center items-center gap-4 h-40 border rounded-lg border-blue-400 p-4 m-4 mb-24 max-w-5xl bg-blue-50 shadow-md shadow-[#3FA3EB]'>
+    <section className='flex justify-center items-center gap-4 h-40 border rounded-lg border-blue-400 p-4 m-4 max-w-5xl bg-blue-50 shadow-md shadow-[#3FA3EB]'>
       <DateComponent date={new Date().toLocaleDateString('es-ES', { day: 'numeric', month: 'short' })} />
      
       <div className='w-4/5 h-full rounded-md bg-no-repeat bg-cover' style={{backgroundImage: "url('src/assets/images/banner-img.webp')"}}>
