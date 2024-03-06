@@ -1,13 +1,14 @@
 import { SlNote } from "react-icons/sl";
 import { TfiHelpAlt } from "react-icons/tfi";
-import { IoMdNotificationsOutline, IoMdCheckboxOutline } from "react-icons/io";
+import { IoMdCheckboxOutline } from "react-icons/io";
 import { CiCalendar, CiMedal } from "react-icons/ci";
+import { RiNotification2Line } from "react-icons/ri";
 
 export const links = [
   {
     text: 'Notificaciones',
     path: 'notificaciones',
-    icon: <IoMdNotificationsOutline size={24} />,
+    icon: <RiNotification2Line size={22} />,
   },
   {
     text: 'Actividad escolar',
@@ -32,6 +33,6 @@ export const links = [
   {
     text: 'Ayuda',
     path: 'ayuda',
-    icon: <TfiHelpAlt size={24} />,
+    icon: <TfiHelpAlt size={22} />,
   },
 ]
