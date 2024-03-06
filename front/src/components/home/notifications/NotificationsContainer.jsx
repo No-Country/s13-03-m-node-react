@@ -37,7 +37,7 @@ function NotificationsContainer() {
       </h2>
       <div
         id="card-notification-container"
-        className="flex flex-row gap-4 justify-between mt-5"
+        className="flex flex-row justify-between mt-5"
       >
         <CardNotification />
         <CardActivities />

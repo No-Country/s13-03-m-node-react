@@ -23,15 +23,15 @@ function HistoryNotifications({ notificationsData }) {
   };
 
   const filteredNotifications = useMemo(() => {
-    if (selectedKeys.has("Filtros") || selectedKeys.has("todas")) {
+    if (selectedValue === "Filtros" || selectedValue === "todas") {
       return notificationsData;
-    } else if (selectedKeys.has("Institucionales")) {
+    } else if (selectedValue === "Institucionales") {
       return notificationsData.filter(
         (notification) => notification.tipo === "general"
       );
-    } else if (selectedKeys.has("Mi grado")) {
+    } else if (selectedValue === "Personales") {
       return notificationsData.filter(
-        (notification) => notification.tipo === "mi grado"
+        (notification) => notification.tipo === "alumno"
       );
     }
     return [];
@@ -45,14 +45,14 @@ function HistoryNotifications({ notificationsData }) {
           className="flex justify-between items-center"
         >
           <div id="historyTitle-container">
-            <h2 className="text-xl">Historial de notificaciones</h2>
+            <h2 className="text-[20px] ">Historial de notificaciones</h2>
           </div>
           <div
             id="historyFilter-container"
             className="justify-center content-center align-middle relative inline-block bg-[#FDFBFF]"
           >
             <button
-              className="capitalize bg-[#FDFBFF] text-[#280058] font-bold px-4 py-2 flex items-center justify-between text-sm"
+              className="capitalize bg-[#FDFBFF] text-[#280058] font-bold py-2 flex items-center justify-between text-[14px]"
               onClick={toggleDropdown}
             >
               {selectedValue}
@@ -66,19 +66,19 @@ function HistoryNotifications({ notificationsData }) {
               <div className="absolute z-50 right-0 mt-2 w-56 bg-white rounded shadow-md text-sm">
                 <ul className="py-1">
                   <button
-                    className="hover:bg-[#FCA044] block px-4 py-2 text-[#280058] font-bold w-full text-left"
+                    className="hover:bg-[#FCA044] block px-4 py-2 text-[#280058] font-bold w-full text-left  text-[14px]"
                     onClick={() => handleDropdownItemClick("Institucionales")}
                   >
                     Institucionales
                   </button>
                   <button
-                    className="hover:bg-[#FCA044] block px-4 py-2 text-[#280058] font-bold w-full text-left"
-                    onClick={() => handleDropdownItemClick("Mi grado")}
+                    className="hover:bg-[#FCA044] block px-4 py-2 text-[#280058] font-bold w-full text-left  text-[14px]"
+                    onClick={() => handleDropdownItemClick("Personales")}
                   >
-                    Mi grado
+                    Personales
                   </button>
                   <button
-                    className="hover:bg-[#FCA044] block px-4 py-2 text-[#280058] font-bold w-full text-left"
+                    className="hover:bg-[#FCA044] block px-4 py-2 text-[#280058] font-bold w-full text-left  text-[14px]"
                     onClick={() => handleDropdownItemClick("todas")}
                   >
                     Todas

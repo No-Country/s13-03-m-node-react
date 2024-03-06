@@ -13,20 +13,20 @@ function NotificationCard({ index, data }) {
     const date = new Date(dateString);
     const day = String(date.getDate()).padStart(2, "0");
     const month = String(date.getMonth() + 1).padStart(2, "0");
-    const year = date.getFullYear();
-    return `${day}/${month}/${year}`;
+    return `${day}/${month}`;
   }
 
   return (
     <div
       key={index}
-      className="mt-2 rounded-lg overflow-hidden shadow-sm shadow-[#FCA044] bg-[#F9FAFB]"
+      className="mt-2 rounded-lg overflow-hidden shadow-sm shadow-[#FCA044]"
+      style={{
+        backgroundColor: "rgba(252, 200, 68, 0.1)",
+      }}
     >
       <div className="relative">
         <div
-          className={`cursor-pointer px-4 py-2 text-xs delay-75 ${
-            notificationOpen ? "bg-transparent" : "bg-[#F9FAFB]"
-          }`}
+          className="cursor-pointer px-4 py-2 text-xs delay-75"
           onClick={() => setNotificationOpen(!notificationOpen)}
         >
           <div className="flex items-center gap-2 justify-between">
@@ -40,7 +40,7 @@ function NotificationCard({ index, data }) {
           </div>
         </div>
         {notificationOpen && (
-          <div className="px-4 py-2 text-xs">{data.contenido}</div>
+          <div className="px-4 py-2 pb-5 text-xs">{data.contenido}</div>
         )}
       </div>
     </div>
