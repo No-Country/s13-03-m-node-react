@@ -29,7 +29,7 @@ const FirstModal = () => {
     const modalContent = ReactDOMServer.renderToStaticMarkup(
       <div className='flex flex-col text-left gap-4 text-base'>
         <div>
-          <h2 className='font-bold text-center'>
+          <h2 className='font-bold text-center mt-4'>
             {/* {dummyData.title1} */}
             {activityData.title}
           </h2> 
@@ -74,6 +74,7 @@ const FirstModal = () => {
       confirmButtonText: 'Autorizar',
       confirmButtonColor: '#7222d3',
       cancelButtonText: 'No autorizar',
+      cancelButtonColor: '#3fa3ebc1',
     }).then((result) => {
       if (result.value) {
         // entra segundo modal
@@ -92,7 +93,7 @@ const FirstModal = () => {
     
   return (
     <>
-    <button onClick={openFirstModal} className='bg-violet-700 hover:bg-violet-800 text-white font-medium py-1 px-4 rounded'>VER MÁS</button>
+    <button onClick={openFirstModal} className= 'text-sky-500 hover:underline font-medium py-1 px-4 rounded'>Ver más</button>
     </>
   );
 };

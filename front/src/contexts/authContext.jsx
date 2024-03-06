@@ -19,17 +19,15 @@ export const AuthProvider = ({ children }) => {
             });
 
             const { user, token } = response.data;
-            localStorage.setItem('token', token);
             localStorage.setItem('user', JSON.stringify(user));
 
             setUser(user);
 
-            Swal.fire({
-                icon: 'success',
-                title: 'Inicio de sesión exitoso!',
-            });
-
-
+            // Swal.fire({
+            // icon: 'success',
+            // title: 'Inicio de sesión exitoso!',
+            // });
+            
         } catch (error) {
             if (error.response && error.response.status === 401) {
                 console.error('Credenciales incorrectas o invalidas');

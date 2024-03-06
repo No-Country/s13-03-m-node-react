@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import { useAuth } from "../contexts/authContext";
 
 const ProfilePic = ({ handleLogout }) => {
+
   const { user } = useAuth();
 
   return (
