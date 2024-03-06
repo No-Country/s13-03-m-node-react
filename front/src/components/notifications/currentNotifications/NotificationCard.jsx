@@ -48,7 +48,7 @@ function NotificationCard({
       key={index}
       className="max-w-[340px] mt-5 shadow-sm shadow-[#FCA044]"
       style={{
-        backgroundColor: "rgba(252, 200, 68, 0.1)",
+        backgroundColor: "#FFFEF9",
       }}
     >
       <CardHeader className="justify-between">
