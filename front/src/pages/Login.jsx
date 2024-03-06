@@ -2,16 +2,20 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { loginValidationSchema } from '../schemas/loginValidationSchema.js';
 import { useAuth } from '../contexts/authContext.jsx';
+import { useNavigate } from 'react-router-dom';
+
 
 const Login = () => {
   const { loginUser, user } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = async (values, { setSubmitting, setFieldError }) => {
     try {
       await loginUser( values.email, values.password ); 
 
       console.log('Datos del usuario después de autenticarse:', user);
-      const userId = user._id;
+      // const userId = user._id;
+      navigate('/')
 
       } catch (error) {
         if (error.response && error.response.status === 401) {

@@ -18,12 +18,12 @@ export const AuthProvider = ({ children }) => {
                 password,
             });
 
-            const { token, _id } = response.data;
+            const { user, token } = response.data;
             localStorage.setItem('token', token);
             
-            console.log(token, _id);
+            console.log(token, user);
 
-            setUser({ email, _id });
+            setUser(user);
 
             // Swal.fire({
             // icon: 'success',

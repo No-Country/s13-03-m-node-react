@@ -9,41 +9,35 @@ const UserProfile = () => {
   const [userData, setUserData] = useState(null);
   const [updatedUserData, setUpdatedUserData] = useState(null);
   const { user } = useAuth();
-  const [ userEmail, setUserEmail ] = useState('');
+  
+  const [initialValues, setInitialValues] = useState({
+    lastname: '',
+    email: '',
+    idstudents: [],
+    password: '',
+  });
 
   useEffect(() => {
     if (user) {
-      setUserEmail(user.email);
-      axios.get(`https://educlass-2024.onrender.com/api/user/${user.email}`)
-      .then(response => {
-        setUserData(response.data);
-        console.log('Datos del usuario cargados correctamente:', response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching user data', error);
+      setInitialValues({
+        lastname: user.lastname || '',
+        email: user.email || '',
+        idstudents: user.idstudents || [],
+        password: user.password || '',
       });
     }
-}, [user]);
+  }, [user]);
 
   useEffect(() => {
-    if (userData) {
-      const initialValues = {
-        lastname: userData?.lastname || '',
-        email: userData?.email || '',
-        idstudents: userData?.idstudents || '',
-        password: '',
-      };
-      console.log('Initial values:', initialValues);
-    }
-  }, [userData]);
-   
+    console.log('Initial values:', initialValues);
+  }, [initialValues]);
 
+  
 const handleUpdateUser = (values) => {
-  if (user) {
-    const updatedData = { ...userData, ...values }
-    setUpdatedUserData(updatedData);
+  const updatedData = { ...userData, ...values }
+  setUpdatedUserData(updatedData);
 
-    axios.put(`https://educlass-2024.onrender.com/api/user/${user.email}`, updatedUserData) 
+  axios.put(`https://educlass-2024.onrender.com/api/user/${user.email}`, updatedUserData) 
     .then(response => {
       console.log('Los datos se han actualizado correctamente');
       setUserData(updatedData); 
@@ -52,17 +46,17 @@ const handleUpdateUser = (values) => {
       console.error('Error al actualizar los datos, intente nuevamente', error);
     });
   };
-}
 
   return (
     <section className="h-screen flex flex-col justify-center items-center">
       <h1 className='text-2xl'>Perfil</h1>
       <div>
-        {userData && (
+        {user && (
           <Formik
           initialValues={initialValues}
           validationSchema={registerValidationSchema}
           onSubmit={handleUpdateUser}
+          enableReinitialize={true} 
         >
         {({ errors, touched }) => (
         <Form className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2">
