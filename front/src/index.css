@@ -6,3 +6,11 @@
 body {
   font-family: 'Lato', sans-serif;
 }
+
+.navbar {
+border-radius: 0px 0px 16px 16px;
+background: #fff;
+box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.1),
+  5px 8px 49px 0px rgba(114, 34, 211, 0.4) inset,
+  0px -8px 50px 0px rgba(114, 34, 211, 0.25) inset;
+}
