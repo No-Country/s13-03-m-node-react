@@ -57,7 +57,7 @@ const createImage = async(req, res) => {
       console.log(newImage)
       const newImageToCreate = await imagemanager.createImage(newImage)
  
-      console.log(newImageToCreate)
+      console.log(newImageToCreate) 
       return res.status(200).json({
         data: newImage,
         status:0,
