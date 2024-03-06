@@ -1,13 +1,16 @@
-import { Image } from '@nextui-org/react'
+import { Image,Avatar } from '@nextui-org/react'
 import logo from '../assets/images/logo.png'
 
-const Logo = () => {
+const Logo = ({footer}) => {
   return (
-    <Image
+    <Avatar
       src={logo}
       alt="Logo"
-      width={45}
-      className='border-1'
+      isBordered   
+      className={footer=== true ? 'w-[120px] h-[120px]': "w-11"}
+      radius="lg"
+      color="secondary"
+   
     />
   )
 }

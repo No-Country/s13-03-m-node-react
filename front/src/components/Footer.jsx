@@ -4,6 +4,7 @@ import { BiCopyright } from "react-icons/bi";
 import { FiPhone } from "react-icons/fi";
 import { MdOutlineEmail } from "react-icons/md";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
+import {Avatar} from "@nextui-org/react";
 
 const Footer = () => {
   return (
@@ -12,27 +13,30 @@ const Footer = () => {
         to="/home"
         className="flex flex-col items-center font-bold text-inherit "
       >
-        <Logo />
-        <p className="font-bold text-inherit">EduClass</p>
+        <Logo footer={true} />
+        <p className="font-bold text-inherit text-[#7222D3]">EduClass</p>
       </NavLink>
-      <div className="  absolute  inset-x-24 bottom-0 pb-3 pl-2
- ">
+      <div className="  absolute  inset-x-24 bottom-0 pb-3 pl-2">
         <p className="flex items-center text-[10px] font-medium  gap-1">
           <span>
-            <BiCopyright />
+            <BiCopyright size={16} />
           </span>
           Todos los derechos reservados
         </p>
       </div>
-      <ul className=" text-xs	">
-        <li className="font-semibold	text-sm">Síguenos</li>
-        <ul className="flex gap-2">
+      <ul className=" text-xs flex flex-col	gap-4">
+       
+        <ul >
+          <li className="font-semibold	text-sm mb-1">Síguenos</li>
+          <ul className="flex gap-2">
           <li><FaInstagram size={20} /></li>
           <li><FaFacebook size={20} /></li>
+          </ul>
         </ul>
-        <li className="font-semibold	text-sm">Contáctanos</li>
+       
         <ul>
-          <li className="flex items-center gap-1.5">
+        <li className="font-semibold	text-sm mb-1">Contáctanos</li>
+          <li className="flex items-center gap-1.5 mb-1">
             <span >
               <FiPhone size="1rem" />
             </span>
@@ -45,12 +49,12 @@ const Footer = () => {
             info@colegiosanpedro.com
           </li>
         </ul>
-        <li className="font-semibold	text-sm">Legal</li>
+      
         <ul>
+        <li className="font-semibold	text-sm mb-1">Legal</li>
           <li>Políticas de seguridad</li>
         </ul>
-        <Link to="/ayuda">
-          <li className="font-semibold	text-sm"> Ayuda</li></Link>
+
       </ul>
     </footer>
   );

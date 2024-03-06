@@ -4,7 +4,7 @@ const MapToSchool = () => {
     //CREAR UN ARRAY CON LAS DISTINTAS URL O TAMAÑOS
     return (
       <section className="flex flex-col justify-center min-h-[500px]">
-        <h3 className="font-bold text-base mx-4 mb-8 ">¿Cómo llego a mi escuela?</h3>
+        <h3 className="font-bold text-base mx-4 mb-6 text-xl font-bold text-[#280058]">¿Cómo llego a mi escuela?</h3>
         <Card
          className="mx-4 border-[0.25px] border-[#3FA3EB] shadow-md shadow-[#3fa3eb66] 	"
         >
