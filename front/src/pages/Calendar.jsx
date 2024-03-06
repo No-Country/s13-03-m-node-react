@@ -10,6 +10,9 @@ import { useLoaderData } from "react-router";
 import { Helmet } from "react-helmet";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
+import diaBandera from "../assets/images/diaBandera.avif";
+import diaProfesor from "../assets/images/diaProfesor.jpg"
+import CardCalendar from "../components/CardCalendar";
 
 export const loader = async () => {
   try {
@@ -44,38 +47,15 @@ const CalendarPage = () => {
  
   const img1 = [
     {
-
       original: "https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg",
       originalClass: "bg-[3FA3EB]",
       bulletClass: " border-2 border-rose-600 2",
-      renderItem: () =>
-      (
-        <Card className="flex flex-col items-start gap-2 h-44 w-1/2		 px-3 pt-1   mx-auto   mt-5 mb-10">
-          <h1 className=" my-4 ">Dia de la bandera</h1>
-          <h1 className="mb-4 ">Fecha</h1>
-          <div className=" w-full flex  justify-center items-center">
-            <Image className="h-[5.563rem] " src="https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg" alt="MDN" />
-          </div>
-        </Card>)
-
+      renderItem: () =>(<CardCalendar src={diaBandera} title={"Día de la Bandera"} subTitle={"20/06"} alt={"Día de la Bandera"} />)
     },
     {
-      original: "https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg",
-    },
-    {
-      original: "https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg",
-    },
-    {
-      renderItem: () =>
-        <div className="bg-[3FA3EB]">
-          <p className="absolute bg-black text-white">hola</p>
-          <img src="https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg" alt="MDN" />
-        </div>
-    },
-    {
-      original: "https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg",
-      description: "adsdas"
-    },
+      originalClass: "bg-[3FA3EB]",
+      renderItem: () =>(<CardCalendar src={diaProfesor} title={"Día del Maestro"} subTitle={"11/09"} alt={"Día del Maestro"} />)
+    },   
   ];
 
 
@@ -86,7 +66,7 @@ const CalendarPage = () => {
         <meta name="description" content="Helmet application" />
       </Helmet>
       <section className="flex flex-col  text-[#280058]    ">
-        <h1 className="  font-bold text-xl ">
+        <h1 className=" mx-4  font-bold text-xl ">
           Días de importantes de mi escuela
         </h1>
 
@@ -94,24 +74,14 @@ const CalendarPage = () => {
           items={img1}
           showPlayButton={false}
           showFullscreenButton={false}
-          showThumbnails={false}
-          showNav={false}
+          showThumbnails={false}         
           showBullets={true}
         />
 
-        {/* Da problemas por ser responsive se achica demaciado impidiendo el overflow
-     <Image
-        className="self-center"
-        width={300}
-        alt="NextUI hero Image"
-        src="https://nextui-docs-v2.vercel.app/images/hero-card-complete.jpeg"
-  />*/}
         <h2 className="mx-4 my-8 font-bold text-xl">Mi calendario</h2>
-        <div className="w-5/6 h-96 self-center mb-8">
-          {/* es mejor darle un tamaño determinado a la calendar que el dinamico
-            Menos de 340 se rompe
-        */}
-          <Calendar events={activities} localizer={localizer} />
+        <div className="w-auto h-96 self-center mb-8 p-4 mx-4 bg-[#F4FAFF] flex justify-center rounded-3xl	">
+      
+          <Calendar events={activities} localizer={localizer} className="w-80 " style={{width:300}}/>
         </div>
 
       </section>
