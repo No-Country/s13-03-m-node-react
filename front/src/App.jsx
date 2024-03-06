@@ -16,7 +16,6 @@ import Layout from "./components/Layout";
 import ActivitieGallery from "./components/activities/activitieGallery/ActivitieGallery";
 import { notificationsLoader } from "./components/notifications/NotificationContainer";
 import { loaders } from "./components/activities/ActivitiesContainer";
-
 import Help from "./pages/Help";
 import UserProfile from "./pages/Profile";
 import { loader as loaderAttendance } from "./pages/Attendance";
@@ -29,7 +28,7 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        path: "/",
+        path: "/home",
         element: <Home />,
       },
       {
@@ -89,7 +88,7 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/login",
+    path: "/",
     element: <Login />,
   },
   {

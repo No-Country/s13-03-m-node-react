@@ -9,7 +9,7 @@ const ProfilePic = ({ handleLogout }) => {
 
   return (
     <NavbarContent justify="end" aria-label="User">
-      <Dropdown placement="bottom-end" aria-label="User" className="rounded-lg bg-gradient-to-tr from-[#8f6db8] to-[#fff] mt-[6px]" >
+      <Dropdown placement="bottom-end" aria-label="User" className="rounded-lg navbar ml-6 mt-[5px]" >
         <DropdownTrigger>
           <Avatar
             isBordered
@@ -24,15 +24,15 @@ const ProfilePic = ({ handleLogout }) => {
         </DropdownTrigger>
 
         <DropdownMenu aria-label="Profile Actions" variant="flat">
-          <DropdownItem key="profile" className="h-14 gap-2" textValue="user">
-            <p className="font-semibold">Usuario:</p>
-            <p className="font-semibold">{user.email}</p>
+          <DropdownItem key="profile" className="h-14 gap-2 text-[#280058]" textValue="user">
+            <p className="font-medium">Usuario:</p>
+            <p className="font-medium">{user.email}</p>
           </DropdownItem>
           <DropdownItem key="settings" withDivider textValue="settings">
-            <NavLink className="font-semibold" to="/perfil">Perfil</NavLink>
+            <NavLink className="font-medium text-[#280058]" to="/perfil">Perfil</NavLink>
           </DropdownItem>
           <DropdownItem key="logout" color="danger" onClick={handleLogout} textValue="logout">
-            <NavLink className="font-semibold" to="/login">Cerrar sesión</NavLink>
+            <NavLink className="font-medium text-[#280058]" to="/">Cerrar sesión</NavLink>
           </DropdownItem>
         </DropdownMenu>
       </Dropdown>

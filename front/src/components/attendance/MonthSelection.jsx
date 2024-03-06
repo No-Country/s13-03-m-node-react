@@ -8,13 +8,13 @@ const MonthSelection = ({ handleChange, month, asistencias, ausencias, retiros }
 
   return (
     <>
-      <h1 className="text-2xl font-semibold text-left mt-10 text-[#280058]">Historial</h1>
-      <RadioGroup orientation="horizontal" className="flex justify-center items-center  gap-4 mt-4" value={value} onChange={(e) => setValue(e.target.value)}>
-        <Radio size="sm" value="asistencias">Asistencias</Radio>
-        <Radio size="sm" value="ausencias">Ausencias</Radio>
-        <Radio size="sm" value="retiros">Retiros</Radio>
+      <h1 className="text-2xl font-semibold text-left mt-9 text-[#280058]">Historial</h1>
+      <RadioGroup orientation="horizontal" className="flex justify-between items-center mt-4" value={value} onChange={(e) => setValue(e.target.value)}>
+        <Radio className="px-6" color="warning" size="sm" value="asistencias">Asistencias</Radio>
+        <Radio className="px-6" color="warning" size="sm" value="ausencias">Ausencias</Radio>
+        <Radio className="px-6" color="warning" size="sm" value="retiros">Retiros</Radio>
       </RadioGroup>
-      <div className="border-1 rounded-md border-orange-300 shadow-md shadow-orange-300 p-2 m-2 flex justify-between bg-white">
+      <div className="border-1 rounded-md border-orange-300 shadow-md shadow-orange-300 p-2 m-2 flex justify-between bg-white h-11">
         <select className="w-full text-xl bg-white" onChange={handleChange} value={month}>
           <option value="enero">Enero</option>
           <option value="febrero">Febrero</option>
@@ -31,12 +31,12 @@ const MonthSelection = ({ handleChange, month, asistencias, ausencias, retiros }
         </select>
       </div>
 
-      <div className="border-1 rounded-md border-orange-300 shadow-md shadow-orange-300 p-1 m-2 flex justify-between items-center mt-6">
-        <div className="p-4 text-2xl w-10 font-bold flex text-center">
-          <small>{month.toUpperCase()} 2024</small>
+      <div className="border-1 rounded-md border-orange-300 shadow-md shadow-orange-300 m-2 flex justify-between items-center mt-4 h-11 text-[#280058]">
+        <div className="p-4 text-2xl font-bold flex text-center">
+          <small>{month.toUpperCase().slice(0, 3)} - 2024</small>
         </div>
         <div className="p-4 text-2xl">
-          <small className="text-[#280058]">{value === 'asistencias' ? asistencias : countDaysInMonth(selectedDatesArray, month)} {value}</small>
+          <small>{value === 'asistencias' ? asistencias : countDaysInMonth(selectedDatesArray, month)} {value}</small>
         </div>
       </div>
     </>

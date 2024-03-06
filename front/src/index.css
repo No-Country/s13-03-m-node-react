@@ -1,15 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 
 body {
   font-family: 'Lato', sans-serif;
 }
 
-
-#attendance-block {
-  font-family: "Inter", sans-serif;
+.navbar {
+border-radius: 0px 0px 16px 16px;
+background: #fff;
+box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.1),
+  5px 8px 49px 0px rgba(114, 34, 211, 0.4) inset,
+  0px -8px 50px 0px rgba(114, 34, 211, 0.25) inset;
 }

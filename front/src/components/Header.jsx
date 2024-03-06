@@ -13,7 +13,7 @@ const Header = () => {
       isBordered
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
-      className="mb-4 border-none shadow-inner bg-gradient-to-tr from-[#8f6db8] to-[#fff]"
+      className="mb-4 border-none shadow-inner navbar"
       aria-label="User"
     >
       <NavbarContent justify="start">
@@ -22,7 +22,7 @@ const Header = () => {
 
       <NavbarContent className="gap-4" justify="center">
         <NavbarBrand>
-          <NavLink to="/" className="font-bold text-inherit">
+          <NavLink to="/home" className="font-bold text-inherit">
             <Logo />
           </NavLink>
         </NavbarBrand>
@@ -30,10 +30,9 @@ const Header = () => {
 
       <ProfilePic />
 
-      <NavbarMenu className="bg-gray-100 overflow-hidden w-[250px] rounded bg-gradient-to-tr from-[#8f6db8] to-[#fff] gap-5" >
+      <NavbarMenu className="bg-gray-100 overflow-hidden w-[250px] rounded navbar" >
         {links.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>
-
             <NavLink
               className="w-full hover:font-semibold"
               color="foreground"
