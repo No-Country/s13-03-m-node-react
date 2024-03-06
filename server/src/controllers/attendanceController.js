@@ -156,7 +156,9 @@ async function updateAttendance(req, res) {
                 url: result_image.secure_url,
                 creationDate: new Date()
             },
-            isJustified: true // Añadir esta línea para marcar como justificado
+            isJustified: true, // Añadir esta línea para marcar como justificado
+            status: 'asistencia'
+            
         };
 
         let query;
