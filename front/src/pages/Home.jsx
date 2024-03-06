@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <>
       <Banner />
-      <div className="text-3xl h-screen flex justify-center items-center">
+      <div className="text-3xl  flex justify-center items-center">
         <CardsContainer />
       </div>
       <MapToSchool />
