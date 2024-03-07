@@ -21,6 +21,7 @@ const Attendance = () => {
   const navigate = useNavigate();
 
   const ausencias = data.data.document.filter((item) => item.status === 'ausencia').map((item) => item.date)
+  const ausenciasData = data.data.document.filter((item) => item.status === 'ausencia')
   const retiros = data.data.document.filter((item) => item.status === 'retiro').map((item) => item.date)
   const asistencias = hasMonthPassed(month) ? data.total_month - countDaysInMonth(ausencias, month) : getCurrentMonth() === month ? getWorkingDaysSinceStartOfMonth() - countDaysInMonth(ausencias, month) : 0
 
@@ -37,6 +38,7 @@ const Attendance = () => {
       name: 'Ausencias',
       link: "/asistencias/ausencias",
       ausencias,
+      ausenciasData,
       acumulado_anual: ausencias.length,
       acumulado_mensual: countDaysInMonth(ausencias, getCurrentMonth()),
       total_anual: 10,
