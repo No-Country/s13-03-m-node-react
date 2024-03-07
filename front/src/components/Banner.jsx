@@ -29,8 +29,6 @@ const Banner = () => {
         const response = await axios.get('https://educlass-2024.onrender.com/api/notification');
         const data = response.data.data;
 
-        console.log('Notification data:', data);
-
         const sortedNotifications = data.document.sort((a, b) => new Date(b.fechaCreacion) - new Date(a.fechaCreacion));
         const latestNotification = sortedNotifications[0];
 

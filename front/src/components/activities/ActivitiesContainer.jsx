@@ -51,8 +51,6 @@ export const loaders = async () => {
 function ActivitiesContainer() {
   const [data, dataImage] = useLoaderData();
 
-
-  console.log(dataImage.data.document);
   return (
     <div className="mr-[16px] ml-[16px]">
       <SectionActivities

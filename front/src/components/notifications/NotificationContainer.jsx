@@ -55,8 +55,6 @@ function NotificationContainer() {
   const [historyData, setHistoryData] = useState([]);
 
   //setNotificationsData()
-  console.log(data.document);
-
   return (
     <div className="max-w-[360px] pr-[16px] pl-[16px] bg-[#FDFBFF] ">
       <CurrentNotifications
