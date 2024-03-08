@@ -3,6 +3,7 @@ import { Formik, Form, Field } from 'formik';
 import { registerValidationSchema } from '../schemas/registerValidationSchema.js';
 import axios from 'axios';
 import { useAuth } from '../contexts/authContext.jsx';
+import { Helmet } from 'react-helmet';
 
 
 const UserProfile = () => {
@@ -48,6 +49,11 @@ const handleUpdateUser = (values) => {
   };
 
   return (
+    <>
+    <Helmet>
+    <title>Mi perfil</title>
+    <meta name="description" content="Pagina de perfil" />
+    </Helmet>
     <section className="h-screen flex flex-col justify-center items-center">
       <h1 className='text-2xl'>Perfil</h1>
       <div>
@@ -93,6 +99,7 @@ const handleUpdateUser = (values) => {
         )}
       </div>
     </section>
+    </>
   );
 }
 

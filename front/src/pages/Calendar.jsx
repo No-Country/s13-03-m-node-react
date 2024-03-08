@@ -62,8 +62,8 @@ const CalendarPage = () => {
   return (
     <>
       <Helmet>
-        <title>My Title</title>
-        <meta name="description" content="Helmet application" />
+        <title>Mi calendario</title>
+        <meta name="description" content="Podrás encontrar los días importantes y revisar el calendario." />
       </Helmet>
       <section className="flex flex-col  text-[#280058]    ">
         <h1 className=" mx-4  font-bold text-xl ">

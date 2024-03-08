@@ -6,6 +6,7 @@ import MonthSelection from "../components/attendance/MonthSelection.jsx";
 import { useState } from "react";
 import axios from "axios";
 import { countDaysInMonth, getCurrentMonth, getWorkingDaysSinceStartOfMonth, hasMonthPassed, getTotalAsistencias } from "../utils/months";
+import { Helmet } from "react-helmet";
 
 export const loader = async () => {
   try {
@@ -52,6 +53,11 @@ const Attendance = () => {
   ]
 
   return (
+    <>
+    <Helmet>
+    <title>Mis asistencias</title>
+    <meta name="description" content="Podrás ver las distintas asistencias, ausencias y retiros de acuerdo a cada mes." />
+    </Helmet>
     <div className="max-w-[900px] gap-2 flex flex-col px-4">
       {chartData.map((link) => (
         <AttendanceBlock key={link.name} title={link.name} total={link.acumulado_anual} handleClick={() => navigate(link.link, { state: link })} />
@@ -61,6 +67,7 @@ const Attendance = () => {
 
       <AttendanceChart chartData={chartData} />
     </div>
+    </>
   );
 }
 

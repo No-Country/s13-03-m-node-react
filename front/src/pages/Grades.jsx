@@ -10,6 +10,7 @@ import {
   getKeyValue,
 } from "@nextui-org/react";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 import { useLoaderData } from "react-router";
 
 
@@ -60,6 +61,11 @@ const Grades = () => {
     content: "text-small px-2 mx-2 my-3  ",
   };
   return (
+    <>
+    <Helmet>
+        <title>Mi recorrido académico</title>
+        <meta name="description" content="Podrás encontrar las materias y sus notas, con la respectiva fecha y tema evaluado." />
+      </Helmet>
     <section className=" mt-7  text-[#280058] h-screen">
       <h1 className="mx-4 mb-10 font-bold text-xl 	">
         Sigue mi recorrido académico
@@ -102,6 +108,7 @@ const Grades = () => {
         ))}
       </Accordion>
     </section>
+    </>
   );
 };
 

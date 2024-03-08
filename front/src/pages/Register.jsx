@@ -2,6 +2,7 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { registerValidationSchema } from '../schemas/registerValidationSchema.js';
 import { useAuth } from '../contexts/authContext.jsx';
+import { Helmet } from 'react-helmet';
 
 
 const Register = () => {
@@ -21,6 +22,11 @@ const Register = () => {
     };
 
     return (
+      <>
+       <Helmet>
+      <title>Registro</title>
+      <meta name="description" content="Te damos la bienvenida a Educlass, aqui podras crear tu cuenta." />
+      </Helmet>      
       <section className="flex justify-center min-h-screen">
         <div className="hidden bg-cover lg:block lg:w-3/5" style={{backgroundImage: "url('src/assets/images/milad-fakurian-F93PQmh4krI-unsplash.webp')"}}></div>
          
@@ -62,6 +68,7 @@ const Register = () => {
           </Formik>
         </div>
       </section>
+      </>
     );
 };
 

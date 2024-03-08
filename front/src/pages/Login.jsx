@@ -5,6 +5,7 @@ import { useAuth } from '../contexts/authContext.jsx';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/images/logo_educlass.webp'
 import loginBg from '../assets/images/loginBg.webp'
+import { Helmet } from 'react-helmet';
 
 const Login = () => {
   const { loginUser, user } = useAuth();
@@ -29,6 +30,11 @@ const Login = () => {
   };
 
   return (
+    <>
+    <Helmet>
+    <title>Login</title>
+    <meta name="description" content="Pagina para iniciar sesión." />
+    </Helmet>
     <section className="flex justify-center min-h-screen">
       <div className="flex flex-col items-center justify-center w-full max-w-3xl p-8 mx-auto lg:px-12 lg:w-3/5">
         <div className='flex justify-center'>
@@ -73,6 +79,7 @@ const Login = () => {
       <div className="hidden bg-cover lg:block lg:w-3/5" style={{ backgroundImage: `url(${loginBg})` }}></div>
 
     </section>
+    </>
   );
 };
 

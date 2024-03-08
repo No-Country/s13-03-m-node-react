@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {Accordion, AccordionItem} from "@nextui-org/react";
 import ChatbotIcon from "../components/ChatbotIcon";
 import EduChatbot from "../components/Chatbot";
+import { Helmet } from "react-helmet";
 
 
 function Help() {
@@ -41,6 +42,10 @@ function Help() {
 
     return (
         <>
+        <Helmet>
+        <title>Ayuda</title>
+        <meta name="description" content="Encontraras preguntas frecuentes y un chat para podes solucionar más dudas." />
+        </Helmet>
         <section className="mb-16">
             <div className="flex flex-col items-center justify-center gap-3">
                 <h1 className="text-2xl font-semibold p-1 mb-6 bg-clip-text text-transparent bg-gradient-to-r from-violet-600 to-orange-400">Resuelve tus dudas</h1>
