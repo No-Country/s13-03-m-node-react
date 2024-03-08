@@ -18,12 +18,12 @@ export const links = [
   {
     text: 'Asistencias',
     path: 'asistencias',
-    icon: <IoMdCheckboxOutline size={24} />,
+    icon: <IoMdCheckboxOutline size={23} />,
   },
   {
     text: 'Calendario',
     path: 'calendario',
-    icon: <CiCalendar size={24} />,
+    icon: <CiCalendar size={23} />,
   },
   {
     text: 'Calificaciones',

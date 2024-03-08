@@ -34,13 +34,14 @@ const Header = () => {
         {links.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>
             <NavLink
-              className="w-full hover:font-semibold"
+              className="w-full flex gap-2 items-center text-[#280058]  hover:font-semibold"
               color="foreground"
               to={`/${item.path}`}
               size="lg"
               onClick={() => setIsMenuOpen(false)}
             >
-              <div className="flex gap-2">{item.icon} {item.text}</div>
+              {item.icon} {item.text}
+              
             </NavLink>
           </NavbarMenuItem>
         ))}
