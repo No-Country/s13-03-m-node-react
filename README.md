@@ -179,7 +179,7 @@ O simplemente clickear en el link de
     <td>
       <div align="center">
         <a href="https://www.linkedin.com/in/fany-cecilia-suarez/" target="_blank" rel="author">
-          <img width="110" src="https://media.licdn.com/dms/image/D4D03AQEoyv1hyv1nXQ/profile-displayphoto-shrink_800_800/0/1680169348080?e=1715212800&v=beta&t=AMUvETjMdgyJG-x8qV2IQKMMII13s2oYsWjOZaAG_UA"/>
+          <img width="110" src="https://media.licdn.com/dms/image/D4D03AQGKGGgdgiiGLQ/profile-displayphoto-shrink_800_800/0/1696038483121?e=1715212800&v=beta&t=JTCAI4m7Q_Bu0Y5h0Stzc1Czc0f1ak4H8W8acL0yZvA"/>
         </a>
         <a href="" target="_blank" rel="author">
           <h4 style="margin-top: 1rem;">Cecilia Suarez</h4>
