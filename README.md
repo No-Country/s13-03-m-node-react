@@ -1,4 +1,4 @@
-# Rastrea Patitas
+# EduClass
 
 <!-- add image by url -->
 <br />
