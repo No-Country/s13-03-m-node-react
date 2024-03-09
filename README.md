@@ -77,6 +77,7 @@
 <img src="https://media0.giphy.com/media/uhQuegHFqkVYuFMXMQ/giphy.gif" width="30px">Tecnologías Utilizadas
 </h1>
 
+![Figma](https://img.shields.io/static/v1?style=for-the-badge&message=Figma&color=4169E1&logo=Figma&logoColor=fff&label=)
 ![Vite](https://img.shields.io/static/v1?style=for-the-badge&message=Vite&color=4169E1&logo=Vite&logoColor=FFFFFF&label=)
 ![Node.js](https://img.shields.io/static/v1?style=for-the-badge&message=Node.js&color=339933&logo=Node.js&logoColor=FFFFFF&label=)
 ![Express](https://img.shields.io/static/v1?style=for-the-badge&message=Express&color=000000&logo=Express&logoColor=FFFFFF&label=)
@@ -167,7 +168,7 @@ O simplemente clickear en el link de
         <a href="https://www.linkedin.com/in/maria-paz-kitroser-6362b029/" target="_blank" rel="author">
           <img width="110" src="https://media.licdn.com/dms/image/D4D03AQEoyv1hyv1nXQ/profile-displayphoto-shrink_800_800/0/1680169348080?e=1715212800&v=beta&t=AMUvETjMdgyJG-x8qV2IQKMMII13s2oYsWjOZaAG_UA"/>
         </a>
-        <a href="" target="_blank" rel="author">
+        <a href="https://www.linkedin.com/in/maria-paz-kitroser-6362b029/" target="_blank" rel="author">
           <h4 style="margin-top: 1rem;">Maria Paz Kitroser</h4>
           <h4 style="margin-top: 1rem;">UX/UI</h4>
         </a>
@@ -178,14 +179,14 @@ O simplemente clickear en el link de
     </td>
     <td>
       <div align="center">
-        <a href="" target="_blank" rel="author">
-          <img width="110" src=""/>
+        <a href="https://www.linkedin.com/in/fany-cecilia-suarez/" target="_blank" rel="author">
+          <img width="110" src="https://media.licdn.com/dms/image/D4D03AQGKGGgdgiiGLQ/profile-displayphoto-shrink_800_800/0/1696038483121?e=1715212800&v=beta&t=JTCAI4m7Q_Bu0Y5h0Stzc1Czc0f1ak4H8W8acL0yZvA"/>
         </a>
-        <a href="" target="_blank" rel="author">
+        <a href="https://www.linkedin.com/in/fany-cecilia-suarez/" target="_blank" rel="author">
           <h4 style="margin-top: 1rem;">Cecilia Suarez</h4>
           <h4 style="margin-top: 1rem;">UX/UI</h4>
         </a>
-        <a href="" target="_blank">
+        <a href="https://www.linkedin.com/in/fany-cecilia-suarez/" target="_blank">
           <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
         </a>
       </div>
