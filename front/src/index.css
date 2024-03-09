@@ -1,3 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+/*Grupo de botones today back next | y | Month week day agenda 
+Falta el activo en el primer grupo */
+/*.rbc-btn-group button{
+  border-color: rgb(255, 0, 234) !important; 
+  background-color: aqua;
+}
+.rbc-btn-group button:hover{
+  border-color: rgb(0, 204, 255) !important; 
+  background-color: rgb(255, 238, 0);
+}
+.rbc-active{
+  
+  background-color: rgb(50, 250, 0)!important;
+}
+/*Color del calendario en si mismo, lo que seria la grilla y sus numeros*/
+/*.rbc-month-view{
+  border-color: black ;
+  color: red ;
+
+}
+.rbc-header{
+  border-color: rgb(255, 123, 0) !important; 
+}
+.rbc-day-bg{
+  border-color: rgb(255, 251, 0) !important; 
+}
+.rbc-month-row{
+  border-color: rgb(38, 0, 255) !important; 
+
+}
+.rbc-day-bg{
+  background-color: aqua;
+}*/
+
+
+/*Grupo de botones today back next | y | Month week day agenda 
+Falta el activo en el primer grupo */
+.rbc-btn-group button{
+  border-color: #83C3F3 !important; 
+  background-color: #F4FAFF;
+  color:#280058
+}
+.rbc-btn-group button:hover{
+  border-color: #83C3F3 !important; 
+  /*background-color: rgb(255, 238, 0);*/
+}
+/*.rbc-active{
+  
+  background-color: rgb(50, 250, 0)!important;
+}*/
+/*Color del calendario en si mismo, lo que seria la grilla y sus numeros*/
+.rbc-month-view{
+  border-color: #83C3F3 ;
+  /*color: red ;*/
+
+}
+.rbc-header{
+  border-color: #83C3F3 !important; 
+}
+.rbc-day-bg{
+  border-color: #83C3F3  !important; 
+}
+.rbc-month-row{
+  border-color: #83C3F3  !important; 
+
+}
+.rbc-day-bg{
+  background-color: #F4FAFF;
+}
+
+.navbar {
+border-radius: 0px 0px 16px 16px;
+background: #fff;
+box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.1),
+  5px 8px 49px 0px rgba(114, 34, 211, 0.4) inset,
+  0px -8px 50px 0px rgba(114, 34, 211, 0.25) inset;
+}
+
+.filterBox {
+border-radius: 0px 0px 16px 16px;
+background: #fff;
+box-shadow: 0px 4px 8px 0px rgb(254,233,212),
+  5px 8px 49px 0px rgba(254,233,212) inset,
+  0px -8px 50px 0px rgba(254,233,212) inset;
+}

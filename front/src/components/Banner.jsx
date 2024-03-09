@@ -1,5 +1,6 @@
-import React from 'react';
-import { FaCheck } from 'react-icons/fa';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import bannerBg from '../assets/images/banner-img.webp'
 
 
 const DateComponent = ({ date }) => {
@@ -12,8 +13,7 @@ const DateComponent = ({ date }) => {
 
 const CheckboxItem = ({ text }) => {
   return (
-    <p className='flex justify-left items-center gap-2 text-base font-medium'>
-      <span><FaCheck /></span>
+    <p className='flex justify-left items-center gap-2 text-lg font-medium'>
       {text}
     </p>
   );
@@ -21,15 +21,37 @@ const CheckboxItem = ({ text }) => {
 
 
 const Banner = () => {
+  const [notification, setNotification] = useState(null);
+
+  useEffect(() => {
+    const fetchNotification = async () => {
+      try {
+        const response = await axios.get('https://educlass-2024.onrender.com/api/notification');
+        const data = response.data.data;
+
+        const sortedNotifications = data.document.sort((a, b) => new Date(b.fechaCreacion) - new Date(a.fechaCreacion));
+        const latestNotification = sortedNotifications[0];
+
+        setNotification(latestNotification);
+      } catch (error) {
+        console.error('Error fetching notification:', error);
+      }
+    };
+
+    fetchNotification();
+  }, []);
+
   return (
-    <section className='flex justify-center items-center gap-4 h-40 border-1 rounded-md border-gray-800 p-4 m-4 mb-16 max-w-5xl'>
-      <DateComponent date='21 Feb' />
-     
-      <div className='w-4/5 h-full rounded-md bg-no-repeat bg-cover' style={{backgroundImage: "url('/images/banner-img.webp')"}}>
+    <section className='flex justify-center items-center gap-4 h-40 mb-32 mt-6 border rounded-lg border-blue-400 p-4 m-4 max-w-5xl bg-blue-50 shadow-md shadow-[#3fa3eb6d]'>
+      <DateComponent date={new Date().toLocaleDateString('es-ES', { day: 'numeric', month: 'short' })} />
+
+      <div className='w-4/5 h-full rounded-md bg-no-repeat bg-cover' style={{ backgroundImage: `url(${bannerBg})` }}>
         <div className='rounded-md backdrop-blur-sm bg-white/50 m-2 p-2'>
-          <CheckboxItem text='Desinfección primaria' />
-          <CheckboxItem text='Inscripción jardín' />
-          <CheckboxItem text='Corte de agua' />
+          {notification && (
+            <>
+              <CheckboxItem text={notification.titulo} />
+            </>
+          )}
         </div>
       </div>
     </section>

@@ -1,4 +1,12 @@
 {
   "cSpell.language": "en,es-ES",
-  "cSpell.words": ["dayjs", "nextui", "tailwindcss", "toastify"]
+  "cSpell.words": [
+    "dayjs",
+    "formik",
+    "nextui",
+    "Swal",
+    "sweetalert",
+    "tailwindcss",
+    "toastify"
+  ]
 }

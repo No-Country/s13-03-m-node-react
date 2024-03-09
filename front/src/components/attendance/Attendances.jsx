@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useLocation } from "react-router-dom"
+import MonthSelection from "./MonthSelection"
 
 const Attendances = () => {
   const { state } = useLocation()
@@ -10,49 +11,34 @@ const Attendances = () => {
   return (
     <div className="text-3xl h-screen w-full flex-col justify-center items-center">
       <h1 className="text-2xl font-semibold text-center mt-10">Asistencias</h1>
-      <div className="border-1 rounded-md border-gray-800 p-2 m-2 flex justify-between">
-        <div className="p-4">
+      <div className="border-1 border-orange-500 rounded-md flex justify-between shadow-lg shadow-orange-500 m-2">
+        <div className="p-4 text-2xl">
           <small>Febrero 2024</small>
         </div>
-        <div className="p-4">
-          <small>{state.febrero} asistencias</small>
+        <div className="p-4 border-y-secondary text-2xl">
+          <small className="text-[#280058]">{state.febrero} asistencias</small>
         </div>
       </div>
 
-      <div className="border-1 rounded-md border-gray-800 p-2 m-2 flex justify-between">
-        <div className="p-4">
+      <div className="border-1 rounded-md border-orange-500 shadow-lg shadow-orange-500 mt-6 flex justify-between m-2">
+        <div className="p-4 text-2xl">
           <small>Acumulado 2024</small>
         </div>
-        <div className="p-4">
-          <small>{acumulado_anual} asistencias</small>
+        <div className="p-4 text-2xl">
+          <small className="text-[#280058]">{acumulado_anual} asistencias</small>
         </div>
       </div>
 
       <h1 className="text-2xl font-semibold text-center mt-10">Historial</h1>
 
-      <div className="border-1 rounded-md border-gray-800 p-2 m-2 flex justify-between">
-        <select className="w-full" onChange={(e) => setMonth(e.target.value)} value={month}>
-          <option value="enero">1 - Enero</option>
-          <option value="febrero">2 - Febrero</option>
-          <option value="marzo">3 - Marzo</option>
-          <option value="abril">4 - Abril</option>
-          <option value="mayo">5 - Mayo</option>
-          <option value="junio">6 - Junio</option>
-          <option value="julio">7 - Julio</option>
-          <option value="agosto">8 - Agosto</option>
-          <option value="septiembre">9 - Septiembre</option>
-          <option value="octubre">10 - Octubre</option>
-          <option value="noviembre">11 - Noviembre</option>
-          <option value="diciembre">12 - Diciembre</option>
-        </select>
-      </div>
+      <MonthSelection handleChange={(e) => setMonth(e.target.value)} month={month} />
 
-      <div className="border-1 rounded-md border-gray-800 p-2 m-2 flex justify-between">
-        <div className="p-4">
+      <div className="border-1 rounded-md border-orange-500 shadow-lg shadow-orange-500 p-1 m-2 flex justify-between items-center mt-6">
+        <div className="p-4 text-2xl w-10 font-bold flex text-center">
           <small>{month.toUpperCase()} 2024</small>
         </div>
-        <div className="p-4">
-          <small>{state[month]} asistencias</small>
+        <div className="p-4 text-2xl">
+          <small className="text-[#280058]">{state[month]} asistencias</small>
         </div>
       </div>
     </div>

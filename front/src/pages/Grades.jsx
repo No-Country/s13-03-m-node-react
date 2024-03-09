@@ -1,91 +1,115 @@
 import {
-    Accordion,
-    AccordionItem,
-    Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, getKeyValue
+  Accordion,
+  AccordionItem,
+  Table,
+  TableHeader,
+  TableColumn,
+  TableBody,
+  TableRow,
+  TableCell,
+  getKeyValue,
 } from "@nextui-org/react";
+import axios from "axios";
+import { Helmet } from "react-helmet";
+import { useLoaderData } from "react-router";
 
+
+export const loader = async () => {
+  try {
+    const data = await axios.get('https://educlass-2024.onrender.com/api/evaluation');
+    return data
+  } catch (error) {
+    return redirect('/')
+  }
+}
 const Grades = () => {
-    const data = [
-        {
-            title: "Materia 1",
-            grade: [
-                { key: "m1.1", date: "01/01/2022", tema: "??", grade: 10 },
-                { key: "m1.2", date: "01/01/2022", tema: "??", grade: 18 },
-                { key: "m1.3", date: "01/01/2022", tema: "??", grade: 16 },
-                { key: "m1.4", date: "01/01/2022", tema: "??", grade: 15 },
-                { key: "m1.5", date: "01/01/2022", tema: "??", grade: 14 },
-                { key: "m1.6", date: "01/01/2022", tema: "??", grade: 13 },
-            ],
-        },
-        {
-            title: "Materia 2",
-            grade: [
-                { key: "m2.1",date: "01/01/2022", tema: "??", grade: 12 },
-                {  key: "m2.2",date: "01/01/2022", tema: "??", grade: 11 },
-                { key: "m2.3",date: "01/01/2022", tema: "??", grade: 9 },
-                {  key: "m2.4",date: "01/01/2022", tema: "??", grade: 8 },
-                { key: "m2.5",date: "01/01/2022", tema: "??", grade: 4 },
-            ],
-        },
-        {
-            title: "Materia 3",
-            grade: [
-                {key: "m3.1", date: "01/01/2022", tema: "??", grade: 6 },
-                { key: "m3.2",date: "01/01/2022", tema: "??", grade: 3 },
-                { key: "m3.3",date: "01/01/2022", tema: "??", grade: 1 },
-            ],
-        },
-        {
-            title: "Materia 4",
-            grade: [{ key: "m4.1",date: "01/01/2022", tema: "??", grade: 7 }],
-        },
-    ];
-    const columns1 = [
-        {
-            key: "date",
-            label: "Fecha",
-        },
-        {
-            key: "tema",
-            label: "Tema",
-        },
-        {
+  const { data } = useLoaderData();
+  const { document } = data.data
 
-            key: "grade",
-            label: "Nota",
-        },
-    ];    
-    return (
-        <section className=" my-8">
-            <h1 className="mx-4 mb-8 font-medium text-2xl text-center	">Sigue mi recorrido académico</h1>
+  const matematica = { title: "Matemática", grade: document.filter((item) => item.subject == "Matemática") }
+  const cienciasNaturales = { title: "Ciencias Naturales", grade: document.filter((item) => item.subject == "Ciencias Naturales") }
+  const lenguaLiteratura = { title: "Lengua y Literatura", grade: document.filter((item) => item.subject == "Lengua y Literatura") }
+  const cienciasSociales = { title: "Ciencias Sociales", grade: document.filter((item) => item.subject == "Ciencias Sociales") }
+  const educacionFisica = { title: "Educación Fisica", grade: document.filter((item) => item.subject == "Educación física") }
+  const tecnologia = { title: "Tecnología", grade: document.filter((item) => item.subject == "Tecnología") }
+  const artes = { title: "Artes", grade: document.filter((item) => item.subject == "Artes") }
 
-            <Accordion variant="splitted" >
-                {data.map((item) => (
-                    <AccordionItem
-                        key={item.title}
-                        aria-label={item.title}
-                        title={item.title}
-                        className=" font-medium	text-xl mx-2 mb-2"
-                    >                       
-                        {item.grade &&
-                            <Table key={item.title} removeWrapper aria-label={"Notas de la "+item.title} >
-                            <TableHeader columns={columns1} >
-                                {(column) => <TableColumn key={column.key}>{column.label}</TableColumn>}
-                            </TableHeader>
-                            <TableBody items={item.grade}>
-                                {(item) => (
-                                    <TableRow key={item.key} >
-                                        {(columnKey) => <TableCell className=" font-medium">{getKeyValue(item, columnKey)}</TableCell>}
-                                    </TableRow>
-                                )}
-                            </TableBody>
-                        </Table>}
+  const data1 = [matematica, cienciasNaturales, lenguaLiteratura, cienciasSociales, educacionFisica, tecnologia, artes]
 
-                    </AccordionItem>
-                ))}
-            </Accordion>
-        </section>
-    );
+  //este array se utiliza para sincronizar las tablas
+  const columns1 = [
+    {
+      key: "testDate",
+      label: "Fecha",
+    },
+    {
+      key: "title",
+      label: "Tema",
+    },
+    {
+      key: "grade",
+      label: "Nota",
+    },
+  ];
+  //obejto para el estilo del acordion
+  const itemClasses = {
+    base: " mx-2 mb-6  shadow-md shadow-[#7222d366]  rounded-xl border-1 border-[#7222D3] ",
+    title: "font-medium	text-lg  text-[#280058]	",
+    trigger:
+      "px-2 py-0   data-[hover=true]:bg-default-100 rounded-lg h-14 flex items-center ",
+    indicator: "text-2xl  text-[#280058] ",
+    content: "text-small px-2 mx-2 my-3  ",
+  };
+  return (
+    <>
+    <Helmet>
+        <title>Mi recorrido académico</title>
+        <meta name="description" content="Podrás encontrar las materias y sus notas, con la respectiva fecha y tema evaluado." />
+      </Helmet>
+    <section className=" mt-7  text-[#280058] h-screen">
+      <h1 className="mx-4 mb-10 font-bold text-xl 	">
+        Sigue mi recorrido académico
+      </h1>
+      <Accordion showDivider={false} itemClasses={itemClasses} >
+        {data1.map((item) => (
+          <AccordionItem
+            key={item.title}
+            aria-label={item.title}
+            title={item.title}
+          >
+            {item.grade && (
+              <Table
+                hideHeader
+                isStriped
+                key={item.id}
+                removeWrapper
+                aria-label={"Notas de la "}
+                className="text-[#280058]"
+              >
+                <TableHeader columns={columns1}>
+                  {(column) => (
+                    <TableColumn key={column.key}>{column.label}</TableColumn>
+                  )}
+                </TableHeader>
+                <TableBody items={item.grade}>
+                  {(item) => (
+                    <TableRow key={item._id}>
+                      {(columnKey) => (
+                        <TableCell className=" font-medium">
+                          {getKeyValue(item, columnKey)}
+                        </TableCell>
+                      )}
+                    </TableRow>
+                  )}
+                </TableBody>
+              </Table>
+            )}
+          </AccordionItem>
+        ))}
+      </Accordion>
+    </section>
+    </>
+  );
 };
 
 export default Grades;

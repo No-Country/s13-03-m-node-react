@@ -1,92 +1,73 @@
-import asistenciaPic from '../assets/images/asistencias.jpg';
-import ausenciaPic from '../assets/images/ausencias.jpg';
-import retirosPic from '../assets/images/retiros.jpg';
-import { useNavigate } from "react-router-dom";
-import AttendanceCard from "../components/attendance/AttendanceCard";
+/* eslint-disable react-refresh/only-export-components */
+import { redirect, useLoaderData, useNavigate } from "react-router-dom";
 import AttendanceChart from '../components/attendance/AttendanceChart';
+import AttendanceBlock from "../components/attendance/AttendanceBlock.jsx";
+import MonthSelection from "../components/attendance/MonthSelection.jsx";
+import { useState } from "react";
+import axios from "axios";
+import { countDaysInMonth, getCurrentMonth, getWorkingDaysSinceStartOfMonth, hasMonthPassed, getTotalAsistencias } from "../utils/months";
+import { Helmet } from "react-helmet";
 
-const data = [
-  {
-    name: "Asistencias",
-    link: "/asistencias/asistencias",
-    image: asistenciaPic,
-    acumulado_mensual: 15,
-    acumulado_anual: 35,
-    enero: 18,
-    febrero: 17,
-    marzo: 0,
-    abril: 0,
-    mayo: 0,
-    junio: 0,
-    julio: 0,
-    agosto: 0,
-    septiembre: 0,
-    octubre: 0,
-    noviembre: 0,
-    diciembre: 0,
-    total_mensual: 20,
-    total_anual: 200
-  },
-  {
-    name: "Ausencias",
-    link: "/asistencias/ausencias",
-    image: ausenciaPic,
-    acumulado_mensual: 2,
-    acumulado_anual: 3,
-    total_anual: 10,
-    enero: 1,
-    febrero: 2,
-    marzo: 0,
-    abril: 0,
-    mayo: 0,
-    junio: 0,
-    julio: 0,
-    agosto: 0,
-    septiembre: 0,
-    octubre: 0,
-    noviembre: 0,
-    diciembre: 0,
-  },
-  {
-    name: "Retiros",
-    link: "/asistencias/retiros",
-    image: retirosPic,
-    acumulado_mensual: 3,
-    acumulado_anual: 4,
-    enero: 1,
-    febrero: 3,
-    marzo: 0,
-    abril: 0,
-    mayo: 0,
-    junio: 0,
-    julio: 0,
-    agosto: 0,
-    septiembre: 0,
-    octubre: 0,
-    noviembre: 0,
-    diciembre: 0,
-  },
-];
-
+export const loader = async () => {
+  try {
+    const data = await axios.get('https://educlass-2024.onrender.com/api/attendance');
+    return data
+  } catch (error) {
+    return redirect('/')
+  }
+}
 const Attendance = () => {
+  const { data } = useLoaderData();
+  const [month, setMonth] = useState("enero")
   const navigate = useNavigate();
 
-  return (
-    <div className="max-w-[900px] gap-2 flex flex-col px-8">
-      {
-        data.map((link) => (
-          <AttendanceCard
-            key={link.name}
-            name={link.name}
-            image={link.image}
-            handleNavigate={() => navigate(link.link, { state: link })}
-          />
-        ))
-      }
+  const ausencias = data.data.document.filter((item) => item.status === 'ausencia').map((item) => item.date)
+  const ausenciasData = data.data.document.filter((item) => item.status === 'ausencia')
+  const retiros = data.data.document.filter((item) => item.status === 'retiro').map((item) => item.date)
+  const asistencias = hasMonthPassed(month) ? data.total_month - countDaysInMonth(ausencias, month) : getCurrentMonth() === month ? getWorkingDaysSinceStartOfMonth() - countDaysInMonth(ausencias, month) : 0
 
-      <h1 className="text-2xl font-semibold text-center mt-10">Métricas</h1>
-      <AttendanceChart data={data} />
+  const chartData = [
+    {
+      name: 'Asistencias',
+      link: "/asistencias/asistencias",
+      total_anual: getTotalAsistencias(data.total_month),
+      acumulado_anual: getTotalAsistencias(data.total_month) - ausencias.length,
+      total_mensual: getWorkingDaysSinceStartOfMonth(),
+      acumulado_mensual: getWorkingDaysSinceStartOfMonth() - countDaysInMonth(ausencias, getCurrentMonth()),
+    },
+    {
+      name: 'Ausencias',
+      link: "/asistencias/ausencias",
+      ausencias,
+      ausenciasData,
+      acumulado_anual: ausencias.length,
+      acumulado_mensual: countDaysInMonth(ausencias, getCurrentMonth()),
+      total_anual: 10,
+    },
+    {
+      name: 'Retiros',
+      link: "/asistencias/retiros",
+      acumulado_anual: retiros.length,
+      acumulado_mensual: countDaysInMonth(retiros, getCurrentMonth()),
+    }
+  ]
+
+  return (
+    <>
+    <Helmet>
+    <title>Mis asistencias</title>
+    <meta name="description" content="Podrás ver las distintas asistencias, ausencias y retiros de acuerdo a cada mes." />
+    </Helmet>
+    <div className="max-w-[900px] gap-2 flex flex-col px-4">
+      {chartData.map((link) => (
+        <AttendanceBlock key={link.name} title={link.name} total={link.acumulado_anual} handleClick={() => navigate(link.link, { state: link })} />
+      ))}
+
+      <MonthSelection handleChange={(e) => setMonth(e.target.value)} month={month} asistencias={asistencias} ausencias={ausencias} retiros={retiros} />
+
+      <AttendanceChart chartData={chartData} />
     </div>
+    </>
   );
 }
 

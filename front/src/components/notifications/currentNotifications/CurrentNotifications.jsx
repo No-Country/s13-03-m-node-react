@@ -1,98 +1,116 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import NotificationCard from "./NotificationCard";
-import {
-  Dropdown,
-  DropdownTrigger,
-  DropdownMenu,
-  DropdownItem,
-  Button,
-} from "@nextui-org/react";
 import { MdKeyboardArrowDown } from "react-icons/md";
 
 function CurrentNotifications({
   notificationsData,
   setNotificationRead,
-  setNotificationsData,
   setHistoryData,
   historyData,
+  setNotificationsReaded,
 }) {
-  const [selectedKeys, setSelectedKeys] = useState(new Set(["Filtros"]));
+  const [selectedValue, setSelectedValue] = useState("Filtros");
+  const [isOpen, setIsOpen] = useState(false);
+  const [leidoChanged, setLeidoChanged] = useState(false);
 
-  const selectedValue = useMemo(
-    () => Array.from(selectedKeys).join(", ").replaceAll("_", " "),
-    [selectedKeys]
-  );
-
-  const handleCheckboxChange = (notification) => {
-    setNotificationsData(
-      notificationsData.filter((item) => item !== notification)
-    );
-    setHistoryData([...historyData, notification]);
+  const handleItemClick = (item) => {
+    setSelectedValue(item);
+    setIsOpen(false);
   };
 
   const filteredNotifications = useMemo(() => {
-    if (selectedKeys.has("Filtros") || selectedKeys.has("todas")) {
+    if (selectedValue === "Filtros" || selectedValue === "Todas") {
       return notificationsData;
-    } else if (selectedKeys.has("institucional")) {
+    } else if (selectedValue === "Institucionales") {
       return notificationsData.filter(
-        (notification) => notification.type === "institucional"
+        (notification) => notification.tipo === "general"
       );
-    } else if (selectedKeys.has("Mi grado")) {
+    } else if (selectedValue === "Personales") {
       return notificationsData.filter(
-        (notification) => notification.type === "Mi grado"
+        (notification) => notification.tipo === "alumno"
       );
     }
     return [];
-  }, [notificationsData, selectedKeys]);
+  }, [notificationsData, selectedValue]);
+
+  const handleCheckboxChange = (notification) => {
+    setHistoryData([...historyData, notification]);
+    setLeidoChanged(!leidoChanged);
+  };
+
+  useEffect(() => {
+  }, [leidoChanged]);
+
 
   return (
-    <div className="">
+    <div className="text-[#280058]">
       <div
         id="currentNotifications-header"
         className="flex justify-between items-center"
       >
         <div id="currentNotifications-title-container">
-          <h1 className="text-xl">Mis Notificaciones</h1>
+          <h1 className="text-[20px] font-bold">Mis notificaciones</h1>
         </div>
         <div
           id="currentNotifications-filter-container"
-          className="justify-center  content-center align-middle"
+          className="justify-center content-center align-middle relative inline-block"
         >
-          <Dropdown>
-            <DropdownTrigger>
-              <Button className="capitalize bg-transparent">
-                {selectedValue}
-                <MdKeyboardArrowDown />
-              </Button>
-            </DropdownTrigger>
-            <DropdownMenu
-              aria-label="Single selection example"
-              variant="flat"
-              disallowEmptySelection
-              selectionMode="single"
-              selectedKeys={selectedKeys}
-              onSelectionChange={setSelectedKeys}
-            >
-              <DropdownItem key="institucional">Institucionales</DropdownItem>
-              <DropdownItem key="Mi grado">Mi grado</DropdownItem>
-              <DropdownItem key="todas">Todas</DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
+          <button
+            className="capitalize bg-[#FDFBFF] text-[#280058] font-bold px-4 py-2 flex items-center justify-between text-sm"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {selectedValue}
+            <MdKeyboardArrowDown
+              className={`h-6 w-6 transition-transform transform ${isOpen ? "rotate-180" : ""
+                }`}
+            />
+          </button>
+          {isOpen && (
+            <div className="absolute z-50 right-0 mt-2 w-56 rounded shadow-md text-sm filterBox">
+              <ul>
+                <li>
+                  <button
+                    className="hover:bg-[#FCA044] block px-4 py-2 text-[#280058] font-bold w-full text-left"
+                    onClick={() => handleItemClick("Institucionales")}
+                  >
+                    Institucionales
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className="hover:bg-[#FCA044] block px-4 py-2 text-[#280058] font-bold w-full text-left"
+                    onClick={() => handleItemClick("Personales")}
+                  >
+                    Personales
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className="hover:bg-[#FCA044] block px-4 py-2 text-[#280058] font-bold w-full text-left"
+                    onClick={() => handleItemClick("Todas")}
+                  >
+                    Todas
+                  </button>
+                </li>
+              </ul>
+            </div>
+          )}
         </div>
       </div>
       <div id="currentNotifications-cards">
-        {filteredNotifications.map(
-          (notification, index) =>
-            !notification.readed &&
-            index >= filteredNotifications.length - 3 && (
+        {Array.isArray(filteredNotifications) &&
+          filteredNotifications
+            .filter((notification) => !notification.leido)
+            .slice(-3)
+            .map((notification, index) => (
               <NotificationCard
                 key={index}
                 notification={notification}
                 setNotificationRead={setNotificationRead}
                 onCheckboxChange={handleCheckboxChange}
+                setNotificationsReaded={setNotificationsReaded}
               />
-            )
-        )}
+            ))}
       </div>
     </div>
   );

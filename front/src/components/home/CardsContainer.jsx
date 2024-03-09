@@ -3,7 +3,7 @@ import AcademicPathContainer from "./academicPath/AcademicPathContainer";
 
 function CardsContainer() {
   return (
-    <div className="flex flex-col items-center justify-center w-[328px]">
+    <div className="flex flex-col object-center items-center justify-centero mt-[-100px]">
       <NotificationsContainer />
       <AcademicPathContainer />
     </div>
